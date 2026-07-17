@@ -1,0 +1,14 @@
+{
+  "name": "5ed-pitch-deck",
+  "version": "1.0.0",
+  "private": true,
+  "description": "5ED / חמש טכנולוגיה — investor pitch deck",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}
