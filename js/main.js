@@ -169,119 +169,19 @@ function initHero(){
     }
   };
 }
-initHero();
+try{ initHero(); }catch(e){ /* WebGL unavailable — hero degrades, rest of deck continues */ }
 
-/* ================= 10% dots canvas ================= */
+/* ================= reach field (direction A) ================= */
 (function(){
-  var cvs = document.getElementById('dots');
-  if(!cvs) return;
-  var ctx = cvs.getContext('2d');
-  var mode = 'human'; // 'human' | 'fived'
-  var mouse = {x:-9999,y:-9999};
-  var DPR = Math.min(window.devicePixelRatio,2);
-  var dots = [], COLS=0, ROWS=0;
-
-  function build(){
-    var rect = cvs.getBoundingClientRect();
-    cvs.width = rect.width*DPR; cvs.height = rect.height*DPR;
-    ctx.setTransform(DPR,0,0,DPR,0,0);
-    var gap = rect.width < 480 ? 22 : 26;
-    COLS = Math.floor((rect.width-20)/gap);
-    ROWS = Math.floor((rect.height-20)/gap);
-    dots = [];
-    var offX = (rect.width - (COLS-1)*gap)/2;
-    var offY = (rect.height - (ROWS-1)*gap)/2;
-    var total = COLS*ROWS;
-    // pick 30 "coached" indices clustered near the center-right (the one gym)
-    var coached = new Set();
-    var cx0 = Math.floor(COLS*0.72), cy0 = Math.floor(ROWS*0.5);
-    var ring = 0;
-    while(coached.size < Math.min(30,total)){
-      for(var dy=-ring; dy<=ring && coached.size<30; dy++){
-        for(var dx=-ring; dx<=ring && coached.size<30; dx++){
-          var xx=cx0+dx, yy=cy0+dy;
-          if(xx>=0&&xx<COLS&&yy>=0&&yy<ROWS) coached.add(yy*COLS+xx);
-        }
-      }
-      ring++;
-    }
-    var k=0;
-    for(var y=0;y<ROWS;y++){
-      for(var x=0;x<COLS;x++){
-        dots.push({
-          x: offX + x*gap, y: offY + y*gap,
-          coached: coached.has(k),
-          phase: Math.random()*Math.PI*2,
-          glow: 0
-        });
-        k++;
-      }
-    }
+  var field = document.getElementById('reach-field');
+  if(!field) return;
+  var TOTAL = 48;                 // 12 x 4 grid
+  var seeds = {5:1, 6:1, 17:1, 18:1}; // the few already reached (dim)
+  for(var i=0;i<TOTAL;i++){
+    var d = document.createElement('span');
+    d.className = 'rf-dot' + (seeds[i] ? ' seed' : '');
+    field.appendChild(d);
   }
-  build();
-  window.addEventListener('resize', build);
-
-  cvs.addEventListener('pointermove', function(e){
-    var r = cvs.getBoundingClientRect();
-    mouse.x = e.clientX-r.left; mouse.y = e.clientY-r.top;
-  });
-  cvs.addEventListener('pointerleave', function(){ mouse.x=-9999; mouse.y=-9999; });
-
-  var t0 = performance.now();
-  function draw(now){
-    var t = (now-t0)/1000;
-    var rect = cvs.getBoundingClientRect();
-    ctx.clearRect(0,0,rect.width,rect.height);
-    for(var i=0;i<dots.length;i++){
-      var d = dots[i];
-      var target, r=3, pulse=0;
-      if(mode==='human'){
-        target = d.coached ? 1 : 0.06;
-        if(d.coached){ pulse = 0.15*Math.max(0,Math.sin(t*0.9)); } // once-a-week-ish slow pulse
-      } else {
-        target = 0.42;
-        pulse = 0.22*Math.max(0,Math.sin(t*2.2 + d.phase)); // daily heartbeat, everyone
-      }
-      // mouse spotlight
-      var mx = d.x-mouse.x, my = d.y-mouse.y;
-      var md = mx*mx+my*my;
-      var boost = md < 4200 ? (1-md/4200)*0.9 : 0;
-      d.glow += ((target+pulse+boost) - d.glow)*0.08;
-      var g = Math.max(0.04, Math.min(1.4, d.glow));
-      var rad = 2.2 + g*2.2;
-      ctx.beginPath();
-      ctx.arc(d.x,d.y,rad,0,Math.PI*2);
-      if(g > 0.12){
-        ctx.fillStyle = 'rgba(239,125,0,'+Math.min(1,g)+')';
-        ctx.shadowColor = 'rgba(255,154,46,'+Math.min(1,g*.9)+')';
-        ctx.shadowBlur = 10*g;
-      } else {
-        ctx.fillStyle = 'rgba(120,130,150,0.25)';
-        ctx.shadowBlur = 0;
-      }
-      ctx.fill();
-      ctx.shadowBlur = 0;
-    }
-    requestAnimationFrame(draw);
-  }
-  requestAnimationFrame(draw);
-
-  var cap = document.getElementById('dots-caption');
-  var bH = document.getElementById('btn-human'), bF = document.getElementById('btn-5ed');
-  function setMode(m){
-    mode = m;
-    bH.classList.toggle('active', m==='human');
-    bF.classList.toggle('active', m==='fived');
-    cap.style.opacity = 0;
-    setTimeout(function(){
-      cap.innerHTML = m==='human'
-        ? '<b>100% עומק · ~30 ילדים · פעם בשבוע.</b> עמוק, אמיתי, בלתי־ניתן להחלפה — ולא מגיע לרוב הילדים. השאר מקבלים <b>0%</b>.'
-        : '<b>10% עומק · לכל ילד · כל יום.</b> דק יותר — אבל תמיד שם, ולכולם. העבירו עכבר על הנקודות — כל אחת היא ילד.';
-      cap.style.opacity = 1;
-    }, 250);
-  }
-  bH.addEventListener('click', function(){setMode('human')});
-  bF.addEventListener('click', function(){setMode('5ed'==='5ed'?'fived':'human')});
 })();
 
 /* ================= no-GSAP fallback ================= */
@@ -290,9 +190,10 @@ if(!(window.gsap && window.ScrollTrigger)){
   document.querySelectorAll('.chain-line i').forEach(function(el){el.style.transform='none';});
   document.querySelectorAll('.cost-bars .bar').forEach(function(el){el.style.transform='none';});
   document.querySelectorAll('.f-bar').forEach(function(el){el.style.width=el.dataset.w+'%';});
-  document.querySelectorAll('.bv-bar').forEach(function(el){el.style.width=el.dataset.w+'%';});
-  document.querySelectorAll('.prin .finger').forEach(function(el){el.style.transform='none';});
   document.querySelectorAll('.count').forEach(function(el){el.textContent=(+el.dataset.to).toLocaleString('en-US');});
+  document.querySelectorAll('.rf-dot').forEach(function(el){el.classList.add('on');});
+  document.querySelectorAll('.dose-base,.dose-boost').forEach(function(el){el.style.width=el.dataset.w+'%';});
+  document.querySelectorAll('.dnum').forEach(function(el){el.textContent=el.dataset.to;});
   var nv=document.getElementById('nav');
   window.addEventListener('scroll',function(){nv.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
 }
@@ -350,6 +251,29 @@ if(window.gsap && window.ScrollTrigger){
       onUpdate:function(){ el.textContent = Math.round(obj.v).toLocaleString('en-US'); }});
   });
 
+  // strategy · direction A — reach field lights up (scale to many)
+  document.querySelectorAll('.reach-field').forEach(function(field){
+    var dots = Array.prototype.slice.call(field.querySelectorAll('.rf-dot'));
+    ScrollTrigger.create({trigger:field,start:'top 80%',once:true,onEnter:function(){
+      dots.forEach(function(d,i){ setTimeout(function(){ d.classList.add('on'); }, i*(prefersReduced?0:20)); });
+    }});
+  });
+
+  // strategy · direction B — dose bar fills 80% -> 90%
+  gsap.utils.toArray('.dose-base,.dose-boost').forEach(function(el,i){
+    gsap.to(el,{width:el.dataset.w+'%',duration:1.1,delay:i*.35,ease:'power3.out',
+      scrollTrigger:{trigger:'.dose',start:'top 82%'}});
+  });
+
+  // strategy · delta counters (0->10, 80->90)
+  gsap.utils.toArray('.dnum').forEach(function(el){
+    var from = parseFloat(el.dataset.from), to = parseFloat(el.dataset.to);
+    var obj = {v:from};
+    gsap.to(obj,{v:to,duration:1.4,ease:'power2.out',
+      scrollTrigger:{trigger:el,start:'top 88%'},
+      onUpdate:function(){ el.textContent = Math.round(obj.v); }});
+  });
+
 
   // convergence lines draw
   document.querySelectorAll('#conv-svg .c-line').forEach(function(l,i){
@@ -358,19 +282,9 @@ if(window.gsap && window.ScrollTrigger){
     gsap.to(l,{strokeDashoffset:0,duration:1.1,delay:i*.25,ease:'power2.out',
       scrollTrigger:{trigger:'#s4',start:'top 60%'}});
   });
-  // burn-vs-profit bars
-  gsap.utils.toArray('.bv-bar').forEach(function(el){
-    gsap.to(el,{width:el.dataset.w+'%',duration:1.2,ease:'power3.out',
-      scrollTrigger:{trigger:'.burn-vs',start:'top 82%'}});
-  });
-  // methodology finger bars
-  gsap.utils.toArray('.prin .finger').forEach(function(el,i){
-    gsap.to(el,{scaleY:1,duration:.7,delay:i*.18,ease:'back.out(1.7)',
-      scrollTrigger:{trigger:'#s7',start:'top 60%'}});
-  });
   // card tilt micro-interaction (desktop only)
   if(matchMedia('(pointer:fine)').matches && !prefersReduced){
-    gsap.utils.toArray('.card,.layer,.prin,.eco-card').forEach(function(card){
+    gsap.utils.toArray('.card,.layer').forEach(function(card){
       card.addEventListener('pointermove', function(e){
         var r = card.getBoundingClientRect();
         var rx = ((e.clientY-r.top)/r.height - .5)*-5;
