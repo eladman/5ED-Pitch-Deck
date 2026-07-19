@@ -415,6 +415,16 @@ h2{font-size:clamp(1.9rem,4.4vw,3.3rem);margin-bottom:20px}
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .mnote--feature p{font-size:.78rem;max-width:40ch;margin:6px auto 0}
+.mnote-badge{
+  position:relative;z-index:1;
+  display:inline-flex;align-items:center;gap:7px;
+  margin:0 auto 12px;padding:6px 14px;
+  border-radius:999px;border:1px solid rgba(239,125,0,.45);
+  background:rgba(239,125,0,.1);
+  font-size:.7rem;font-weight:700;letter-spacing:.04em;
+  color:var(--orange-hot);
+}
+.mnote-badge svg{width:14px;height:14px;flex:none}
 
 /* ---------- paper (economics) ---------- */
 .eco-capital{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -711,12 +721,11 @@ section.slide{
 
 /* what makes us unique — deck mode */
 #s11 .wrap{max-width:1300px}
-.uniq-grid{display:grid;grid-template-columns:1.85fr 1fr;gap:clamp(16px,3vw,36px);align-items:center;margin-top:18px}
-@media(max-width:980px){.uniq-grid{grid-template-columns:1fr;gap:22px}}
+.uniq-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,3vw,36px);align-items:center;margin-top:18px}
 .claim-box{margin-top:0;padding:clamp(14px,2vw,20px);font-size:clamp(.88rem,1.4vw,1.02rem)}
 
 /* unique — venn / moat svg */
-#uniq-svg{width:100%;height:auto;display:block;max-width:900px;margin-inline:auto;overflow:visible}
+#uniq-svg{width:100%;height:auto;display:block;max-width:680px;margin-inline:auto;overflow:visible}
 #uniq-svg text{font-family:'Heebo',sans-serif}
 #uniq-svg .dom-circle{fill:var(--orange);fill-opacity:.16;stroke:rgba(239,125,0,.4);stroke-width:1.5;mix-blend-mode:screen}
 #uniq-svg .dom-icon{fill:none;stroke:var(--orange-hot);stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;opacity:.92}
