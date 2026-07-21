@@ -56,60 +56,94 @@
   </div>
 </section>
 
-<!-- ===== 03 · STRATEGY / 10% ===== -->
-<section id="s3" class="slide">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="s-num">03</span>האסטרטגיה · העסקה המרכזית</div>
-    <h2 class="reveal">עסקת ה־<span class="hl num">10%</span></h2>
-    <p class="lead strat-intro reveal">השיטה של חמש אצבעות עובדת - אבל תלויה ביחס מאמן - מתאמנים. תוכנה נותנת ממנה פחות לכל רגע — אבל <strong>לכל ילד, כל יום.</strong> אותו 10% פועל <strong>בשני כיוונים:</strong></p>
+<!-- ===== 03 · PAIN / PROBLEM ===== -->
+<section id="s2b" class="slide">
+  <div class="wrap pain-wrap">
+    <div class="pain-copy">
+      <div class="eyebrow reveal"><span class="s-num">03</span>הבעיה</div>
+      <p class="pain-statement">
+        <span class="ps-line reveal">הם מתאמנים.</span>
+        <span class="ps-line reveal">הם משתפרים.</span>
+        <span class="ps-line ps-hl reveal">אבל אין להם מפה.</span>
+      </p>
+      <p class="pain-caption reveal">לא יודעים מה לעשות אחרי האימון — ולא אם הם באמת ממצים את הפוטנציאל.</p>
+    </div>
 
-    <div class="track-grid">
+    <div class="pain-visual reveal">
+      <svg id="pain-svg" viewBox="0 0 560 400" role="img" aria-label="הספורטאי משתפר לאורך זמן, אבל המשך הדרך אל הפוטנציאל לא ידוע">
+        <defs>
+          <linearGradient id="painFade" x1="1" y1="1" x2="0" y2="0">
+            <stop offset="0" stop-color="#FF9A2E"/>
+            <stop offset="1" stop-color="#FF9A2E" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
 
-      <!-- Direction A — REACH -->
-      <article class="track track-reach reveal">
-        <div class="track-tag"><b>א׳</b>הגדלת החשיפה</div>
-        <div class="track-delta">
-          <span class="d-from num">0%</span>
-          <span class="d-arrow">←</span>
-          <span class="d-to num"><span class="dnum" data-from="0" data-to="10">0</span>%</span>
-        </div>
-        <div class="reach-field" id="reach-field" aria-hidden="true"></div>
-        <h3 class="track-title">ילדים שלא נחשפו לחמש אצבעות</h3>
-        <p class="track-body">היום הם מקבלים <b>0%</b> — אין מאמן, אין שיטה, אין חשיפה. התוכנה מביאה לכל אחד מהם <b>10% מחמש אצבעות</b>, בכל מקום ובכל יום. מ־0% ל־10% זו לא "פחות שיטה" — זו <b>קפיצת סדר גודל:</b> להגיע להמונים שאחרת לא היו נחשפים בכלל</p>
-        <div class="track-foot"><span class="track-metric">אלפי ילדים חדשים שאחרת לא היו מגיעים</span></div>
-      </article>
+        <!-- known: training improvement (solid, rising) -->
+        <path class="pv-solid" d="M 508 322 C 452 316, 414 280, 372 250 C 348 232, 336 222, 320 210"/>
+        <circle class="pv-dot" cx="508" cy="322" r="5"/>
+        <circle class="pv-dot" cx="430" cy="292" r="5"/>
+        <circle class="pv-dot" cx="372" cy="250" r="5"/>
 
-      <!-- Direction B — DEEPEN -->
-      <article class="track track-deepen reveal">
-        <div class="track-tag"><b>ב׳</b>העמקת התהליך</div>
-        <div class="track-delta">
-          <span class="d-from num">80%</span>
-          <span class="d-arrow">←</span>
-          <span class="d-to num"><span class="dnum" data-from="80" data-to="90">80</span>%</span>
-        </div>
-        <div class="dose">
-          <div class="dose-track">
-            <span class="dose-base" data-w="80"></span>
-            <span class="dose-boost" data-w="10"></span>
-          </div>
-          <div class="dose-legend">
-            <span class="dl base"><i></i>ליווי אנושי קיים</span>
-            <span class="dl boost"><i></i>+ ״זמן חמש״ יומיומי</span>
-          </div>
-        </div>
-        <h3 class="track-title">ילדים שכבר בתוך חמש אצבעות</h3>
-        <p class="track-body">הם כבר מקבלים ליווי אנושי חזק. התוכנה מוסיפה <b>״זמן חמש״ יומיומי</b> מעבר לאימון עצמו — ומעלה את מינון החשיפה מ־<b>80% ל־90%</b>. יותר נגיעות, יותר עומק, כל יום — <b>לא במקום המאמן, אלא לצידו</b></p>
-        <div class="track-foot"><span class="track-metric">יותר ״זמן חמש״ לכל ילד שכבר בפנים</span></div>
-      </article>
+        <!-- unknown: the path with no map (dotted, fading) -->
+        <path class="pv-dash" d="M 320 210 C 264 176, 226 150, 176 128 C 150 116, 128 110, 104 104"/>
 
+        <!-- "today" — where they are now -->
+        <circle class="pv-pulse" cx="320" cy="210" r="14">
+          <animate attributeName="r" values="14;30" dur="2.6s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values=".7;0" dur="2.6s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="pv-now" cx="320" cy="210" r="9"/>
+        <text class="pv-now-lbl" x="322" y="242" text-anchor="middle">כאן — היום</text>
+
+        <!-- the unknown destination -->
+        <text class="pv-q" x="86" y="88" text-anchor="middle">?</text>
+        <text class="pv-q-lbl" x="118" y="122" text-anchor="middle">הפוטנציאל</text>
+      </svg>
     </div>
   </div>
 </section>
 
-<!-- ===== 04 · STRATEGY · DISTRIBUTION (B2B2C) ===== -->
-<section id="s3b" class="slide">
+<!-- ===== 04 · STRATEGY / 10% ===== -->
+<section id="s3" class="slide">
+  <div class="wrap deal-wrap">
+    <div class="eyebrow reveal"><span class="s-num">04</span>האסטרטגיה · העסקה המרכזית</div>
+    <h2 class="deal-head reveal">רק <span class="hl num">10%</span> מהשיטה — <span class="hl">לכל ילד, כל יום.</span></h2>
+
+    <div class="deal-scale reveal">
+      <svg id="deal-svg" viewBox="0 0 960 250" role="img" aria-label="אותו +10% מוסף בשני מקומות על הסקאלה: מ־0% ל־10% ומ־80% ל־90%">
+        <defs>
+          <linearGradient id="dealGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#FF9A2E"/><stop offset="1" stop-color="#EF7D00"/>
+          </linearGradient>
+        </defs>
+
+        <!-- 0→100 scale (0% at right, 100% at left) -->
+        <rect class="ds-track" x="70" y="150" width="820" height="20" rx="10"/>
+        <text class="ds-end" x="890" y="196" text-anchor="middle">0%</text>
+        <text class="ds-end" x="70"  y="196" text-anchor="middle">100%</text>
+
+        <!-- Direction A · reach — the same +10%, from nothing -->
+        <line class="ds-conn" x1="849" y1="120" x2="849" y2="150"/>
+        <rect class="ds-seg" x="808" y="150" width="82" height="20" rx="10"/>
+        <text class="ds-pop" x="849" y="82" text-anchor="middle">מי שעוד לא נחשף</text>
+        <text class="ds-out" x="849" y="120" text-anchor="middle">10% ← 0</text>
+
+        <!-- Direction B · deepen — the same +10%, on top of human coaching -->
+        <line class="ds-conn" x1="193" y1="120" x2="193" y2="150"/>
+        <rect class="ds-seg" x="152" y="150" width="82" height="20" rx="10"/>
+        <text class="ds-pop" x="193" y="82" text-anchor="middle">מי שכבר בפנים</text>
+        <text class="ds-out" x="193" y="120" text-anchor="middle">90% ← 80</text>
+      </svg>
+    </div>
+
+    <p class="deal-cap reveal">אותו <b>+10%</b> פועל בשני הקצוות — מקפיץ את מי שאין לו כלום, ומעמיק את מי שכבר בפנים.</p>
+  </div>
+</section>
+
+<!-- ===== HIDDEN · STRATEGY · DISTRIBUTION (B2B2C) · re-enable: add class="slide", remove hidden ===== -->
+<section id="s3b" hidden>
   <div class="wrap">
-    <div class="eyebrow reveal"><span class="s-num">04</span>האסטרטגיה · ההפצה</div>
+    <div class="eyebrow reveal"><span class="s-num">05</span>האסטרטגיה · ההפצה</div>
     <h2 class="reveal">מגיעים לילדים <span class="hl">דרך ארגונים</span></h2>
     <p class="lead reveal">לילד בודד קשה להגיע ישירות. אבל ארגוני הספורט כבר מחזיקים אותו — יש להם הקבוצות, המאמנים, האמון והמגע היומיומי. הם <strong>ערוץ ההפצה שלנו לכל ילד</strong> — מודל <strong>B2B2C</strong></p>
 
@@ -142,28 +176,48 @@
 <section id="s4" class="slide">
   <div class="wrap">
     <div class="eyebrow reveal"><span class="s-num">05</span>למה עכשיו</div>
-    <h2 class="reveal">שלוש יכולות נפגשות <span class="hl">בפעם הראשונה</span></h2>
+    <h2 class="reveal">שלוש יכולות חוצות את הרף — <span class="hl">כולן, בבת אחת.</span></h2>
 
-    <div class="cards3 why-main">
-      <div class="card reveal">
-        <span class="w-num">01</span>
-        <span class="c-ico">היכולת</span>
-        <h3>ה־AI בשל</h3>
-        <p>מודלי בינה מלאכותית בשילוב השיטה של חמש אצבעות, יכולים לאפשר לנו לתת מענה לכל ילד מאמן מותאם לרמה, למטרות ולמצב שלו</p>
-      </div>
-      <div class="card reveal">
-        <span class="w-num">02</span>
-        <span class="c-ico">הצורך</span>
-        <h3>מיומנות מס' 2 בעולם</h3>
-        <p>בדוח Future of Jobs של ה־WEF (ינואר 2025): <strong>"חוסן, גמישות וזריזות" — מיומנות הליבה מס' 2</strong>, גם ל־2025 וגם לקראת 2030. מה שהשוק הכי יבקש — זה מה שאנחנו בונים אצל ילדים היום</p>
-      </div>
-      <div class="card reveal">
-        <span class="w-num">03</span>
-        <span class="c-ico">הכלכלה</span>
-        <h3>כלכלי לראשונה</h3>
-        <p>מאמן אישי לכל ילד תמיד היה החלום — והיה בלתי אפשרי כלכלית. עם הטכנולוגיה והיעילות של היום זה משתלם: <strong>₪3–6 לילד לחודש</strong></p>
-      </div>
+    <div class="why-thresh reveal">
+      <svg id="why-svg" viewBox="0 0 900 420" role="img" aria-label="שלוש יכולות — היכולת, הצורך והכלכלה — שהיו שנים מתחת לרף הבשלות, חוצות אותו יחד לראשונה">
+        <defs>
+          <linearGradient id="wtGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FF9A2E"/><stop offset="1" stop-color="#EF7D00"/>
+          </linearGradient>
+        </defs>
+
+        <!-- baseline -->
+        <line class="wt-base" x1="130" y1="372" x2="770" y2="372"/>
+
+        <!-- הכלכלה (left) -->
+        <rect class="wt-gray"   x="160" y="250" width="120" height="122" rx="8"/>
+        <rect class="wt-orange" x="160" y="122" width="120" height="128" rx="14"/>
+        <circle class="wt-cap" cx="220" cy="122" r="8"/>
+        <text class="wt-tag"   x="220" y="84"  text-anchor="middle">הכלכלה</text>
+        <text class="wt-title" x="220" y="108" text-anchor="middle">כלכלי לראשונה</text>
+
+        <!-- הצורך (middle) -->
+        <rect class="wt-gray"   x="390" y="250" width="120" height="122" rx="8"/>
+        <rect class="wt-orange" x="390" y="88"  width="120" height="162" rx="14"/>
+        <circle class="wt-cap" cx="450" cy="88" r="8"/>
+        <text class="wt-tag"   x="450" y="50"  text-anchor="middle">הצורך</text>
+        <text class="wt-title" x="450" y="74"  text-anchor="middle">החוסן — מבוקש מספר 2</text>
+
+        <!-- היכולת (right) -->
+        <rect class="wt-gray"   x="620" y="250" width="120" height="122" rx="8"/>
+        <rect class="wt-orange" x="620" y="110" width="120" height="140" rx="14"/>
+        <circle class="wt-cap" cx="680" cy="110" r="8"/>
+        <text class="wt-tag"   x="680" y="72"  text-anchor="middle">היכולת</text>
+        <text class="wt-title" x="680" y="96"  text-anchor="middle">ה־AI בשל</text>
+
+        <!-- the readiness threshold, crossed for the first time -->
+        <line class="wt-thresh" x1="120" y1="250" x2="700" y2="250"/>
+        <rect class="wt-pill" x="712" y="238" width="66" height="24" rx="12"/>
+        <text class="wt-pill-txt" x="745" y="255" text-anchor="middle">הרף</text>
+      </svg>
     </div>
+
+    <p class="why-cap reveal">שנים כל אחת מהן לבדה לא הספיקה. <b>עכשיו, לראשונה, שלושתן חצו את הרף יחד</b> — ה־AI בשל, החוסן הפך למיומנות מס׳ 2 בעולם (דוח WEF 2025), ומאמן אישי לכל ילד נעשה כלכלי: בין 3 ל־6 שקלים בחודש.</p>
   </div>
 </section>
 
