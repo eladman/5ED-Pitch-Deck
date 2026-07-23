@@ -1,0 +1,300 @@
+/* ============================================================
+   AMIR deck — page-specific overrides (loaded after styles.css)
+   Only affects /amir/. The main deck never loads this file.
+   ============================================================ */
+
+/* ---------- 02 · בעולם אוטופי — the aspirational world: experience · coach · group ---------- */
+#s1b.s-utopia{
+  background:
+    radial-gradient(58% 40% at 50% -4%, rgba(255,154,46,.14), transparent 62%),
+    radial-gradient(80% 60% at 50% 6%, rgba(239,125,0,.06), transparent 72%),
+    var(--ink);
+  overflow:hidden;
+}
+.au-wrap{position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(26px,4vh,52px)}
+
+/* header: eyebrow + one clear aspirational statement */
+.au-head{max-width:30em}
+.au-statement{
+  font-family:var(--disp);font-weight:800;
+  font-size:clamp(1.9rem,4.2vw,3.2rem);line-height:1.14;letter-spacing:-.018em;margin:0;
+}
+.au-statement .hl{color:var(--orange-hot);text-shadow:0 0 46px rgba(255,154,46,.30)}
+
+/* three pillars — deck card language: ink surface, orange node, dotted list, hover lift */
+.au-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.9vw,24px)}
+.au-pillar{
+  position:relative;background:var(--ink2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(26px,2.6vw,36px) clamp(22px,2.2vw,30px);
+  display:flex;flex-direction:column;gap:clamp(14px,1.7vh,20px);
+  transition:transform .35s,border-color .35s,box-shadow .35s;
+}
+.au-pillar:hover{transform:translateY(-7px);border-color:rgba(239,125,0,.45);box-shadow:0 24px 50px rgba(0,0,0,.45)}
+
+/* circular icon node — matches the deck's .ga-node aesthetic */
+.au-node{
+  width:clamp(58px,4.6vw,68px);height:clamp(58px,4.6vw,68px);border-radius:50%;
+  display:grid;place-items:center;
+  background:radial-gradient(circle at 50% 35%,rgba(255,154,46,.16),rgba(239,125,0,.05));
+  border:1.5px solid rgba(239,125,0,.4);
+  box-shadow:0 0 24px rgba(239,125,0,.14),inset 0 0 14px rgba(239,125,0,.06);
+}
+.au-node svg{
+  width:46%;height:46%;fill:none;stroke:var(--orange-hot);stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;overflow:visible;
+}
+.au-name{
+  font-family:var(--disp);font-weight:800;letter-spacing:-.01em;margin:2px 0 0;
+  font-size:clamp(1.42rem,2.1vw,1.85rem);color:var(--txt);
+}
+.au-points{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:clamp(10px,1.2vh,15px)}
+.au-points li{
+  position:relative;padding-inline-start:22px;
+  font-size:clamp(.92rem,1.05vw,1.04rem);line-height:1.5;color:var(--muted);
+}
+.au-points li::before{
+  content:"";position:absolute;inset-inline-start:0;top:.6em;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--orange);box-shadow:0 0 10px rgba(239,125,0,.5);
+}
+.au-points li b{color:var(--txt);font-weight:700}
+
+@media(max-width:900px){
+  .au-grid{grid-template-columns:1fr;max-width:520px}
+}
+/* compact projectors / short laptops */
+@media(max-height:790px){
+  .au-wrap{gap:clamp(18px,2.6vh,30px)}
+  .au-statement{font-size:clamp(1.6rem,3.4vw,2.5rem)}
+  .au-pillar{padding:22px 20px;gap:12px}
+  .au-node{width:52px;height:52px}
+  .au-name{font-size:clamp(1.3rem,2.6vw,1.66rem)}
+  .au-points{gap:10px}
+  .au-points li{font-size:.9rem}
+}
+
+/* ---------- 03 · החומות שמונעות — four walls between the child and the world ---------- */
+#s1c.s-walls{
+  background:var(--ink);overflow:hidden;
+  /* running-bond mortar joints (offset courses) — drawn over the stone gradient */
+  --brick-joints:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='60'%20height='56'%3E%3Cg%20stroke='black'%20stroke-opacity='.5'%20stroke-width='2'%3E%3Cpath%20d='M0,1H60M0,28H60M0,0V28M30,28V56'/%3E%3C/g%3E%3Cg%20stroke='white'%20stroke-opacity='.05'%20stroke-width='1'%3E%3Cpath%20d='M0,3H60M0,30H60'/%3E%3C/g%3E%3C/svg%3E");
+}
+#s1c.s-walls::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(75% 42% at 50% 112%, rgba(239,125,0,.09), transparent 60%),
+    linear-gradient(180deg, #0c0f15, #0a0c11);
+}
+.wl-wrap{position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(20px,3.4vh,42px)}
+
+/* header */
+.wl-head{max-width:38em}
+.wl-statement{
+  font-family:var(--disp);font-weight:800;
+  font-size:clamp(1.9rem,4.2vw,3.2rem);line-height:1.12;letter-spacing:-.018em;margin:0;
+}
+.wl-statement .hl{color:var(--orange-hot);text-shadow:0 0 46px rgba(255,154,46,.30);white-space:nowrap}
+
+/* scene: the warm "world we described" glows beyond a barrier of four walls */
+.wl-scene{position:relative;padding-top:42px}
+.wl-glow{
+  position:absolute;left:-3%;right:-3%;top:0;height:56%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(58% 130% at 50% 0%, rgba(255,154,46,.24), transparent 60%),
+    radial-gradient(92% 100% at 50% 0%, rgba(239,125,0,.10), transparent 72%);
+  filter:blur(3px);
+}
+.wl-beyond{
+  position:absolute;top:0;left:0;right:0;z-index:0;text-align:center;
+  font-family:var(--disp);font-weight:700;font-size:.82rem;letter-spacing:.22em;
+  color:var(--orange-hot);opacity:.55;
+}
+
+/* the barrier — four sections of one stone rampart */
+.wl-row{
+  position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(6px,.7vw,11px);align-items:end;
+}
+.wall{
+  position:relative;border-radius:2px;background-origin:border-box;
+  padding:clamp(22px,2.2vw,30px) clamp(14px,1.4vw,20px) clamp(18px,2vh,26px);
+  min-height:clamp(230px,40vh,320px);
+  display:flex;flex-direction:column;gap:11px;
+  background-image:
+    linear-gradient(180deg, rgba(9,11,16,.60), rgba(9,11,16,0) 46%),   /* readability scrim */
+    var(--brick-joints),                                                /* running-bond joints */
+    linear-gradient(180deg, #262c38 0%, #191e28 60%, #0f131b 100%);     /* dressed stone */
+  background-size:100% 100%, 60px 56px, cover;
+  background-repeat:no-repeat, repeat, no-repeat;
+  background-position:top, top left, center;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    inset 0 -34px 44px rgba(0,0,0,.34),
+    0 30px 52px rgba(0,0,0,.5);
+  border:1px solid rgba(0,0,0,.4);
+}
+/* battlement merlons on top -> unmistakably a fortress wall */
+.wall::before{
+  content:"";position:absolute;left:-1px;right:-1px;top:-17px;height:18px;
+  background:linear-gradient(180deg,#2c3341 0%,#222834 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  -webkit-mask:repeating-linear-gradient(90deg,#000 0 22px, transparent 22px 38px);
+          mask:repeating-linear-gradient(90deg,#000 0 22px, transparent 22px 38px);
+}
+.wall-ic-wrap{display:block;margin-bottom:1px}
+.wall-ic{
+  width:31px;height:31px;fill:none;stroke:#ced5e0;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 1px 1px rgba(0,0,0,.65));
+}
+.wall-name{
+  font-family:var(--disp);font-weight:800;font-size:clamp(1.34rem,1.95vw,1.72rem);
+  color:var(--txt);margin:4px 0 0;letter-spacing:-.01em;text-shadow:0 1px 3px rgba(0,0,0,.65);
+}
+.wall-desc{
+  font-size:clamp(.86rem,1.02vw,.98rem);line-height:1.5;color:var(--muted);margin:0;
+  text-shadow:0 1px 2px rgba(0,0,0,.55);
+}
+.wall-desc .num{color:var(--txt);font-weight:600}
+
+@media(max-width:900px){
+  .wl-row{grid-template-columns:repeat(2,1fr);gap:10px}
+  .wl-beyond{font-size:.72rem}
+}
+/* compact projectors / short laptops */
+@media(max-height:790px){
+  .wl-statement{font-size:clamp(1.6rem,3.4vw,2.5rem)}
+  .wl-scene{padding-top:34px}
+  .wall{min-height:clamp(210px,36vh,272px);padding:20px 14px 18px;gap:8px}
+  .wall-ic{width:27px;height:27px}
+  .wall-name{font-size:clamp(1.22rem,2.7vw,1.46rem)}
+  .wall-desc{font-size:.86rem;line-height:1.45}
+}
+
+/* ---------- 04 · הכאב שאנחנו פותרים — powerful / ethical / pure black ---------- */
+#s2.s-pain{background:#000;overflow:hidden}
+#s2.s-pain::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(58% 52% at 24% 42%, rgba(239,125,0,.12), transparent 62%),
+    radial-gradient(40% 40% at 82% 88%, rgba(239,125,0,.05), transparent 60%);
+}
+
+.pn-wrap{
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  gap:clamp(28px,4vw,52px);
+}
+.pn-copy{display:flex;flex-direction:column;align-items:center}
+
+.pn-statement{
+  font-family:var(--disp);font-weight:800;
+  font-size:clamp(2.4rem,5.4vw,4.2rem);line-height:1.12;letter-spacing:-.018em;
+  margin:4px 0 0;
+}
+.pn-line{display:block}
+.pn-hl{color:var(--orange-hot);text-shadow:0 0 46px rgba(255,154,46,.30)}
+
+/* --- the visual: a lone climber at "today", facing the dark gap to potential --- */
+.pn-visual{position:relative;width:100%}
+#pn-svg{width:100%;height:auto;display:block;max-width:min(820px,86vw);margin-inline:auto;overflow:visible}
+#pn-svg text{font-family:'Heebo',sans-serif}
+#pn-svg .pn-solid{
+  fill:none;stroke:var(--orange-hot);stroke-width:4;stroke-linecap:round;
+  filter:drop-shadow(0 0 10px rgba(255,154,46,.55));
+}
+#pn-svg .pn-dash{fill:none;stroke:url(#pnPath);stroke-width:3.5;stroke-linecap:round;stroke-dasharray:1 13}
+#pn-svg .pn-dot{fill:var(--orange)}
+#pn-svg .pn-fig{fill:none;stroke:#FFF;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+#pn-svg .pn-now-core{fill:#FFCF9A}
+#pn-svg .pn-pulse{fill:none;stroke:var(--orange-hot);stroke-width:2}
+#pn-svg .pn-now-lbl{fill:var(--txt);font-size:15px;font-weight:700}
+#pn-svg .pn-q{fill:var(--muted2);font-size:62px;font-weight:800;font-family:var(--disp);opacity:.5}
+#pn-svg .pn-q-lbl{fill:var(--muted);font-size:14px;font-weight:600;letter-spacing:.02em}
+
+/* compact projectors / short laptops */
+@media(max-height:790px){
+  .pn-statement{font-size:clamp(2rem,4.2vw,3.1rem)}
+  #pn-svg{max-width:min(640px,80vw)}
+}
+
+/* ---------- 05 · מה שאנחנו מוכרים — the payoff: we sell closing the gap (bridge) ---------- */
+#s2d.s-sell{
+  background:
+    radial-gradient(60% 44% at 50% -6%, rgba(255,154,46,.13), transparent 62%),
+    radial-gradient(80% 60% at 50% 8%, rgba(239,125,0,.05), transparent 74%),
+    var(--ink);
+  overflow:hidden;
+}
+.sl-wrap{position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(16px,2.6vh,30px)}
+
+/* header — one Apple-clean line, echoes slide 04's "הפער בין הפוטנציאל למציאות" */
+.sl-head{text-align:center;max-width:34em;margin-inline:auto}
+.sl-statement{
+  font-family:var(--disp);font-weight:800;
+  font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.12;letter-spacing:-.018em;margin:0;
+}
+.sl-statement .hl{color:var(--orange-hot);text-shadow:0 0 46px rgba(255,154,46,.30)}
+.sl-sub{margin:.7em 0 0;color:var(--muted);font-size:clamp(.96rem,1.15vw,1.1rem)}
+
+/* the bridge visual — resolves the dotted gap of the pain slide */
+.sl-bridge{width:100%}
+#sl-svg{width:100%;height:auto;display:block;max-width:min(880px,92vw);margin-inline:auto;overflow:visible}
+#sl-svg text{font-family:var(--disp)}
+#sl-svg .sl-span{
+  fill:none;stroke:var(--orange-hot);stroke-width:4;stroke-linecap:round;
+  filter:drop-shadow(0 0 10px rgba(255,154,46,.55));
+}
+#sl-svg .sl-deck{fill:none;stroke:rgba(239,125,0,.32);stroke-width:2;stroke-linecap:round}
+#sl-svg .sl-ties{stroke:rgba(255,154,46,.42);stroke-width:1.6;stroke-linecap:round}
+#sl-svg .sl-flow{fill:#FFCF9A;filter:drop-shadow(0 0 6px rgba(255,154,46,.9))}
+#sl-svg .sl-now{fill:#FFCF9A;filter:drop-shadow(0 0 8px rgba(255,154,46,.7))}
+#sl-svg .sl-pot-core{fill:var(--orange-hot);filter:drop-shadow(0 0 12px rgba(255,154,46,.9))}
+#sl-svg .sl-lbl-pot{fill:var(--orange-hot);font-size:15px;font-weight:700;letter-spacing:.01em}
+#sl-svg .sl-lbl-now{fill:var(--muted);font-size:14px;font-weight:600}
+
+/* two audiences — row-based panels (deliberately unlike utopia's 3 pillar cards) */
+.sl-audiences{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,26px)}
+.sl-aud{
+  background:var(--ink2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(20px,2.2vw,30px) clamp(20px,2.2vw,30px);
+  display:flex;flex-direction:column;gap:clamp(14px,1.7vh,20px);
+  transition:transform .35s,border-color .35s,box-shadow .35s;
+}
+.sl-aud:hover{transform:translateY(-6px);border-color:rgba(239,125,0,.4);box-shadow:0 22px 46px rgba(0,0,0,.45)}
+.sl-aud-athlete{background:linear-gradient(180deg,rgba(239,125,0,.06),rgba(239,125,0,0) 60%),var(--ink2)}
+
+.sl-aud-head{display:flex;align-items:center;gap:12px;padding-bottom:clamp(12px,1.5vh,16px);border-bottom:1px solid var(--line)}
+.sl-aud-ic{
+  width:40px;height:40px;flex:none;border-radius:11px;display:grid;place-items:center;
+  background:radial-gradient(circle at 50% 32%,rgba(255,154,46,.16),rgba(239,125,0,.05));
+  border:1.5px solid rgba(239,125,0,.4);
+}
+.sl-aud-ic svg{width:22px;height:22px;fill:none;stroke:var(--orange-hot);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.sl-aud-title{font-family:var(--disp);font-weight:800;font-size:clamp(1.3rem,1.9vw,1.7rem);letter-spacing:-.01em;color:var(--txt)}
+
+.sl-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:clamp(13px,1.7vh,19px)}
+.sl-item{display:flex;gap:14px;align-items:flex-start}
+.sl-ic{
+  width:34px;height:34px;flex:none;border-radius:9px;display:grid;place-items:center;
+  background:var(--ink3);border:1px solid var(--line);margin-top:2px;
+}
+.sl-ic svg{width:19px;height:19px;fill:none;stroke:var(--orange);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.sl-txt{display:flex;flex-direction:column;gap:3px}
+.sl-txt b{font-family:var(--disp);font-weight:700;font-size:clamp(1.02rem,1.3vw,1.16rem);color:var(--txt);letter-spacing:-.005em}
+.sl-txt p{margin:0;font-size:clamp(.9rem,1.02vw,1rem);line-height:1.45;color:var(--muted)}
+
+@media(max-width:900px){
+  .sl-audiences{grid-template-columns:1fr;max-width:560px;margin-inline:auto}
+}
+/* compact projectors / short laptops */
+@media(max-height:790px){
+  .sl-wrap{gap:clamp(12px,2vh,20px)}
+  .sl-statement{font-size:clamp(1.7rem,3.6vw,2.6rem)}
+  .sl-sub{font-size:.96rem}
+  #sl-svg{max-width:min(680px,84vw)}
+  .sl-aud{padding:18px 20px;gap:12px}
+  .sl-aud-head{padding-bottom:12px}
+  .sl-list{gap:12px}
+  .sl-txt b{font-size:1.02rem}
+  .sl-txt p{font-size:.9rem}
+}
