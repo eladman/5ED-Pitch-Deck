@@ -40,9 +40,10 @@ nav{
   position:fixed;top:0;right:0;left:0;z-index:90;
   display:flex;align-items:center;justify-content:space-between;
   padding:14px clamp(18px,4vw,54px);
-  transition:background .4s,backdrop-filter .4s, box-shadow .4s;
+  transition:transform .45s ease, opacity .45s ease, background .4s,backdrop-filter .4s, box-shadow .4s;
 }
-nav.scrolled{background:rgba(10,13,19,.78);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+/* once we scroll past the hero, slide the top bar out of view for a full-screen slide */
+nav.scrolled{transform:translateY(-100%);opacity:0;pointer-events:none}
 .nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
 .nav-brand img{height:34px;width:auto;display:block}
 .nav-brand .nb-txt{font-family:var(--disp);font-size:1.05rem;letter-spacing:.02em}
