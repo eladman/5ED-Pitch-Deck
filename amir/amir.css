@@ -21,56 +21,27 @@
 }
 .au-statement .hl{color:var(--orange-hot);text-shadow:0 0 46px rgba(255,154,46,.30)}
 
-/* three pillars — deck card language: ink surface, orange node, dotted list, hover lift */
-.au-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.9vw,24px)}
-.au-pillar{
-  position:relative;background:var(--ink2);border:1px solid var(--line);border-radius:var(--radius);
-  padding:clamp(26px,2.6vw,36px) clamp(22px,2.2vw,30px);
-  display:flex;flex-direction:column;gap:clamp(14px,1.7vh,20px);
-  transition:transform .35s,border-color .35s,box-shadow .35s;
+/* one big cinematic triptych — experience · coach · group, shown not told */
+.au-figure{
+  margin:0;position:relative;border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:0 30px 70px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.03);
 }
-.au-pillar:hover{transform:translateY(-7px);border-color:rgba(239,125,0,.45);box-shadow:0 24px 50px rgba(0,0,0,.45)}
+.au-figure img{
+  display:block;width:100%;height:auto;
+  max-height:min(62vh,620px);object-fit:cover;object-position:center;
+}
+/* subtle orange edge-glow so the image sits inside the deck's world */
+.au-figure::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 120px rgba(0,0,0,.35),inset 0 0 44px rgba(239,125,0,.06);
+}
 
-/* circular icon node — matches the deck's .ga-node aesthetic */
-.au-node{
-  width:clamp(58px,4.6vw,68px);height:clamp(58px,4.6vw,68px);border-radius:50%;
-  display:grid;place-items:center;
-  background:radial-gradient(circle at 50% 35%,rgba(255,154,46,.16),rgba(239,125,0,.05));
-  border:1.5px solid rgba(239,125,0,.4);
-  box-shadow:0 0 24px rgba(239,125,0,.14),inset 0 0 14px rgba(239,125,0,.06);
-}
-.au-node svg{
-  width:46%;height:46%;fill:none;stroke:var(--orange-hot);stroke-width:2;
-  stroke-linecap:round;stroke-linejoin:round;overflow:visible;
-}
-.au-name{
-  font-family:var(--disp);font-weight:800;letter-spacing:-.01em;margin:2px 0 0;
-  font-size:clamp(1.42rem,2.1vw,1.85rem);color:var(--txt);
-}
-.au-points{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:clamp(10px,1.2vh,15px)}
-.au-points li{
-  position:relative;padding-inline-start:22px;
-  font-size:clamp(.92rem,1.05vw,1.04rem);line-height:1.5;color:var(--muted);
-}
-.au-points li::before{
-  content:"";position:absolute;inset-inline-start:0;top:.6em;
-  width:8px;height:8px;border-radius:50%;
-  background:var(--orange);box-shadow:0 0 10px rgba(239,125,0,.5);
-}
-.au-points li b{color:var(--txt);font-weight:700}
-
-@media(max-width:900px){
-  .au-grid{grid-template-columns:1fr;max-width:520px}
-}
 /* compact projectors / short laptops */
 @media(max-height:790px){
   .au-wrap{gap:clamp(18px,2.6vh,30px)}
   .au-statement{font-size:clamp(1.6rem,3.4vw,2.5rem)}
-  .au-pillar{padding:22px 20px;gap:12px}
-  .au-node{width:52px;height:52px}
-  .au-name{font-size:clamp(1.3rem,2.6vw,1.66rem)}
-  .au-points{gap:10px}
-  .au-points li{font-size:.9rem}
+  .au-figure img{max-height:min(56vh,520px)}
 }
 
 /* ---------- 03 · החומות שמונעות — four walls between the child and the world ---------- */
@@ -368,4 +339,89 @@
   .mx-stat{padding-top:16px}
   .mx-stat-num{font-size:clamp(1.7rem,3vw,2.4rem)}
   .mx-stat-lbl{font-size:.86rem}
+}
+
+/* ---------- 08 · אנשים שפגשנו — social proof: entrepreneurs we pitched + accelerators we got into ---------- */
+#s2f.s-people{
+  background:
+    radial-gradient(58% 42% at 50% -5%, rgba(255,154,46,.12), transparent 62%),
+    radial-gradient(80% 60% at 50% 8%, rgba(239,125,0,.05), transparent 74%),
+    var(--ink);
+  overflow:hidden;
+}
+.pm-wrap{position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(20px,3.6vh,46px)}
+
+/* header — one Apple-clean validation line */
+.pm-head{text-align:center;max-width:30em;margin-inline:auto}
+.pm-statement{
+  font-family:var(--disp);font-weight:800;
+  font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.12;letter-spacing:-.018em;margin:0;
+}
+.pm-statement .hl{color:var(--orange-hot);text-shadow:0 0 46px rgba(255,154,46,.30)}
+.pm-sub{margin:.7em 0 0;color:var(--muted);font-size:clamp(.96rem,1.15vw,1.1rem)}
+
+/* two blocks, each introduced by a quiet centered divider-label */
+.pm-block{display:flex;flex-direction:column;gap:clamp(16px,2.4vh,28px)}
+.pm-label{display:flex;align-items:center;justify-content:center;gap:clamp(12px,1.4vw,18px)}
+.pm-label span{
+  font-size:clamp(.82rem,1vw,.96rem);font-weight:600;letter-spacing:.02em;
+  color:var(--muted2);white-space:nowrap;
+}
+.pm-label::before,.pm-label::after{content:"";height:1px;flex:1;max-width:110px;background:var(--line)}
+
+/* the people — floating portraits (deliberately NOT boxed cards, unlike the metrics slide before) */
+/* the entrepreneurs — the HERO block: deliberately larger than the accelerators below */
+.pm-people{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3.4vw,56px);max-width:1000px;margin-inline:auto;width:100%}
+.pm-person{
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  gap:clamp(12px,1.6vh,20px);
+}
+.pm-photo{
+  width:clamp(120px,11.5vw,162px);aspect-ratio:1;border-radius:50%;overflow:hidden;
+  border:2px solid rgba(239,125,0,.5);
+  box-shadow:0 0 0 7px rgba(239,125,0,.06), 0 20px 44px rgba(0,0,0,.5);
+  transition:transform .35s,box-shadow .35s,border-color .35s;
+}
+.pm-person:hover .pm-photo{transform:translateY(-6px);border-color:rgba(255,154,46,.75);box-shadow:0 0 0 7px rgba(239,125,0,.1),0 26px 52px rgba(0,0,0,.55)}
+.pm-photo img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.pm-name{
+  font-family:var(--disp);font-weight:800;letter-spacing:-.01em;margin:2px 0 0;
+  font-size:clamp(1.34rem,2vw,1.85rem);color:var(--txt);
+}
+.pm-cred{margin:0;font-size:clamp(.95rem,1.12vw,1.1rem);line-height:1.5;color:var(--muted);max-width:16em}
+.pm-cred .num{color:var(--txt);font-weight:600}
+
+/* the accelerators — SECONDARY block: a narrower, quieter logo band beneath the entrepreneurs;
+   all three source logos are on white, so a white band blends them seamlessly */
+.pm-accs{
+  display:grid;grid-template-columns:repeat(3,1fr);align-items:center;
+  gap:clamp(18px,2.6vw,38px);
+  background:#fff;border-radius:14px;
+  padding:clamp(14px,2vh,24px) clamp(22px,3vw,42px);
+  max-width:660px;margin-inline:auto;width:100%;
+  box-shadow:0 18px 44px rgba(0,0,0,.4);
+}
+.pm-acc{display:grid;place-items:center}
+.pm-acc img{max-width:100%;max-height:clamp(40px,5.2vh,60px);width:auto;height:auto;object-fit:contain;display:block}
+/* Google (2nd) + UpRise (3rd) are square marks with internal padding — size them up so they read as big as the wide Microsoft banner */
+.pm-acc:nth-child(2) img,
+.pm-acc:nth-child(3) img{max-height:clamp(52px,7vh,78px)}
+
+@media(max-width:900px){
+  .pm-people{grid-template-columns:repeat(3,1fr);gap:18px}
+  .pm-accs{grid-template-columns:1fr;max-width:420px;gap:24px}
+}
+/* compact projectors / short laptops */
+@media(max-height:790px){
+  .pm-wrap{gap:clamp(14px,2.4vh,28px)}
+  .pm-statement{font-size:clamp(1.7rem,3.6vw,2.6rem)}
+  .pm-sub{font-size:.96rem}
+  .pm-block{gap:clamp(12px,1.8vh,20px)}
+  .pm-photo{width:clamp(104px,10vw,138px)}
+  .pm-name{font-size:clamp(1.22rem,2.7vw,1.54rem)}
+  .pm-cred{font-size:.9rem;line-height:1.45}
+  .pm-accs{padding:14px 26px;gap:clamp(16px,3vw,34px);max-width:600px}
+  .pm-acc img{max-height:clamp(34px,4.4vh,50px)}
+  .pm-acc:nth-child(2) img,
+  .pm-acc:nth-child(3) img{max-height:clamp(44px,6vh,64px)}
 }
