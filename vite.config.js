@@ -5,6 +5,13 @@ import { resolve } from 'path'
 // /amir 404s on Vercel. Each entry below becomes its own page in dist/.
 export default defineConfig({
   build: {
+    // Inline logos/photos (≤40KB) as base64 data URIs instead of emitting them
+    // as separate hashed files. Default is 4KB, which left the accelerator logos
+    // (Microsoft 27KB, Google 12KB) as extra CDN requests — on first view of the
+    // slide they hadn't fetched yet, so they popped in a beat after the reveal
+    // animation. Baking them into the HTML (like the tiny UpRise logo already was)
+    // makes them paint instantly. The 2.4MB hero triptych stays external.
+    assetsInlineLimit: 40 * 1024,
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
