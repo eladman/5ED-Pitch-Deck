@@ -1,0 +1,216 @@
+/* ============================================================
+   LIGHT MODE — Apple-style theme
+   Activated by html.light (toggle lives in the nav header,
+   so it's only reachable while the header is visible).
+   Dark theme is untouched — every rule here is scoped
+   under html.light.
+   ============================================================ */
+
+body{transition:background-color .45s ease,color .45s ease}
+
+html.light{
+  /* Apple light palette mapped onto the deck's tokens */
+  --ink:#FBFBFD;            /* page background */
+  --ink2:#F5F5F7;           /* secondary surface */
+  --ink3:#EDEDF2;           /* tertiary surface */
+  --line:rgba(29,29,31,.08);
+  --line-strong:rgba(29,29,31,.16);
+  --orange:#E87500;         /* brand, deepened a touch for white bg */
+  --orange-hot:#D96A00;     /* text-safe highlight on white */
+  --orange-dim:rgba(232,117,0,.10);
+  --txt:#1D1D1F;
+  --muted:#6E6E73;
+  --muted2:#86868B;
+  --radius:22px;
+}
+
+/* ---------- global type: quiet, tight, Apple keynote voice ---------- */
+html.light h1,html.light h2,html.light h3,html.light .disp{letter-spacing:-.022em}
+html.light ::selection{background:var(--orange);color:#fff}
+
+/* gradient highlight for the big statements (Apple-style color pop) */
+html.light .hero-title .hl,
+html.light h2 .hl,
+html.light .vision-big .hl,
+html.light .au-statement .hl,
+html.light .pn-statement .pn-hl,
+html.light .sl-statement .hl,
+html.light .mx-statement .hl,
+html.light .gap-head .hl,
+html.light #s14 .close-q span{
+  background:linear-gradient(92deg,#D96A00,#F08A1E);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:none;
+}
+
+/* ---------- nav: frosted glass bar ---------- */
+html.light nav{
+  background:rgba(251,251,253,.72);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  backdrop-filter:saturate(180%) blur(20px);
+  box-shadow:0 1px 0 rgba(0,0,0,.07);
+}
+html.light .nav-links{color:#424245}
+html.light .nav-links a:hover,html.light .nav-links a:focus-visible{color:var(--orange-hot)}
+html.light #progress{box-shadow:none}
+
+/* ---------- eyebrow: tinted pill chip instead of dash ---------- */
+html.light .eyebrow{
+  background:var(--orange-dim);
+  border-radius:99px;padding:7px 16px;
+  letter-spacing:.18em;
+}
+html.light .eyebrow::before{display:none}
+html.light .s-num{color:rgba(29,29,31,.4)}
+
+/* ---------- rail / counter / hint ---------- */
+html.light #rail button{border-color:rgba(29,29,31,.28)}
+html.light #rail button.active{box-shadow:0 0 0 4px rgba(232,117,0,.18)}
+
+/* ---------- hero ---------- */
+html.light #s1{background:#FBFBFD}
+html.light #hero-canvas{mix-blend-mode:multiply;opacity:.9}
+html.light #hero-canvas img{filter:none;opacity:.1}
+html.light .hero-title{color:#1D1D1F}
+html.light .scroll-cue::after{background:linear-gradient(var(--orange),transparent)}
+html.light .btn-primary{color:#fff}
+html.light .btn-primary:hover{box-shadow:0 14px 34px rgba(232,117,0,.3)}
+html.light .nav-cta{color:#fff}
+
+/* ---------- slide backgrounds: clean alternating light surfaces ---------- */
+html.light #s2u.s-utopia{background:radial-gradient(58% 40% at 50% -4%,rgba(239,125,0,.06),transparent 62%),#F5F5F7}
+html.light #s2v.s-pain{background:#FBFBFD}
+html.light #s2v.s-pain::before{background:radial-gradient(58% 52% at 24% 42%,rgba(239,125,0,.06),transparent 62%)}
+html.light #s2{background:#F5F5F7}
+html.light #s2c{background:#FBFBFD}
+html.light #s2w.s-sell{background:radial-gradient(60% 44% at 50% -6%,rgba(239,125,0,.05),transparent 62%),#F5F5F7}
+html.light #s6{background:#FBFBFD}
+html.light #s7b{background:#F5F5F7}
+html.light #s6b{background:#FBFBFD}
+html.light #s6d{background:#F5F5F7}
+html.light #s6c{background:#FBFBFD}
+html.light #s7{background:#F5F5F7}
+html.light #s2x.s-metrics{background:radial-gradient(58% 42% at 50% -5%,rgba(239,125,0,.05),transparent 62%),#FBFBFD}
+html.light #s14{background:#F5F5F7}
+html.light #s14::before{background:radial-gradient(circle at 50% 60%,rgba(239,125,0,.10),transparent 55%)}
+html.light #s14 img{filter:none}
+
+/* ---------- cards: borderless, elevated, white (the Apple card) ---------- */
+html.light .card,
+html.light .dc-node,
+html.light .disc-card,
+html.light .legal-card,
+html.light .v-item,
+html.light .mnote,
+html.light .payer,
+html.light .price-lead,
+html.light .margin-strip,
+html.light .cost-chart,
+html.light .comp-row,
+html.light .diff-row,
+html.light .scn,
+html.light details.risk,
+html.light .layer,
+html.light .layer-mini .lm,
+html.light .pr-card,
+html.light .eng-card,
+html.light .sl-aud,
+html.light .sl-aud-athlete,
+html.light .mx-metric{
+  background:#fff;
+  border-color:rgba(29,29,31,.05);
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 12px 32px rgba(0,0,0,.06);
+}
+html.light .card:hover,
+html.light .dc-node:hover,
+html.light .disc-card:hover,
+html.light .legal-card:hover,
+html.light .sl-aud:hover,
+html.light .scn:hover{
+  box-shadow:0 2px 6px rgba(0,0,0,.05),0 26px 52px rgba(0,0,0,.11);
+  border-color:rgba(232,117,0,.3);
+}
+html.light .sl-ic{background:#F5F5F7}
+html.light .mx-track{background:rgba(29,29,31,.08)}
+html.light .mx-fill-off{background:rgba(29,29,31,.2)}
+html.light .mx-fill-on{box-shadow:none}
+html.light .mx-delta,html.light .mx-stat-num{text-shadow:none}
+
+/* ---------- imported utopia photo ---------- */
+html.light .au-figure{
+  border-color:rgba(29,29,31,.06);
+  box-shadow:0 24px 60px rgba(0,0,0,.14);
+}
+html.light .au-figure::after{box-shadow:inset 0 0 0 1px rgba(29,29,31,.04)}
+
+/* ---------- pain slide svg (dark strokes for light bg) ---------- */
+html.light #pn-svg .pn-fig{stroke:#1D1D1F}
+html.light #pn-svg .pn-solid{filter:none}
+html.light #pn-svg .pn-q{opacity:.35}
+
+/* ---------- deep-problem loop emblem ---------- */
+html.light .lp-arc{filter:none}
+html.light .lp-crack{filter:none;stroke:#E5482E}
+html.light .lp-dot{stroke:#FBFBFD;filter:none}
+html.light .lp-ic{
+  background:#fff;border-color:rgba(232,117,0,.35);
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 24px rgba(0,0,0,.07);
+}
+
+/* ---------- sell-bridge svg ---------- */
+html.light #sl-svg .sl-span{filter:none}
+html.light #sl-svg .sl-flow,html.light #sl-svg .sl-now{fill:#E87500;filter:none}
+html.light #sl-svg .sl-pot-core{filter:none}
+
+/* ---------- product loop svg ---------- */
+html.light .loop-visual::before{background:radial-gradient(circle,rgba(239,125,0,.12),rgba(239,125,0,.03) 55%,transparent 72%)}
+html.light #loop-svg text{fill:#1D1D1F}
+html.light #loop-svg .l-tagt{fill:#6E6E73}
+html.light #loop-svg .l-center{fill:#1D1D1F}
+html.light #loop-svg .l-center2{fill:var(--orange-hot)}
+html.light #loop-svg .l-node{fill:#fff}
+html.light #loop-svg .l-node.n2{stroke:#1D1D1F}
+html.light #loop-svg .l-ring-glow{filter:none}
+html.light #loop-svg g.lg:hover .l-node,html.light #loop-svg g.lg.hi .l-node{fill:var(--orange)}
+
+/* ---------- AI-coach mix svg ---------- */
+html.light .mix-stage::before{background:radial-gradient(circle,rgba(239,125,0,.14),rgba(239,125,0,.03) 60%,transparent 74%)}
+html.light #mix-svg .mix-lbl{fill:#1D1D1F}
+html.light #mix-svg .mix-cap{fill:#6E6E73}
+html.light #mix-svg .mix-node{fill:#fff}
+html.light #mix-svg .mix-plan{filter:drop-shadow(0 18px 32px rgba(232,117,0,.35))}
+html.light #mix-svg .mix-plan-ico{fill:#fff}
+html.light #mix-svg .mix-plan-t{fill:#1D1D1F}
+
+/* ---------- under-the-hood ---------- */
+html.light .eng-ic{background:var(--orange-dim);border-color:rgba(232,117,0,.2)}
+html.light .eng-moat{background:#fff;border-color:rgba(232,117,0,.28);
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 12px 32px rgba(0,0,0,.06)}
+
+/* ---------- phones (keep the dark bezel — it reads as hardware) ---------- */
+html.light .ph-frame{
+  border-color:rgba(29,29,31,.1);
+  box-shadow:0 24px 48px -18px rgba(0,0,0,.35);
+}
+html.light .app-phone--hero .ph-frame{
+  border-color:rgba(232,117,0,.4);
+  box-shadow:0 32px 64px -20px rgba(232,117,0,.28),0 24px 48px -18px rgba(0,0,0,.3);
+}
+
+/* ---------- manager screenshot ---------- */
+html.light .mgr-shot{
+  border-color:rgba(29,29,31,.08);
+  background:#fff;
+  box-shadow:0 30px 70px rgba(0,0,0,.16);
+}
+
+/* ---------- persona cards ---------- */
+html.light .pr-avatar{border-color:rgba(232,117,0,.3)}
+html.light .pr-shared{border-color:rgba(232,117,0,.3)}
+
+/* ---------- theme toggle button (light state) ---------- */
+html.light #theme-toggle{border-color:rgba(29,29,31,.16);color:#1D1D1F;background:#fff}
+html.light #theme-toggle:hover{border-color:var(--orange);color:var(--orange-hot)}
+#theme-toggle .tt-moon{display:none}
+html.light #theme-toggle .tt-sun{display:none}
+html.light #theme-toggle .tt-moon{display:block}

@@ -298,6 +298,21 @@ if(window.gsap && window.ScrollTrigger){
   }
 }
 
+/* ================= light / dark theme toggle ================= */
+(function(){
+  var btn = document.getElementById('theme-toggle');
+  if(!btn) return;
+  function sync(){
+    btn.setAttribute('aria-pressed', document.documentElement.classList.contains('light') ? 'true' : 'false');
+  }
+  btn.addEventListener('click', function(){
+    var light = document.documentElement.classList.toggle('light');
+    try{ localStorage.setItem('deck-theme', light ? 'light' : 'dark'); }catch(e){}
+    sync();
+  });
+  sync();
+})();
+
 /* ================= deck navigation ================= */
 var slides = Array.prototype.slice.call(document.querySelectorAll('section.slide'));
 var rail = document.getElementById('rail');

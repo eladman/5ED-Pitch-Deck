@@ -54,6 +54,16 @@ nav.scrolled{transform:translateY(-100%);opacity:0;pointer-events:none}
 .nav-cta{background:var(--orange);color:#0A0D13;text-decoration:none;font-weight:800;font-size:.85rem;padding:9px 20px;border-radius:99px;transition:transform .25s,box-shadow .25s,background .25s}
 .nav-cta:hover{background:var(--orange-hot);transform:translateY(-2px);box-shadow:0 8px 24px rgba(239,125,0,.35)}
 @media(max-width:900px){.nav-links{display:none}}
+/* keeps the links centered (same width as .nav-brand side) + hosts the theme toggle */
+.nav-tools{width:120px;display:flex;justify-content:flex-end}
+#theme-toggle{
+  width:38px;height:38px;border-radius:50%;cursor:pointer;
+  display:grid;place-items:center;padding:0;
+  background:transparent;border:1px solid var(--line-strong);color:var(--muted);
+  transition:color .25s,border-color .25s,background .25s,transform .25s;
+}
+#theme-toggle:hover{color:var(--orange-hot);border-color:var(--orange);transform:translateY(-1px)}
+#theme-toggle svg{width:18px;height:18px;display:block}
 
 /* ---------- shared ---------- */
 .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(18px,4.5vw,54px)}

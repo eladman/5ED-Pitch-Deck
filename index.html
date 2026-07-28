@@ -9,6 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/amir-import.css">
+<link rel="stylesheet" href="css/light.css">
+<script>try{if(localStorage.getItem('deck-theme')==='light')document.documentElement.classList.add('light')}catch(e){}</script>
 </head>
 <body>
 <div id="progress"></div>
@@ -27,7 +29,12 @@
     <a href="#s11b">שיחות</a>
     <a href="#s12">מפת דרכים</a>
   </div>
-  <span style="width:120px"></span>
+  <div class="nav-tools">
+    <button id="theme-toggle" type="button" aria-label="החלפת מצב תצוגה בהיר/כהה" aria-pressed="false">
+      <svg class="tt-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <svg class="tt-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></svg>
+    </button>
+  </div>
 </nav>
 
 <div id="rail" aria-label="ניווט שקפים"></div>
@@ -518,8 +525,8 @@
   </div>
 </section>
 
-<!-- ===== 09A · UNDER THE HOOD — HOW IT ACTUALLY WORKS ===== -->
-<section id="s7b" class="slide s-engine">
+<!-- ===== 09A · UNDER THE HOOD — HOW IT ACTUALLY WORKS · re-enable: add class="slide s-engine", remove hidden ===== -->
+<section id="s7b" hidden>
   <div class="wrap eng-wrap">
     <header class="eng-head">
       <div class="eyebrow reveal"><span class="s-num">08</span>מתחת למכסה המנוע</div>
@@ -564,7 +571,7 @@
 <!-- ===== 06B · AI COACH — HOW THE PLAN IS BUILT ===== -->
 <section id="s6b" class="slide">
   <div class="wrap">
-    <div class="eyebrow reveal"><span class="s-num">09</span>המוצר · מאמן ה־AI</div>
+    <div class="eyebrow reveal"><span class="s-num">08</span>המוצר · מאמן ה־AI</div>
     <h2 class="reveal">שלושה מקורות. <span class="hl">תוכנית אחת, אישית לכל מתאמן.</span></h2>
     <p class="lead reveal">מאמן ה־AI לא ממציא אימון גנרי — כל תוכנית נולדת ממיזוג של שלושה מקורות, ומשתפרת כל יום</p>
 
@@ -646,8 +653,8 @@
   </div>
 </section>
 
-<!-- ===== 09C · SAME METHOD, TWO ATHLETES — AI PERSONALIZATION PROOF ===== -->
-<section id="s6d" class="slide s-persona">
+<!-- ===== 09C · SAME METHOD, TWO ATHLETES — AI PERSONALIZATION PROOF · re-enable: add class="slide s-persona", remove hidden ===== -->
+<section id="s6d" hidden>
   <div class="wrap pr-wrap">
     <header class="pr-head">
       <div class="eyebrow reveal"><span class="s-num">10</span>המוצר · אינטליגנציה אמיתית</div>
@@ -705,7 +712,7 @@
 <section id="s6c" class="slide s-app">
   <div class="wrap app-wrap">
     <header class="app-head">
-      <div class="eyebrow reveal"><span class="s-num">11</span>המוצר · מהשטח</div>
+      <div class="eyebrow reveal"><span class="s-num">09</span>המוצר · מהשטח</div>
       <h2 class="app-statement reveal">איך זה נראה היום<span class="hl"></span></h2>
     </header>
 
@@ -735,7 +742,7 @@
 <!-- ===== 07 · MANAGED PRODUCT ===== -->
 <section id="s7" class="slide">
   <div class="wrap">
-    <div class="eyebrow reveal"><span class="s-num">12</span>המוצר למנהל</div>
+    <div class="eyebrow reveal"><span class="s-num">10</span>המוצר למנהל</div>
     <h2 class="reveal">כל הארגון. <span class="hl">בתמונה אחת.</span></h2>
 
     <div class="mgr-hero reveal">
@@ -1108,7 +1115,7 @@
 <section id="s2x" class="slide s-metrics">
   <div class="wrap mx-wrap">
     <header class="mx-head">
-      <div class="eyebrow reveal"><span class="s-num">13</span>מדידת הצלחה</div>
+      <div class="eyebrow reveal"><span class="s-num">11</span>מדידת הצלחה</div>
       <h2 class="mx-statement reveal">נתונים <span class="hl">מהשטח</span></h2>
       <p class="mx-sub reveal">מתאמנים שהשתמשו באפליקציה באופן אקטיבי — מול מי שלא.</p>
     </header>
