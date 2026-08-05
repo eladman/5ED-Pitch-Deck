@@ -1,9 +1,9 @@
 /* =========================================================================
-   5ED — public landing page (/)
+   5ED public landing page (/)
    Loaded AFTER styles.css + amir-import.css. The landing page reuses the
    deck's components verbatim (same ids, same classes) so it looks like the
    deck; this file only (a) un-does deck-mode behaviour, (b) adds the three
-   sections the deck doesn't have — model / team / backers.
+   sections the deck doesn't have: model, team, backers.
    Everything here is scoped to `body.landing` so the decks are untouched.
    ========================================================================= */
 
@@ -14,7 +14,7 @@
 html.landing{scroll-snap-type:none;scroll-padding-top:90px}
 html.landing section{scroll-snap-align:none}
 
-/* the deck hides its nav after the hero for full-bleed slides — on a landing
+/* the deck hides its nav after the hero for full-bleed slides. On a landing
    page the nav is the only way to move around, so it stays put and gains a
    frosted background once you leave the hero */
 body.landing nav#nav.scrolled{
@@ -39,9 +39,7 @@ body.landing #s2u,
 body.landing #s2c,
 body.landing #s6b,
 body.landing #s7,
-body.landing #s11,
-body.landing #lp-model,
-body.landing #lp-team{background:#0C1119}
+body.landing #lp-model{background:#0C1119}
 
 /* the deck sizes headings for a 100vh slide; on a scrolling page they can
    breathe a little more without swallowing the viewport */
@@ -49,14 +47,14 @@ body.landing section h2{margin-bottom:16px}
 body.landing section .lead{margin-bottom:0}
 
 /* the close section's centering + clipping live on `#s14.slide` in styles.css,
-   and the landing page drops the .slide class — without this the `inset:-30%`
+   and the landing page drops the .slide class, so without this the `inset:-30%`
    ::before glow escapes the viewport and adds 432px of clipped overflow */
 body.landing #s14{
   text-align:center;position:relative;overflow:hidden;
   padding:clamp(96px,14vh,180px) 0;
 }
 body.landing #s14 > .wrap > img{width:auto;margin-inline:auto}
-/* styles.css:838 colours this span via `#close .close-q span` — but the section
+/* styles.css:838 colours this span via `#close .close-q span`, but the section
    is `#s14`, so the highlight never applied. Restored here for the landing page;
    the same dead selector is still live in the deck (flagged separately). */
 body.landing #s14 .close-q span{color:var(--orange-hot)}
@@ -91,29 +89,33 @@ body.landing #nav-toggle svg{width:20px;height:20px;display:block}
 
 /* =========================================================================
    SELF-EXPLANATION
-   The deck's slides are talked over — several carry a diagram and a headline
+   The deck's slides are talked over, so several carry only a diagram and a headline
    and nothing else, because Elad supplies the middle. Nobody is in the room
    here, so those sections get the missing sentence back as visible copy.
    ========================================================================= */
 
-/* orientation band — who we are, before the story starts */
-#lp-intro{padding-top:clamp(56px,7vh,90px);padding-bottom:clamp(56px,7vh,90px)}
+/* orientation band: who we are, before the story starts. It's the first
+   section after the hero and reads as a main section, not a compact info
+   strip — same section padding as its neighbours, and a headline-scale lead. */
 #lp-intro .lp-intro-lead{
-  font-size:clamp(1.1rem,1.9vw,1.5rem);line-height:1.6;color:var(--muted);
-  max-width:44em;font-weight:400;
+  font-weight:500;
+  font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.55;color:var(--muted);
+  max-width:38em;
 }
-#lp-intro .lp-intro-lead b{color:var(--txt);font-weight:700}
+#lp-intro .lp-intro-lead b{color:var(--txt);font-weight:800}
+#lp-intro .lp-intro-lead .num{color:var(--txt)}
 #lp-intro .lp-facts{
-  margin-top:clamp(28px,4vw,42px);padding-top:clamp(22px,3vw,30px);
+  margin-top:clamp(40px,5.5vw,58px);padding-top:clamp(28px,3.6vw,38px);
   border-top:1px solid var(--line);
-  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,44px);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,3.4vw,50px);
 }
 #lp-intro .lp-fact b{
-  display:block;font-size:.74rem;font-weight:800;letter-spacing:.2em;
-  color:var(--orange);text-transform:uppercase;margin-bottom:8px;
+  display:block;font-size:.82rem;font-weight:800;letter-spacing:.2em;
+  color:var(--orange);text-transform:uppercase;margin-bottom:10px;
 }
-#lp-intro .lp-fact span{color:var(--muted);font-size:.98rem;line-height:1.55}
-@media(max-width:760px){#lp-intro .lp-facts{grid-template-columns:1fr;gap:22px}}
+#lp-intro .lp-fact span{color:var(--muted);font-size:1.1rem;line-height:1.55}
+@media(max-width:760px){#lp-intro .lp-facts{grid-template-columns:1fr;gap:26px}}
+@media(max-height:790px){#lp-intro .lp-intro-lead{font-size:clamp(1.4rem,2.6vw,2rem)}}
 
 /* the pain and broken-loop sections are centred layouts, so their new
    explanation paragraphs have to be centred too (.lead is left-aligned) */
@@ -122,11 +124,11 @@ body.landing #nav-toggle svg{width:20px;height:20px;display:block}
 
 /* `#loop-svg` is overflow:hidden and the left-most label ("הארגון מפתח / כל
    מתאמן טוב יותר") is anchored past x=0 in the viewBox, so it renders as
-   "...טוב יו". Same truncation exists in the deck — fixed here only, since a
+   "...טוב יו". Same truncation exists in the deck; fixed here only, since a
    page nobody narrates can't afford a cut-off word. */
 #s6 #loop-svg{overflow:visible}
 
-/* trailing caption under a diagram — reads as the narrator's line */
+/* trailing caption under a diagram, reads as the narrator's line */
 .lp-note{
   margin:clamp(18px,2.6vw,26px) auto 0;max-width:52em;text-align:center;
   color:var(--muted);font-size:.98rem;line-height:1.65;
@@ -136,7 +138,7 @@ body.landing #nav-toggle svg{width:20px;height:20px;display:block}
 /* ---------- app screenshots on a phone ---------- */
 /* the deck sizes the three phones to a slide viewport; on a real phone they
    overflow. Turn the row into its own snap-scrolling strip rather than
-   shrinking the screenshots until they're unreadable — the page itself must
+   shrinking the screenshots until they're unreadable. The page itself must
    never scroll sideways. */
 @media(max-width:760px){
   body.landing #s6c .app-phones{
@@ -154,7 +156,7 @@ body.landing #nav-toggle svg{width:20px;height:20px;display:block}
 }
 
 /* =========================================================================
-   BUSINESS MODEL — shape only, deliberately no pricing
+   BUSINESS MODEL: shape only, deliberately no pricing
    ========================================================================= */
 #lp-model .bm-flow{
   margin-top:clamp(34px,5vw,54px);
@@ -206,47 +208,3 @@ body.landing #nav-toggle svg{width:20px;height:20px;display:block}
   #lp-model .bm-incl{flex-direction:column;align-items:flex-start}
 }
 
-/* =========================================================================
-   TEAM + BACKERS
-   ========================================================================= */
-#lp-team .tm-grid{
-  margin-top:clamp(30px,4.5vw,48px);
-  display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,32px);
-}
-#lp-team .tm-card{
-  display:flex;align-items:center;gap:clamp(16px,2.4vw,26px);
-  background:var(--ink3);border:1px solid var(--line);border-radius:var(--radius);
-  padding:clamp(20px,2.6vw,30px);
-}
-#lp-team .tm-card img{
-  width:clamp(88px,11vw,116px);aspect-ratio:1;border-radius:16px;flex:none;
-  border:1px solid var(--line-strong);display:block;
-}
-#lp-team .tm-txt h3{font-size:1.25rem;margin:0}
-#lp-team .tm-role{color:var(--orange-hot);font-weight:700;font-size:.88rem;margin:4px 0 10px}
-#lp-team .tm-txt p{color:var(--muted2);font-size:.92rem;line-height:1.55}
-
-#lp-team .tm-backers{
-  margin-top:clamp(38px,5vw,58px);padding-top:clamp(28px,4vw,38px);
-  border-top:1px solid var(--line);text-align:center;
-}
-#lp-team .tm-backers-lbl{
-  display:block;font-size:.74rem;font-weight:700;letter-spacing:.22em;
-  color:var(--muted2);text-transform:uppercase;margin-bottom:20px;
-}
-#lp-team .tm-logos{display:flex;justify-content:center;align-items:center;gap:clamp(14px,3vw,30px);flex-wrap:wrap}
-/* these logos are dark-on-transparent, so they need a light plate to stay
-   legible on the dark page — a white chip keeps their brand colours intact */
-#lp-team .tm-logos img{
-  height:clamp(54px,6.5vw,70px);width:auto;object-fit:contain;
-  background:#fff;padding:11px 18px;border-radius:13px;
-  opacity:.85;transition:opacity .3s,transform .3s;
-}
-#lp-team .tm-logos img:hover{opacity:1;transform:translateY(-2px)}
-
-@media(max-width:820px){
-  #lp-team .tm-grid{grid-template-columns:1fr}
-}
-@media(max-width:420px){
-  #lp-team .tm-card{flex-direction:column;text-align:center}
-}
