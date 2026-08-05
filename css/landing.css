@@ -208,3 +208,75 @@ body.landing #nav-toggle svg{width:20px;height:20px;display:block}
   #lp-model .bm-incl{flex-direction:column;align-items:flex-start}
 }
 
+/* =========================================================================
+   MOBILE POLISH (≤760px) — the landing page is fluid via clamp() already;
+   these fix the few spots that don't survive a phone-width squeeze.
+   ========================================================================= */
+
+/* ---------- market funnel: readable value labels ---------- */
+/* the coloured bars narrow with the funnel, so on a phone SAM/SOM are too short
+   to hold their number and it spilled onto the dark track as dark-on-dark ink.
+   Below 760px we park the value in the dark area just left of the fill, in light
+   ink — the bar stays purely proportional. TAM fills the row, keeps its label in. */
+@media(max-width:760px){
+  body.landing #s8 .f-bar-track{overflow:visible}
+  body.landing #s8 .f-row:nth-child(2) .f-bar,
+  body.landing #s8 .f-row:nth-child(3) .f-bar{padding:0}
+  body.landing #s8 .f-row:nth-child(2) .f-bar .num,
+  body.landing #s8 .f-row:nth-child(3) .f-bar .num{
+    position:absolute;top:50%;right:calc(100% + 12px);
+    transform:translateY(-50%);
+    color:var(--txt);white-space:nowrap;
+  }
+}
+
+/* ---------- product loop: legible labels ---------- */
+/* #loop-svg (640² viewBox) scales to ~0.55 on a phone, dropping its 15.5px
+   labels to ~8.5px. Bump the type on mobile so the ring reads. Modest, so the
+   side labels don't grow past the section edge. */
+@media(max-width:760px){
+  body.landing #s6 #loop-svg text{font-size:18px}
+  body.landing #s6 #loop-svg .l-tagt{font-size:13px}
+  body.landing #s6 #loop-svg .l-center{font-size:29px}
+}
+
+/* ---------- AI-mix diagram: vertical on mobile ---------- */
+/* #mix-svg is a 940-wide landscape flow; squeezed into a phone its captions
+   drop to ~5px. Below 760px we swap it for a vertical stack that says the same
+   thing — three sources merge into one personal plan — at readable size. */
+.mix-mobile{display:none}
+@media(max-width:760px){
+  body.landing #s6b .mix-stage{display:none}
+  body.landing #s6b .mix-mobile{
+    display:flex;flex-direction:column;align-items:stretch;
+    gap:10px;margin:26px auto 0;max-width:23em;
+  }
+  .mixm-src{
+    display:flex;align-items:center;gap:14px;
+    background:var(--ink3);border:1px solid var(--line);border-radius:14px;
+    padding:14px 16px;
+  }
+  .mixm-ic{
+    flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
+    background:var(--ink2);border:1px solid var(--orange);color:var(--orange-hot);
+  }
+  .mixm-ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .mixm-txt b{display:block;font-family:var(--disp);font-size:1.1rem;color:var(--txt);line-height:1.2}
+  .mixm-txt span{display:block;color:var(--muted);font-size:.9rem;line-height:1.4;margin-top:2px}
+  .mixm-arrow{align-self:center;color:var(--orange);line-height:0;margin:1px 0}
+  .mixm-arrow svg{width:22px;height:22px;display:block;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .mixm-plan{
+    display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;
+    background:linear-gradient(180deg,rgba(239,125,0,.16),rgba(239,125,0,.04));
+    border:1px solid rgba(239,125,0,.4);border-radius:16px;
+    padding:20px 18px;box-shadow:0 0 50px rgba(239,125,0,.15);
+  }
+  .mixm-plan-ic{
+    width:48px;height:48px;border-radius:50%;display:grid;place-items:center;margin-bottom:8px;
+    background:linear-gradient(135deg,var(--orange-hot),var(--orange));color:#0A0D13;
+  }
+  .mixm-plan-ic svg{width:26px;height:26px;display:block;fill:currentColor}
+  .mixm-plan b{font-family:var(--disp);font-size:1.25rem;color:var(--txt)}
+  .mixm-plan span{color:var(--orange-hot);font-weight:700;font-size:.92rem}
+}
+
