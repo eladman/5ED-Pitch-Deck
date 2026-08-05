@@ -4,10 +4,21 @@ var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').match
 var LOGO_SRC = document.querySelector('.nav-brand img').src;
 
 /* ================= HERO: particle logo (three.js) ================= */
+// three.js only logs (doesn't throw) when it can't get a WebGL context, so
+// probe for one first — otherwise the hero silently renders nothing on
+// machines without GPU acceleration. Matters most on the public landing page.
+function webglAvailable(){
+  try{
+    var c = document.createElement('canvas');
+    return !!(window.WebGLRenderingContext &&
+      (c.getContext('webgl') || c.getContext('experimental-webgl')));
+  }catch(e){ return false; }
+}
+
 function initHero(){
   var container = document.getElementById('hero-canvas');
   if(!container) return;
-  if(!window.THREE){
+  if(!window.THREE || !webglAvailable()){
     var im = document.createElement('img');
     im.src = LOGO_SRC; im.alt = '';
     im.style.cssText = 'position:absolute;left:8%;top:50%;transform:translateY(-50%);height:min(60vh,480px);opacity:.16;filter:drop-shadow(0 0 40px rgba(239,125,0,.6))';
@@ -313,11 +324,14 @@ if(window.gsap && window.ScrollTrigger){
   sync();
 })();
 
-/* ================= deck navigation ================= */
+/* ================= deck navigation =================
+   Skipped entirely on the landing page (`/`), which reuses this file for the
+   hero particles, reveals and counters but has no slides / rail / counter. */
 var slides = Array.prototype.slice.call(document.querySelectorAll('section.slide'));
 var rail = document.getElementById('rail');
 var countEl = document.getElementById('slide-count');
 var current = 0;
+if(slides.length && rail && countEl){
 slides.forEach(function(s,i){
   var b=document.createElement('button');
   b.setAttribute('aria-label','שקף '+(i+1));
@@ -351,6 +365,7 @@ document.addEventListener('keydown',function(e){
 });
 var hint=document.getElementById('kbd-hint');
 setTimeout(function(){ if(hint) hint.style.opacity=0; },8000);
+}
 
 /* ================= product loop <-> cards sync ================= */
 function syncLoop(sel, other){

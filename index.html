@@ -1,51 +1,57 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="he" dir="rtl" class="landing">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>חמש טכנולוגיה · 5ED — מאמן AI אישי לכל מתאמן</title>
+<title>5ED — מאמן AI אישי לכל מתאמן</title>
+<meta name="description" content="5ED היא מערכת AI שמעניקה לכל מתאמן מאמן פיזי־מנטלי אישי, ולכל ארגון ספורט תמונת מצב מלאה — במקום אחד.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="5ED — מאמן AI אישי לכל מתאמן">
+<meta property="og:description" content="5ED היא מערכת AI שמעניקה לכל מתאמן מאמן פיזי־מנטלי אישי, ולכל ארגון ספורט תמונת מצב מלאה — במקום אחד.">
+<!-- served verbatim from public/ so Vite doesn't inline it as a data URI (crawlers can't read those).
+     TODO: once the domain is known, make this an absolute URL — some crawlers require it. -->
+<meta property="og:image" content="/og.png">
+<meta property="og:locale" content="he_IL">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- the landing page runs on the deck's own design system; landing.css only
+     un-does deck-mode behaviour and adds the few landing-only sections -->
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/amir-import.css">
-<link rel="stylesheet" href="css/light.css">
-<script>try{if(localStorage.getItem('deck-theme')==='light')document.documentElement.classList.add('light')}catch(e){}</script>
+<link rel="stylesheet" href="css/landing.css">
 </head>
-<body>
+<body class="landing">
 <div id="progress"></div>
 
 <nav id="nav">
   <a class="nav-brand" href="#s1">
-    <img src="assets/logo.png" alt="חמש טכנולוגיה">
-    <span class="nb-txt">חמש טכנולוגיה<small>FIVE TECH</small></span>
+    <img src="assets/logo.png" alt="">
+    <span class="nb-txt">5ED<small>AI COACH</small></span>
   </a>
-  <div class="nav-links">
-    <a href="#s2">החזון</a>
-    <a href="#s3">האסטרטגיה</a>
-    <a href="#s6">המוצר</a>
+  <div class="nav-links" id="nav-links">
+    <a href="#s2v">הבעיה</a>
+    <a href="#s2w">הפתרון</a>
+    <a href="#s6b">המוצר</a>
+    <a href="#s2x">מהשטח</a>
     <a href="#s8">השוק</a>
-    <a href="#s9">המודל</a>
-    <a href="#s11b">שיחות</a>
-    <a href="#s12">מפת דרכים</a>
+    <a href="#lp-team">הצוות</a>
   </div>
   <div class="nav-tools">
-    <button id="theme-toggle" type="button" aria-label="החלפת מצב תצוגה בהיר/כהה" aria-pressed="false">
-      <svg class="tt-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-      <svg class="tt-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></svg>
+    <button id="nav-toggle" type="button" aria-label="תפריט" aria-expanded="false" aria-controls="nav-links">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
   </div>
 </nav>
 
-<div id="rail" aria-label="ניווט שקפים"></div>
-<div id="slide-count"><b>01</b> / 13</div>
-<div id="kbd-hint">← חיצים · רווח ←</div>
 
-<!-- ===== 01 · TITLE ===== -->
-<section id="s1" class="slide">
+<!-- ===== HERO ===== -->
+<section id="s1">
   <div id="hero-canvas"></div>
   <div class="wrap hero-inner">
-    <div class="hero-kicker reveal">חמש טכנולוגיה · מצגת שותפים ומשקיעים</div>
+    <div class="hero-kicker reveal">5ED</div>
     <h1 class="hero-title">
       <span class="fade-line">פיתוח חוסן</span>
       <span class="fade-line">דרך מימוש פוטנציאל.</span>
@@ -56,28 +62,63 @@
   <div class="scroll-cue">מתחילים</div>
 </section>
 
-<!-- ===== 02 · בעולם אוטופי (imported from /amir) ===== -->
-<section id="s2u" class="slide s-utopia">
+
+<!-- ===== מה זה 5ED — orientation. The deck opens straight into the story
+     because Elad is in the room to introduce it; a cold reader needs to know
+     who we are before the narrative starts. ===== -->
+<section id="lp-intro">
+  <div class="wrap">
+    <div class="eyebrow reveal">מה זה 5ED</div>
+    <p class="lp-intro-lead reveal">
+      אנחנו בונים <b>מאמן AI אישי לכל מתאמן</b> — ולארגון שמאחוריו, את התמונה המלאה של מה
+      שקורה בשטח. המוצר חי, רץ היום בפיילוט, ובנוי על מתודולוגיית אימון פיזי־מנטלי
+      של כ־<span class="num">10</span> שנים.
+    </p>
+    <div class="lp-facts">
+      <div class="lp-fact reveal">
+        <b>למי</b>
+        <span>ארגוני ספורט ונוער — מועדונים, עמותות ונבחרות</span>
+      </div>
+      <div class="lp-fact reveal">
+        <b>מה</b>
+        <span>אפליקציה למתאמן + פלטפורמת ניהול למאמן ולמנהל</span>
+      </div>
+      <div class="lp-fact reveal">
+        <b>איפה אנחנו</b>
+        <span>פיילוט חי עם ארגון חמש אצבעות, לקראת פיילוט חיצוני ראשון</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== בעולם אוטופי ===== -->
+<section id="s2u" class="s-utopia">
   <div class="wrap au-wrap">
     <header class="au-head">
-      <div class="eyebrow reveal"><span class="s-num">02</span>בעולם אוטופי</div>
+      <div class="eyebrow reveal">בעולם אוטופי</div>
       <h2 class="au-statement reveal"> <span class="hl">חוויה, מאמן וקבוצה</span> — כל הזמן</h2>
+      <p class="lead reveal">בעולם מושלם לכל מתאמן היה מאמן שמכיר אותו אישית, קבוצה שדוחפת אותו קדימה, וליווי שממשיך גם אחרי שהאימון נגמר. זה קיים היום — אבל רק למי שיכול לשלם על מאמן פרטי.</p>
     </header>
 
     <figure class="au-figure reveal">
-      <img src="assets/utopia_triptych.png" alt="חוויה, מאמן וקבוצה — מתאמן עם המאמן, אימון קבוצתי, ומעקב אישי בבית">
+      <!-- 2.4MB and below the fold — lazy, with dimensions so it reserves space (no CLS) -->
+      <img src="assets/utopia_triptych.png" width="1536" height="1024" loading="lazy" decoding="async"
+           alt="חוויה, מאמן וקבוצה — מתאמן עם המאמן, אימון קבוצתי, ומעקב אישי בבית">
     </figure>
   </div>
 </section>
 
-<!-- ===== 03 · הכאב שאנחנו פותרים (imported from /amir) ===== -->
-<section id="s2v" class="slide s-pain">
+
+<!-- ===== הכאב שאנחנו פותרים ===== -->
+<section id="s2v" class="s-pain">
   <div class="wrap pn-wrap">
     <div class="pn-copy">
-      <div class="eyebrow reveal"><span class="s-num">03</span>הכאב שאנחנו פותרים</div>
+      <div class="eyebrow reveal">הכאב שאנחנו פותרים</div>
       <h2 class="pn-statement">
         <span class="pn-line reveal">הפער בין הפוטנציאל למציאות</span>
       </h2>
+      <p class="lead pn-explain reveal">מתאמנים משתפרים עד נקודה מסוימת — ואז נתקעים. לא כי נגמר להם הפוטנציאל, אלא כי מכאן והלאה אין להם מפה: אף אחד לא מראה להם מה הצעד הבא, ואיך הוא מקרב אותם למקום שהם באמת יכולים להגיע אליו.</p>
     </div>
 
     <div class="pn-visual reveal">
@@ -130,34 +171,33 @@
   </div>
 </section>
 
-<!-- ===== 04 · VISION ===== -->
-<section id="s2" class="slide">
+
+<!-- ===== החזון ===== -->
+<section id="s2">
   <div class="wrap vision-wrap">
-    <div class="eyebrow reveal"><span class="s-num">04</span>החזון</div>
+    <div class="eyebrow reveal">החזון</div>
     <p class="vision-big reveal">לעזור לכמה שיותר בני נוער בארץ ובעולם <span class="hl">לממש פוטנציאל</span>, <span class="hl">לפתח חוסן</span> ולהיחשף לכמה שיותר מכל מקום, בכל זמן</p>
   </div>
 </section>
 
-<!-- ===== 05 · PAIN · DEEPER (the two gaps) ===== -->
-<section id="s2c" class="slide">
+
+<!-- ===== הבעיה · לעומק ===== -->
+<section id="s2c">
   <div class="wrap gap-wrap">
-    <div class="eyebrow reveal"><span class="s-num">05</span>הבעיה · לעומק</div>
+    <div class="eyebrow reveal">הבעיה · לעומק</div>
     <h2 class="gap-head reveal">שיפור אמיתי הוא <span class="hl">לולאה</span> — והיא נשברת בכל חוליה.</h2>
+    <p class="lead gap-explain reveal">כדי שמתאמן באמת ישתפר צריכות שלוש חוליות לעבוד יחד: הוא מתאמן, המאמן רואה ומכוון, והארגון מודד ומשפר. אם חוליה אחת נשברת — הלולאה נעצרת. היום כל שלושתן שבורות.</p>
 
     <!-- broken feedback loop · 3 severed links -->
     <div class="loop-emblem reveal" role="img" aria-label="לולאת המשוב שבורה בשלוש נקודות: המתאמן, המאמן והארגון">
       <svg viewBox="0 0 400 400" aria-hidden="true">
-        <!-- the loop as it should be -->
         <circle class="lp-guide" cx="200" cy="200" r="150"/>
-        <!-- live arcs (with gaps where the loop is severed) -->
         <path class="lp-arc" d="M251.3 59.0 A150 150 0 0 1 309.7 97.7 M343.4 156.1 A150 150 0 0 1 347.7 226.0"/>
         <path class="lp-arc" d="M296.4 314.9 A150 150 0 0 1 233.7 346.2 M166.3 346.2 A150 150 0 0 1 103.6 314.9"/>
         <path class="lp-arc" d="M52.3 226.0 A150 150 0 0 1 56.6 156.1 M90.3 97.7 A150 150 0 0 1 148.7 59.0"/>
-        <!-- the breaks -->
         <polyline class="lp-crack" points="309.7,97.7 326.9,109.6 315.6,133.2 341.8,135.2 343.4,156.1"/>
         <polyline class="lp-crack" points="233.7,346.2 214.8,355.2 200.0,333.6 185.2,355.2 166.3,346.2" style="animation-delay:.5s"/>
         <polyline class="lp-crack" points="56.6,156.1 58.2,135.2 84.4,133.2 73.1,109.6 90.3,97.7" style="animation-delay:1s"/>
-        <!-- the 3 nodes -->
         <circle class="lp-dot" cx="200" cy="50" r="9"/>
         <circle class="lp-dot" cx="329.9" cy="275" r="9"/>
         <circle class="lp-dot" cx="70.1" cy="275" r="9"/>
@@ -165,7 +205,6 @@
     </div>
 
     <div class="loop-cards reveal">
-      <!-- athlete -->
       <article class="lp-card">
         <div class="lp-ic">
           <svg viewBox="0 0 48 48" aria-hidden="true">
@@ -177,7 +216,6 @@
         <p class="lp-txt">אין לו <span class="hl">מפה ליעדים</span> ואין השתקפות של ההתקדמות — ואחרי שעות האימון, אין לו מה לעשות.</p>
       </article>
 
-      <!-- coach -->
       <article class="lp-card">
         <div class="lp-ic">
           <svg viewBox="0 0 48 48" aria-hidden="true">
@@ -190,7 +228,6 @@
         <p class="lp-txt">לא מצליח לנהל <span class="hl">דאטה ותוכנית אישית</span> לכל מתאמן בנפרד.</p>
       </article>
 
-      <!-- org -->
       <article class="lp-card">
         <div class="lp-ic">
           <svg viewBox="0 0 48 48" aria-hidden="true">
@@ -207,16 +244,16 @@
   </div>
 </section>
 
-<!-- ===== 06 · מה שאנחנו מוכרים (imported from /amir) ===== -->
-<section id="s2w" class="slide s-sell">
+
+<!-- ===== מה שאנחנו מוכרים ===== -->
+<section id="s2w" class="s-sell">
   <div class="wrap sl-wrap">
     <header class="sl-head">
-      <div class="eyebrow reveal"><span class="s-num">06</span>מה שאנחנו מוכרים</div>
+      <div class="eyebrow reveal">מה שאנחנו מוכרים</div>
       <h2 class="sl-statement reveal">את הפער הזה — <span class="hl">אנחנו סוגרים.</span></h2>
       <p class="sl-sub reveal">למתאמן ולארגון — שני צדדים של אותו גשר.</p>
     </header>
 
-    <!-- the bridge: previous slide's dotted, un-crossed gap — now spanned -->
     <div class="sl-bridge reveal" aria-hidden="true">
       <svg id="sl-svg" viewBox="0 0 900 150" role="img" aria-label="גשר זוהר שסוגר את הפער מהמציאות של היום אל הפוטנציאל">
         <defs>
@@ -227,110 +264,66 @@
           </radialGradient>
         </defs>
 
-        <!-- potential (left) — the glow they can now reach -->
         <circle cx="92" cy="60" r="66" fill="url(#slPot)"/>
         <circle class="sl-pot-core" cx="92" cy="60" r="5.5"/>
         <text class="sl-lbl-pot" x="92" y="30" text-anchor="middle">הפוטנציאל</text>
 
-        <!-- the bridge deck (faint) + the glowing span (the product) -->
         <path class="sl-deck" d="M 806 110 C 610 56, 300 56, 92 78"/>
         <path id="slSpan" class="sl-span" d="M 806 100 C 610 44, 300 44, 92 64"/>
-        <!-- suspenders tying deck to span -->
         <g class="sl-ties">
           <path d="M 660 51 V 61"/><path d="M 500 47 V 57"/><path d="M 340 48 V 59"/><path d="M 210 55 V 68"/>
         </g>
 
-        <!-- momentum crossing the span, reality -> potential -->
         <circle class="sl-flow" r="3.6"><animateMotion dur="3.2s" repeatCount="indefinite"><mpath href="#slSpan"/></animateMotion></circle>
         <circle class="sl-flow" r="3.6"><animateMotion dur="3.2s" begin="1.6s" repeatCount="indefinite"><mpath href="#slSpan"/></animateMotion></circle>
 
-        <!-- reality / today (right) -->
         <circle class="sl-now" cx="806" cy="100" r="7"/>
         <text class="sl-lbl-now" x="806" y="128" text-anchor="middle">המציאות · היום</text>
       </svg>
     </div>
 
     <div class="sl-audiences">
-      <!-- למתאמן -->
       <article class="sl-aud sl-aud-athlete reveal">
         <header class="sl-aud-head">
           <span class="sl-aud-ic">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="7" r="4"/>
-              <path d="M5.5 21a6.5 6.5 0 0 1 13 0"/>
-            </svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></svg>
           </span>
           <span class="sl-aud-title">למתאמן</span>
         </header>
         <ul class="sl-list">
           <li class="sl-item">
-            <span class="sl-ic">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="7" r="4"/>
-                <path d="M5.5 21a6.5 6.5 0 0 1 13 0"/>
-              </svg>
-            </span>
+            <span class="sl-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></svg></span>
             <div class="sl-txt"><b>המאמן שלא יכל להרשות</b><p>ליווי אישי מקצועי — נגיש עכשיו לכל אחד.</p></div>
           </li>
           <li class="sl-item">
-            <span class="sl-ic">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="6" cy="19" r="3"/><circle cx="18" cy="5" r="3"/>
-                <path d="M9 19h5.5a3.5 3.5 0 0 0 0-7h-4a3.5 3.5 0 0 1 0-7H15"/>
-              </svg>
-            </span>
+            <span class="sl-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="19" r="3"/><circle cx="18" cy="5" r="3"/><path d="M9 19h5.5a3.5 3.5 0 0 0 0-7h-4a3.5 3.5 0 0 1 0-7H15"/></svg></span>
             <div class="sl-txt"><b>מסלול מובנה</b><p>יעד ברור וצעדים אמיתיים להגיע אליו.</p></div>
           </li>
           <li class="sl-item">
-            <span class="sl-ic">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="9" cy="8" r="3.4"/>
-                <path d="M2.6 20a6.4 6.4 0 0 1 12.8 0"/>
-                <path d="M16 5.2a3.4 3.4 0 0 1 0 6.4"/>
-                <path d="M21.4 20a6.4 6.4 0 0 0-4.4-6"/>
-              </svg>
-            </span>
+            <span class="sl-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M2.6 20a6.4 6.4 0 0 1 12.8 0"/><path d="M16 5.2a3.4 3.4 0 0 1 0 6.4"/><path d="M21.4 20a6.4 6.4 0 0 0-4.4-6"/></svg></span>
             <div class="sl-txt"><b>קהילה שדוחפת</b><p>לא לבד — קבוצה שמושכת קדימה ועוזרת.</p></div>
           </li>
         </ul>
       </article>
 
-      <!-- לארגון -->
       <article class="sl-aud reveal">
         <header class="sl-aud-head">
           <span class="sl-aud-ic">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/>
-              <path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/>
-            </svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg>
           </span>
           <span class="sl-aud-title">לארגון</span>
         </header>
         <ul class="sl-list">
           <li class="sl-item">
-            <span class="sl-ic">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C10.5 3.8 13 5 15 5a1 1 0 0 1 1 1z"/>
-                <path d="m9 12 2 2 4-4"/>
-              </svg>
-            </span>
+            <span class="sl-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C10.5 3.8 13 5 15 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
             <div class="sl-txt"><b>מניעת נטישה</b><p>מתאמנים שנשארים — כי הם רואים שהם מתקדמים.</p></div>
           </li>
           <li class="sl-item">
-            <span class="sl-ic">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
-                <polyline points="16 7 22 7 22 13"/>
-              </svg>
-            </span>
+            <span class="sl-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
             <div class="sl-txt"><b>החלטות לפי דאטה</b><p>ניהול מבוסס נתונים — במקום תחושות בטן.</p></div>
           </li>
           <li class="sl-item">
-            <span class="sl-ic">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/>
-              </svg>
-            </span>
+            <span class="sl-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></svg></span>
             <div class="sl-txt"><b>התאמה לכל מתאמן</b><p>פתרון אישי לכל מתאמן — בקנה מידה של מועדון שלם.</p></div>
           </li>
         </ul>
@@ -339,128 +332,13 @@
   </div>
 </section>
 
-<!-- ===== 07 · STRATEGY / 10% ===== -->
-<!-- ===== HIDDEN · STRATEGY · DEAL (10%) · re-enable: add class="slide", remove hidden ===== -->
-<section id="s3" hidden>
-  <div class="wrap deal-wrap">
-    <div class="eyebrow reveal"><span class="s-num">07</span>האסטרטגיה · העסקה המרכזית</div>
-    <h2 class="deal-head reveal">רק <span class="hl num">10%</span> מהשיטה — <span class="hl">לכל מתאמן, כל יום.</span></h2>
 
-    <div class="deal-scale reveal">
-      <svg id="deal-svg" viewBox="0 0 960 250" role="img" aria-label="אותו +10% מוסף בשני מקומות על הסקאלה: מ־0% ל־10% ומ־80% ל־90%">
-        <defs>
-          <linearGradient id="dealGrad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#FF9A2E"/><stop offset="1" stop-color="#EF7D00"/>
-          </linearGradient>
-        </defs>
-
-        <!-- 0→100 scale (0% at right, 100% at left) -->
-        <rect class="ds-track" x="70" y="150" width="820" height="20" rx="10"/>
-        <text class="ds-end" x="890" y="196" text-anchor="middle">0%</text>
-        <text class="ds-end" x="70"  y="196" text-anchor="middle">100%</text>
-
-        <!-- Direction A · reach — the same +10%, from nothing -->
-        <line class="ds-conn" x1="849" y1="120" x2="849" y2="150"/>
-        <rect class="ds-seg" x="808" y="150" width="82" height="20" rx="10"/>
-        <text class="ds-pop" x="849" y="82" text-anchor="middle">מי שעוד לא נחשף</text>
-        <text class="ds-out" x="849" y="120" text-anchor="middle">10% ← 0</text>
-
-        <!-- Direction B · deepen — the same +10%, on top of human coaching -->
-        <line class="ds-conn" x1="193" y1="120" x2="193" y2="150"/>
-        <rect class="ds-seg" x="152" y="150" width="82" height="20" rx="10"/>
-        <text class="ds-pop" x="193" y="82" text-anchor="middle">מי שכבר בפנים</text>
-        <text class="ds-out" x="193" y="120" text-anchor="middle">90% ← 80</text>
-      </svg>
-    </div>
-
-    <p class="deal-cap reveal">אותו <b>+10%</b> פועל בשני הקצוות — מקפיץ את מי שאין לו כלום, ומעמיק את מי שכבר בפנים.</p>
-  </div>
-</section>
-
-<!-- ===== HIDDEN · STRATEGY · DISTRIBUTION (B2B2C) · re-enable: add class="slide", remove hidden ===== -->
-<section id="s3b" hidden>
+<!-- ===== המוצר · הלולאה ===== -->
+<section id="s6">
   <div class="wrap">
-    <div class="eyebrow reveal"><span class="s-num">08</span>האסטרטגיה · ההפצה</div>
-    <h2 class="reveal">מגיעים למתאמנים <span class="hl">דרך ארגונים</span></h2>
-    <p class="lead reveal">למתאמן בודד קשה להגיע ישירות. אבל ארגוני הספורט כבר מחזיקים אותו — יש להם הקבוצות, המאמנים, האמון והמגע היומיומי. הם <strong>ערוץ ההפצה שלנו לכל מתאמן</strong> — מודל <strong>B2B2C</strong></p>
-
-    <!-- distribution chain: us -> org -> kid -->
-    <div class="dist-chain reveal">
-      <div class="dc-node dc-us">
-        <span class="dc-kicker">אנחנו</span>
-        <b>חמש טכנולוגיה</b>
-        <small>המוצר והשיטה</small>
-      </div>
-      <span class="dc-arrow">←</span>
-      <div class="dc-node dc-org">
-        <span class="dc-kicker">B · הלקוח שמשלם</span>
-        <b>ארגון הספורט</b>
-        <small>אגודות, קבוצות ומועדונים</small>
-      </div>
-      <span class="dc-arrow">←</span>
-      <div class="dc-node dc-kid">
-        <span class="dc-kicker">C · המשתמש</span>
-        <b>המתאמן</b>
-        <small>מקבל את הערך בפועל</small>
-      </div>
-    </div>
-
-    <p class="dist-motto reveal">מוכרים להם את מה שהם <span class="hl">רוצים</span> — נותנים למתאמן את מה שהוא <span class="hl">צריך</span>.</p>
-  </div>
-</section>
-
-<!-- ===== HIDDEN · WHY NOW (למה עכשיו) · re-enable: add class="slide", remove hidden ===== -->
-<section id="s4" hidden>
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="s-num">07</span>למה עכשיו</div>
-    <h2 class="reveal">שלוש יכולות חוצות את הרף — <span class="hl">כולן, בבת אחת.</span></h2>
-
-    <div class="why-thresh reveal">
-      <svg id="why-svg" viewBox="0 0 900 420" role="img" aria-label="שלוש יכולות — היכולת, הצורך והכלכלה — שהיו שנים מתחת לרף הבשלות, חוצות אותו יחד לראשונה">
-        <defs>
-          <linearGradient id="wtGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#FF9A2E"/><stop offset="1" stop-color="#EF7D00"/>
-          </linearGradient>
-        </defs>
-
-        <!-- baseline -->
-        <line class="wt-base" x1="130" y1="372" x2="770" y2="372"/>
-
-        <!-- הכלכלה (left) -->
-        <rect class="wt-gray"   x="160" y="250" width="120" height="122" rx="8"/>
-        <rect class="wt-orange" x="160" y="122" width="120" height="128" rx="14"/>
-        <circle class="wt-cap" cx="220" cy="122" r="8"/>
-        <text class="wt-tag"   x="220" y="84"  text-anchor="middle">הכלכלה</text>
-        <text class="wt-title" x="220" y="108" text-anchor="middle">כלכלי לראשונה</text>
-
-        <!-- הצורך (middle) -->
-        <rect class="wt-gray"   x="390" y="250" width="120" height="122" rx="8"/>
-        <rect class="wt-orange" x="390" y="88"  width="120" height="162" rx="14"/>
-        <circle class="wt-cap" cx="450" cy="88" r="8"/>
-        <text class="wt-tag"   x="450" y="50"  text-anchor="middle">הצורך</text>
-        <text class="wt-title" x="450" y="74"  text-anchor="middle">החוסן — מבוקש מספר 2</text>
-
-        <!-- היכולת (right) -->
-        <rect class="wt-gray"   x="620" y="250" width="120" height="122" rx="8"/>
-        <rect class="wt-orange" x="620" y="110" width="120" height="140" rx="14"/>
-        <circle class="wt-cap" cx="680" cy="110" r="8"/>
-        <text class="wt-tag"   x="680" y="72"  text-anchor="middle">היכולת</text>
-        <text class="wt-title" x="680" y="96"  text-anchor="middle">ה־AI בשל</text>
-
-        <!-- the readiness threshold, crossed for the first time -->
-        <line class="wt-thresh" x1="120" y1="250" x2="700" y2="250"/>
-        <rect class="wt-pill" x="712" y="238" width="66" height="24" rx="12"/>
-        <text class="wt-pill-txt" x="745" y="255" text-anchor="middle">הרף</text>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 06 · PRODUCT LOOP ===== -->
-<section id="s6" class="slide">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="s-num">07</span>המוצר</div>
+    <div class="eyebrow reveal">המוצר</div>
     <h2 class="reveal">שלוש שכבות. <span class="hl">לולאה אחת שמזינה את עצמה.</span></h2>
+    <p class="lead reveal">אותה לולאה שבורה מלמעלה — אנחנו מרכיבים אותה בחזרה. המוצר לא פונה רק למתאמן: הוא מחבר את שלוש השכבות זו לזו, כך שכל אחת מזינה את הבאה.</p>
 
     <div class="loop-grid">
       <div class="reveal">
@@ -520,58 +398,17 @@
           <span class="lf"><b>↓</b> אמון יורד מלמעלה</span>
           <span class="lf"><b>↑</b> נתונים עולים מלמטה</span>
         </div>
+        <p class="lp-note reveal">הארגון והמאמן נותנים למתאמן מסגרת, שיטה ואמון. מה שהמתאמן עושה בפועל חוזר אליהם כנתונים — וזה מה שמאפשר להם לכוון טוב יותר בסיבוב הבא. <b>ככל שהלולאה מסתובבת, כל צד מקבל יותר.</b></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== 09A · UNDER THE HOOD — HOW IT ACTUALLY WORKS · re-enable: add class="slide s-engine", remove hidden ===== -->
-<section id="s7b" hidden>
-  <div class="wrap eng-wrap">
-    <header class="eng-head">
-      <div class="eyebrow reveal"><span class="s-num">08</span>מתחת למכסה המנוע</div>
-      <h2 class="reveal">איך אנחנו בונים <span class="hl">תוכניות פיתוח</span></h2>
-    </header>
 
-    <div class="eng-grid">
-      <article class="eng-card reveal">
-        <span class="eng-ic">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
-        </span>
-        <b>המנוע</b>
-        <p>מודל שפה מוביל, <strong>מעוגן במתודולוגיית חמש אצבעות ובדאטה האישית של כל מתאמן</strong> — לא פרומפט גנרי.</p>
-      </article>
-
-      <article class="eng-card reveal">
-        <span class="eng-ic">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
-        </span>
-        <b>לולאת דאטה חיה</b>
-        <p>כל תוצאה, אימון ובדיקת אנרגיה חוזרים פנימה — <strong>כל תוכנית מתחדדת לפי המתאמן, כל יום.</strong></p>
-      </article>
-
-      <article class="eng-card reveal">
-        <span class="eng-ic">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 0 1 0 10h-2"/><path d="M8 12h8"/></svg>
-        </span>
-        <b>מחובר לשטח</b>
-        <p>סנכרון עם <strong>סטרבה</strong> — נתוני אימון אמיתיים זורמים פנימה, בלי הזנה ידנית.</p>
-      </article>
-    </div>
-
-    <div class="eng-moat reveal">
-      <span class="eng-moat-ic" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-      </span>
-      <p><b>החפיר:</b> ~10 שנות מתודולוגיה + דאטה קניינית שנצברת מכל מתאמן. GPT גנרי לא מחזיק את השיטה, את ההיסטוריה של המתאמן, ולא את לולאת המשוב — <span class="hl">זה מה שאי אפשר להעתיק בפרומפט.</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 06B · AI COACH — HOW THE PLAN IS BUILT ===== -->
-<section id="s6b" class="slide">
+<!-- ===== המוצר · מאמן ה־AI ===== -->
+<section id="s6b">
   <div class="wrap">
-    <div class="eyebrow reveal"><span class="s-num">08</span>המוצר · מאמן ה־AI</div>
+    <div class="eyebrow reveal">המוצר · מאמן ה־AI</div>
     <h2 class="reveal">שלושה מקורות. <span class="hl">תוכנית אחת, אישית לכל מתאמן.</span></h2>
     <p class="lead reveal">מאמן ה־AI לא ממציא אימון גנרי — כל תוכנית נולדת ממיזוג של שלושה מקורות, ומשתפרת כל יום</p>
 
@@ -586,12 +423,10 @@
           </radialGradient>
         </defs>
 
-        <!-- streams: three sources sweeping left into one plan -->
         <path id="mixP1" class="mix-flow" d="M 700,96 C 500,112 430,206 250,224" fill="none"/>
         <path id="mixP2" class="mix-flow" d="M 700,230 C 500,230 430,230 250,230" fill="none"/>
         <path id="mixP3" class="mix-flow" d="M 700,364 C 500,348 430,254 250,236" fill="none"/>
 
-        <!-- flowing particles (source → plan) -->
         <circle class="mix-p" r="4.5"><animateMotion dur="4.6s" repeatCount="indefinite"><mpath href="#mixP1"/></animateMotion></circle>
         <circle class="mix-p" r="3.5" opacity=".6"><animateMotion dur="4.6s" begin="2.3s" repeatCount="indefinite"><mpath href="#mixP1"/></animateMotion></circle>
         <circle class="mix-p" r="4.5"><animateMotion dur="4s" repeatCount="indefinite"><mpath href="#mixP2"/></animateMotion></circle>
@@ -599,7 +434,6 @@
         <circle class="mix-p" r="4.5"><animateMotion dur="5.1s" repeatCount="indefinite"><mpath href="#mixP3"/></animateMotion></circle>
         <circle class="mix-p" r="3.5" opacity=".6"><animateMotion dur="5.1s" begin="2.6s" repeatCount="indefinite"><mpath href="#mixP3"/></animateMotion></circle>
 
-        <!-- merged plan node -->
         <circle class="mix-plan-glow" cx="190" cy="230" r="60">
           <animate attributeName="r" values="60;84;60" dur="3.6s" repeatCount="indefinite"/>
           <animate attributeName="opacity" values=".5;0;.5" dur="3.6s" repeatCount="indefinite"/>
@@ -612,7 +446,6 @@
         <text class="mix-plan-t" x="190" y="328" text-anchor="middle">תוכנית AI אישית</text>
         <text class="mix-plan-s" x="190" y="352" text-anchor="middle">אחת — לכל מתאמן</text>
 
-        <!-- source · השיטה -->
         <g class="mix-src">
           <circle class="mix-node" cx="700" cy="96" r="30"/>
           <g class="mix-ico" transform="translate(685.6,81.6) scale(1.2)">
@@ -623,7 +456,6 @@
           <text class="mix-cap" x="742" y="110" text-anchor="start">מתודולוגיית הארגון</text>
         </g>
 
-        <!-- source · הערכים -->
         <g class="mix-src">
           <circle class="mix-node" cx="700" cy="230" r="30"/>
           <g class="mix-ico" transform="translate(685.6,215.6) scale(1.2)">
@@ -636,7 +468,6 @@
           <text class="mix-cap" x="742" y="244" text-anchor="start">חמש אצבעות · פיזי־מנטלי</text>
         </g>
 
-        <!-- source · המתאמן -->
         <g class="mix-src">
           <circle class="mix-node" cx="700" cy="364" r="30"/>
           <g class="mix-ico" transform="translate(685.6,349.6) scale(1.2)">
@@ -653,96 +484,39 @@
   </div>
 </section>
 
-<!-- ===== 09C · SAME METHOD, TWO ATHLETES — AI PERSONALIZATION PROOF · re-enable: add class="slide s-persona", remove hidden ===== -->
-<section id="s6d" hidden>
-  <div class="wrap pr-wrap">
-    <header class="pr-head">
-      <div class="eyebrow reveal"><span class="s-num">10</span>המוצר · אינטליגנציה אמיתית</div>
-      <h2 class="reveal">אותה שיטה. <span class="hl">שני מתאמנים. שתי תוכניות.</span></h2>
-      <p class="lead reveal">אותה מתודולוגיית חמש אצבעות נכנסת — ויוצאות שתי תוכניות שונות לגמרי. לא תבנית אחת לכולם.</p>
-    </header>
 
-    <div class="pr-shared reveal">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
-      קלט משותף · מתודולוגיית חמש אצבעות + הערכים
-    </div>
-
-    <div class="pr-grid">
-      <!-- athlete A -->
-      <article class="pr-card reveal">
-        <header class="pr-athlete">
-          <span class="pr-avatar">נ׳</span>
-          <span class="pr-who">
-            <b>נועה · בת 14</b>
-            <span>כדורסל · מתחילה · מטרה: בסיס וביטחון</span>
-          </span>
-        </header>
-        <ul class="pr-plan">
-          <li><span class="pr-k">נפח שבועי</span><span class="pr-v">3 אימונים · קצרים</span></li>
-          <li><span class="pr-k">עצימות</span><span class="pr-v"><span class="hl">בסיס אירובי קל</span> · דגש טכניקה</span></li>
-          <li><span class="pr-k">פוקוס מנטלי</span><span class="pr-v">ביטחון עצמי · שגרה קבועה</span></li>
-          <li><span class="pr-k">התקדמות</span><span class="pr-v">הדרגתית — בלי לשרוף</span></li>
-        </ul>
-      </article>
-
-      <!-- athlete B -->
-      <article class="pr-card reveal">
-        <header class="pr-athlete">
-          <span class="pr-avatar">א׳</span>
-          <span class="pr-who">
-            <b>איתי · בן 17</b>
-            <span>אתלטיקה · מתקדם · מטרה: שיא ב־5 ק״מ לתחרות</span>
-          </span>
-        </header>
-        <ul class="pr-plan">
-          <li><span class="pr-k">נפח שבועי</span><span class="pr-v">5 אימונים · פריודיזציה</span></li>
-          <li><span class="pr-k">עצימות</span><span class="pr-v"><span class="hl">אינטרוולים · קצב יעד 3:53/ק״מ</span></span></li>
-          <li><span class="pr-k">פוקוס מנטלי</span><span class="pr-v">התמודדות עם לחץ תחרותי</span></li>
-          <li><span class="pr-k">התקדמות</span><span class="pr-v">חידוד לקראת יום התחרות</span></li>
-        </ul>
-      </article>
-    </div>
-
-    <p class="pr-caption reveal">אותה שיטה, אותם ערכים — <b>תוכנית שנבנית סביב המתאמן הספציפי.</b> זה ההבדל בין AI אמיתי לתבנית.</p>
-    <p class="pr-foot reveal">המחשה של אותה מתודולוגיה על שני פרופילים.</p>
-  </div>
-</section>
-
-<!-- ===== 09B · REAL PRODUCT · LIVE IN PILOT ===== -->
-<section id="s6c" class="slide s-app">
+<!-- ===== המוצר · מהשטח ===== -->
+<section id="s6c" class="s-app">
   <div class="wrap app-wrap">
     <header class="app-head">
-      <div class="eyebrow reveal"><span class="s-num">09</span>המוצר · מהשטח</div>
-      <h2 class="app-statement reveal">איך זה נראה היום<span class="hl"></span></h2>
+      <div class="eyebrow reveal">המוצר · מהשטח</div>
+      <h2 class="app-statement reveal">לא הדמיה. <span class="hl">זה מה שרץ היום עם מאות מתאמנים.</span></h2>
     </header>
 
     <div class="app-phones">
-      <!-- בית · האפליקציה פונה אישית -->
       <figure class="app-phone reveal">
         <div class="ph-frame"><img src="assets/app/app_home.png" alt="מסך הבית של האפליקציה — המאמן פונה אישית למתאמן ושואל על רמת האנרגיה היום"></div>
         <figcaption class="ph-cap"><b>בית</b>המאמן פונה אישית — כל בוקר</figcaption>
       </figure>
 
-      <!-- המסע · נבנה ע״י ה־AI (featured) -->
       <figure class="app-phone app-phone--hero reveal">
         <div class="ph-frame"><img src="assets/app/app_plan.png" alt="מסך המסע האישי — מסלול יומי שנבנה ע״י ה־AI, יום אחרי יום"></div>
         <figcaption class="ph-cap"><b>המסע</b>מסלול אישי שה־AI בונה — יום אחרי יום</figcaption>
       </figure>
 
-      <!-- אימון היום · ספציפי ומדויק -->
       <figure class="app-phone reveal">
         <div class="ph-frame"><img src="assets/app/app_workout.png" alt="מסך אימון — אינטרוולים עם קצב יעד 3:53 לק״מ, סטים וזמני מנוחה מדויקים"></div>
         <figcaption class="ph-cap"><b>אימון היום</b>ספציפי ומדויק — קצב, סטים, מנוחה</figcaption>
       </figure>
     </div>
-
   </div>
 </section>
 
-<!-- ===== 07 · MANAGED PRODUCT ===== -->
-<section id="s7" class="slide">
+
+<!-- ===== המוצר למנהל ===== -->
+<section id="s7">
   <div class="wrap">
-    <div class="eyebrow reveal"><span class="s-num">10</span>המוצר למנהל</div>
+    <div class="eyebrow reveal">המוצר למנהל</div>
     <h2 class="reveal">כל הארגון. <span class="hl">בתמונה אחת.</span></h2>
 
     <div class="mgr-hero reveal">
@@ -751,376 +525,21 @@
       </figure>
       <div class="mgr-caption">
         <p class="mgr-lead"><b>בנויים סביב איך שהארגון שלך עובד</b>, לא סביב תבנית גנרית — בלי להקים כלום מאפס.</p>
-        <div class="mgr-note">
-          <span class="mgr-note-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg></span>
-          <p>כבר עובדים עם כלי אחר? <b>מתחברים אליו ב־API</b>, בלי לשבור כלום.</p>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== 08 · MARKET ===== -->
-<section id="s8" hidden>
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="s-num">12</span>שוק ופוטנציאל</div>
-    <h2 class="reveal">ישראל — שוק הבית. <span class="hl">העולם בשלב מאוחר יותר</span></h2>
-    <p class="lead reveal">המספרים הם <strong>הערכות מבוססות מקורות</strong>.</p>
 
-    <div class="funnel">
-      <div class="f-row reveal">
-        <div class="f-lbl">TAM</div>
-        <div class="f-bar-track"><div class="f-bar" data-w="100"><span class="num">1.0–1.05M</span>&nbsp;בני נוער</div></div>
-        <div class="f-def">כל בני הנוער בישראל, גילי 12–17</div>
-      </div>
-      <div class="f-row reveal">
-        <div class="f-lbl">SAM</div>
-        <div class="f-bar-track"><div class="f-bar" data-w="38"><span class="num">200–400K</span></div></div>
-        <div class="f-def">נוער בספורט מאורגן</div>
-      </div>
-      <div class="f-row reveal">
-        <div class="f-lbl">SOM</div>
-        <div class="f-bar-track"><div class="f-bar" data-w="20"><span class="num">40–50K</span></div></div>
-        <div class="f-def">צמיחה ריאלית בתוך 3 שנים</div>
-      </div>
-    </div>
-
-    <div class="market-notes market-notes--single">
-      <div class="mnote mnote--feature reveal">
-        <div class="mnote-badge">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z" stroke="currentColor" stroke-width="1.6"/></svg>
-          <span>🇺🇸 יעד עתידי · ארה"ב</span>
-        </div>
-        <div class="m-big num">25–26M</div>
-        <p>נוער 12–17 בארה"ב · SAM ‏~10–15M. מתרחבים כשארגון זר דופק בדלת </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 09 · BUSINESS MODEL ===== -->
-<section id="s9" hidden>
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="s-num">13</span>המודל העסקי</div>
-    <h2 class="reveal">הארגון משלם <span class="hl">על כל מתאמן לחודש.</span></h2>
-
-    <div class="price-lead reveal">
-      <div class="pl-price">
-        <div class="pl-num num">₪10–20</div>
-        <div class="pl-unit">לחודש · לכל משתמש פעיל</div>
-      </div>
-      <div class="pl-includes">
-        <div class="pli-title">כלול במחיר היום</div>
-        <ul>
-          <li>מאמן AI לכל מתאמן</li>
-          <li>פלטפורמת ניהול למאמנים ולמנהלים</li>
-        </ul>
-        <p class="pli-note">פלטפורמת הניהול כלולה כרגע במחיר — <b>ייתכן תמחור נפרד בהמשך.</b></p>
-      </div>
-    </div>
-
-    <div class="margin-strip reveal">
-      <div class="ms-cell"><div class="ms-num num">₪10–20</div><div class="ms-lbl">גובים · למשתמש פעיל</div></div>
-      <div class="ms-op">−</div>
-      <div class="ms-cell"><div class="ms-num num">₪3–6</div><div class="ms-lbl">עולה לנו · למשתמש</div></div>
-      <div class="ms-op">=</div>
-      <div class="ms-cell hot"><div class="ms-num num">60–75%</div><div class="ms-lbl">רווח גולמי</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 10 · WHAT MAKES US UNIQUE ===== -->
-<section id="s11" hidden>
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="s-num">14</span>מה מייחד אותנו</div>
-    <h2 class="reveal">שילוב של שלושה עולמות <span class="hl"></span></h2>
-    <p class="lead reveal">כל מתחרה חזק בפרוסה אחת בלבד. אנחנו היחידים שיושבים ב<strong>מפגש של פיתוח אישי, ניהול קבוצה</strong> ו<strong>מתודולוגיה מוכחת בשטח</strong></p>
-
-    <div class="uniq-grid">
-
-      <!-- Venn: three worlds meeting at the 5ED core, wrapped by the methodology moat -->
-      <div class="reveal">
-        <svg id="uniq-svg" viewBox="0 0 700 630" role="img" aria-label="חמש טכנולוגיה במפגש של פיתוח ואימון אישי, ניהול קבוצה ומתודולוגיית חמש אצבעות">
-          <!-- three worlds -->
-          <g class="worlds">
-            <circle class="dom-circle" cx="350" cy="212" r="150"/>
-            <circle class="dom-circle" cx="450" cy="372" r="150"/>
-            <circle class="dom-circle" cx="250" cy="372" r="150"/>
-          </g>
-
-          <!-- world A · personal development & training (top) -->
-          <g class="dom-icon" transform="translate(335,95) scale(1.25)"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></g>
-          <text class="dom-lbl" x="350" y="145" text-anchor="middle">פיתוח ואימון אישי</text>
-          <text class="dom-sub" x="350" y="164" text-anchor="middle">אימון פיזי-מנטלי לכל מתאמן</text>
-
-          <!-- world B · team management (bottom-right) -->
-          <g class="dom-icon" transform="translate(500,400) scale(1.25)"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></g>
-          <text class="dom-lbl" x="515" y="450" text-anchor="middle">ניהול קבוצה</text>
-          <text class="dom-sub" x="515" y="469" text-anchor="middle">המאמן רואה ומכוון</text>
-
-          <!-- world C · חמש אצבעות methodology, our moat (bottom-left) -->
-          <g class="dom-icon" transform="translate(235,400) scale(1.25)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></g>
-          <text class="dom-lbl" x="250" y="443" text-anchor="middle">
-            <tspan x="250" dy="0">מתודולוגיית</tspan>
-            <tspan x="250" dy="19">חמש אצבעות</tspan>
-          </text>
-          <text class="dom-sub" x="250" y="481" text-anchor="middle">החפיר הקנייני שלנו</text>
-
-          <!-- חמש טכנולוגיה core at the intersection -->
-          <circle class="core-pulse" cx="350" cy="319" r="52">
-            <animate attributeName="r" values="52;98" dur="2.6s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values=".85;0" dur="2.6s" repeatCount="indefinite"/>
-          </circle>
-          <circle class="core-moat" cx="350" cy="319" r="74">
-            <animate attributeName="stroke-dashoffset" from="0" to="-60" dur="5s" repeatCount="indefinite"/>
-          </circle>
-          <circle class="core-disc" cx="350" cy="319" r="50"/>
-          <text class="core-t" x="350" y="313" text-anchor="middle">
-            <tspan x="350" dy="0">חמש</tspan>
-            <tspan x="350" dy="19">טכנולוגיה</tspan>
-          </text>
-        </svg>
-      </div>
-
-      <!-- claim + competitive slices + moat -->
-      <div>
-        <div class="claim-box reveal">
-          הפלטפורמה היחידה שמאחדת <em>פיתוח ואימון אישי</em>, <em>ניהול קבוצה</em> ו<em>מתודולוגיית חמש אצבעות</em> קניינית של כ־10 שנים — במקום אחד.
-        </div>
-
-        <div class="moat-note reveal">
-          <span class="mn-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-          <p><b>החפיר שלנו:</b> מתודולוגיית חמש אצבעות — עשור ניסיון על אלפי מתאמנים אף מתחרה לא יושב במרכז, ואף אחד לא יכול להעתיק את השיטה. זה מה שמפריד אותנו.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 12 · DISCOVERY CONVERSATIONS ===== -->
-<section id="s11b" hidden>
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="s-num">15</span>שיחות גילוי</div>
-    <h2 class="reveal">כבר יצאנו לשטח. <span class="hl">והשטח עונה.</span></h2>
-    <p class="lead reveal">שוחחנו עם ארגונים מובילים — כדי לבדוק את הצורך, לא רק להניח אותו. מה שחזר: <strong>ביקוש אמיתי לפיילוט, ואישוש שהצד הפיזי-מנטלי הוא בדיוק החסר בשוק.</strong></p>
-
-    <div class="disc-grid">
-
-      <!-- 1 · עוצמה -->
-      <article class="disc-card disc-card--hot reveal">
-        <div class="disc-top">
-          <span class="disc-org">עוצמה</span>
-          <span class="disc-status disc-status--hot"><i></i>רתום · לקראת פיילוט</span>
-        </div>
-        <p class="disc-body">שיחה עם <b>המנכ״ל</b> — מאוד רתום ורוצה להתחיל פיילוט עם המועדון המוביל שלו.</p>
-        <div class="disc-take">
-          <span class="disc-take-lbl">מועדון היעד</span>
-          <p><b>מודיעין עוצמה כדורסל</b> — <span class="num">1,000</span> מתאמנים · <span class="num">33</span> קבוצות</p>
-        </div>
-      </article>
-
-      <!-- 2 · ארגון נכי צה"ל -->
-      <article class="disc-card disc-card--wait reveal">
-        <div class="disc-top">
-          <span class="disc-org">ארגון נכי צה״ל</span>
-          <span class="disc-status disc-status--wait"><i></i>ממתינים לתשובה</span>
-        </div>
-        <p class="disc-body">הפרויקט מתעכב וממתינים לתשובה — אבל <b>השיח היה מאוד טוב</b> ושיקף פוטנציאל עתידי מעניין.</p>
-        <div class="disc-take">
-          <span class="disc-take-lbl">מה למדנו</span>
-          <p>דלת פתוחה להמשך — שותפות אפשרית <b>בהמשך הדרך.</b></p>
-        </div>
-      </article>
-
-      <!-- 3 · נבחרת ישראל טריאטלון -->
-      <article class="disc-card disc-card--insight reveal">
-        <div class="disc-top">
-          <span class="disc-org">נבחרת ישראל טריאטלון <small>נוער</small></span>
-          <span class="disc-status disc-status--insight"><i></i>אישוש הצורך</span>
-        </div>
-        <p class="disc-body">למדנו שלמרות כל הטכנולוגיה, <b>חסר מאוד הצד הפיזי-מנטלי</b> — ויש דגש גדול מאוד על פיתוח אנשים.</p>
-        <div class="disc-take">
-          <span class="disc-take-lbl">מה למדנו</span>
-          <p>התעניינו בפיילוט ובחיבור שלנו עם <b>מחלקת החדשנות בווינגייט.</b></p>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== 13 · ROADMAP ===== -->
-<section id="s12" hidden>
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="s-num">16</span>מפת דרכים</div>
-    <h2 class="reveal">מהקיץ עד נובמבר. <span class="hl">יעד: 1,000 משתמשים פעילים.</span></h2>
-    <p class="lead reveal">שלושה שלבים פשוטים — בונים, משיקים, וצומחים.</p>
-
-    <!-- simple 3-phase roadmap · one line, three stops -->
-    <div class="road reveal">
-
-      <div class="road-col">
-        <div class="road-head">
-          <span class="road-badge">1</span>
-          <div class="road-head-txt">
-            <span class="road-phase">קיץ</span>
-            <span class="road-when">יולי – אוגוסט</span>
-          </div>
-        </div>
-        <ul class="road-list">
-          <li><span class="road-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>שיפור מאמן ה-AI</li>
-          <li><span class="road-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>יצירת תכנים יומיים אורגנים</li>
-          <li><span class="road-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>תשתית מולטי-טננט</li>
-          <li><span class="road-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>סגירת פיילוט ראשון</li>
-        </ul>
-      </div>
-
-      <div class="road-col">
-        <div class="road-head">
-          <span class="road-badge">2</span>
-          <div class="road-head-txt">
-            <span class="road-phase">השקה</span>
-            <span class="road-when">ספטמבר</span>
-          </div>
-        </div>
-        <ul class="road-list">
-          <li><span class="road-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>השקת האפליקציה החדשה לכלל המתאמנים בחמש</li>
-          <li><span class="road-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>תחילת פיילוט ראשון עם שותף לדרך</li>
-          <li><span class="road-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>ביסוס קהילת האפליקציה והעמקת החוויה החברתית</li>
-        </ul>
-      </div>
-
-      <div class="road-col road-col--goal">
-        <div class="road-head">
-          <span class="road-badge">3</span>
-          <div class="road-head-txt">
-            <span class="road-phase">צמיחה</span>
-            <span class="road-when">אוקטובר – נובמבר</span>
-          </div>
-        </div>
-        <ul class="road-list">
-          <li class="road-goal">
-            <span class="road-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-            <span class="road-goal-txt">
-              <b><span class="num count" data-to="1000">0</span> משתמשים שבועיים אקטיביים</b>
-              <small>צמיחה פנימית</small>
-            </span>
-          </li>
-          <li><span class="road-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>אופטימיזציה של הפיילוט החיצוני</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== 15 · LEGAL / LAWYER MEETING (hidden) ===== -->
-<section id="s11c" hidden>
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="s-num">17</span>פגישה עם עו״ד</div>
-    <h2 class="reveal">בדקנו את הצד המשפטי. <span class="hl"></span></h2>
-    <p class="lead reveal">נפגשנו עם עורך דין כדי לבחון את הדרך להקמת החברה. שתי תובנות מרכזיות עלו — <strong>הכי נוח להקים את החברה בקיץ, לפני שנתחיל לעבוד עם לקוחות חיצוניים, ולא מפסידים כמעט כלום מכך שנעשה זאת מוקדם.</strong></p>
-
-    <div class="legal-grid">
-
-      <!-- 1 · TIMING -->
-      <article class="legal-card legal-card--now reveal">
-        <div class="legal-head">
-          <span class="legal-kicker">התזמון</span>
-          <span class="legal-big">בקיץ</span>
-        </div>
-        <p class="legal-body">אם הפרויקט קם כחברה עצמאית, <b>הכי פשוט לעשות זאת עכשיו — עוד לפני שנתחיל לעבוד עם לקוחות חיצוניים.</b> כרגע כל מה שקשור בקניין רוחני וזכויות עדיין פתיר בקלות מבחינה משפטית.</p>
-        <div class="legal-flow">
-          <div class="legal-state legal-state--ok">
-            <span class="legal-state-lbl">היום</span>
-            <span class="legal-state-txt">קניין רוחני וזכויות — <b>פתיר בקלות</b></span>
-          </div>
-          <span class="legal-arrow" aria-hidden="true">→</span>
-          <div class="legal-state legal-state--risk">
-            <span class="legal-state-lbl">עם לקוח חיצוני</span>
-            <span class="legal-state-txt">הדברים <b>מסתבכים מבחינת מיסוי</b></span>
-          </div>
-        </div>
-      </article>
-
-      <!-- 2 · COST -->
-      <article class="legal-card legal-card--cost reveal">
-        <div class="legal-head">
-          <span class="legal-kicker">העלות למהלך</span>
-          <span class="legal-big legal-big--zero">נמוכה</span>
-        </div>
-        <p class="legal-body">בזכות המודל שבו אנחנו עובדים, <b>כמעט ולא מפסידים כסף מהקמת החברה</b> — חמש אצבעות כבר משלמת היום עבור המשכורות של אלעד ויובל. מעבר לחברה ותשלום עבור מוצר במקום משכורות <b>לא דורש מחמש אצבעות להשקיע יותר כסף מהיום.</b></p>
-        <div class="legal-take">
-          <span class="legal-take-lbl">העלות בפועל</span>
-          <p>בעיקר תשלום לרואה חשבון והקמת החברה — <b>סכום קטן יחסית.</b></p>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== 15 · SCENARIOS ===== -->
-<section id="s13" hidden>
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="s-num">17</span>שני תרחישים</div>
-    <h2 class="reveal">הצד האופטימי גדול. <span class="hl">והצד הפסימי — רך.</span></h2>
-    <p class="lead reveal">שנה קדימה — שני קצוות. בתרחיש הטוב אנחנו נבנים לחברה. בתרחיש הפחות טוב <strong>שום דבר לא נשבר</strong> — כי חמש אצבעות משלמת לנו דמי שירות חודשיים במקום המשכורת של היום.</p>
-
-    <div class="scenarios reveal">
-
-      <!-- BEST CASE -->
-      <div class="scn scn--up">
-        <div class="scn-head">
-          <span class="scn-tag">התרחיש הטוב</span>
-          <span class="scn-hl"><span class="num count" data-to="10000">0</span> משתמשים פעילים</span>
-          <span class="scn-sub">צומחים לחברה — לא נשארים כלי פנימי.</span>
-        </div>
-        <ul class="scn-list">
-          <li><b>10,000 משתמשים פעילים</b> — פי עשרה מיעד הבסיס.</li>
-          <li><b>מתחילים לפתח אפליקציית B2C</b> — פונים ישירות למתאמן, לא רק דרך הארגון.</li>
-          <li><b>מרחיבים את הצוות ל-5 אנשים</b> — יוצאים משלב ההקמה.</li>
-          <li><b>2–3 ארגונים אסטרטגיים</b> — שותפויות שמזיזות את המחט.</li>
-          <li><b>נערכים להתרחבות גלובלית</b> — התשתית והמתודולוגיה כבר מוכנות.</li>
-        </ul>
-      </div>
-
-      <!-- WORST CASE -->
-      <div class="scn scn--down">
-        <div class="scn-head">
-          <span class="scn-tag">התרחיש הפחות טוב</span>
-          <span class="scn-hl">נחיתה רכה</span>
-          <span class="scn-sub">גם אם הכול לא הולך — לא נשבר כלום.</span>
-        </div>
-        <ul class="scn-list">
-          <li><b>אין לקוח — או שכל הלקוחות עוזבים.</b> ההרחבה לשוק הרחב לא תופסת.</li>
-          <li><b>לא מצליחים לצאת מעבר לחמש אצבעות.</b> המוצר לא מוכיח את עצמו בחוץ.</li>
-          <li><b>מחליטים שזה כלי של חמש אצבעות בלבד.</b> האפליקציה נשארת כלי פנימי — ותו לא.</li>
-          <li><b>סוגרים את הפרויקט ואת החברה — בלי נזק.</b> כאילו כלום לא קרה.</li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="scn-safety reveal">
-      <span class="scn-safety-ico" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-      </span>
-      <p><strong>רשת ביטחון מובנית.</strong> חמש אצבעות משלמת לנו <strong>דמי שירות חודשיים</strong> במקום המשכורת של היום — כך שגם בתרחיש הפחות טוב אנחנו לא מפסידים, פשוט סוגרים את הפרויקט ואת החברה. <span class="hl">upside גדול, downside מוגן.</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 18 · מדידת הצלחה (imported from /amir) ===== -->
-<section id="s2x" class="slide s-metrics">
+<!-- ===== מדידת הצלחה ===== -->
+<section id="s2x" class="s-metrics">
   <div class="wrap mx-wrap">
     <header class="mx-head">
-      <div class="eyebrow reveal"><span class="s-num">11</span>מדידת הצלחה</div>
+      <div class="eyebrow reveal">מדידת הצלחה</div>
       <h2 class="mx-statement reveal">נתונים <span class="hl">מהשטח</span></h2>
-      <p class="mx-sub reveal">מתאמנים שהשתמשו באפליקציה באופן אקטיבי — מול מי שלא.</p>
+      <p class="mx-sub reveal">מתוך פיילוט חי בארגון חמש אצבעות — מתאמנים שהשתמשו באפליקציה באופן אקטיבי, מול מי שלא.</p>
     </header>
 
-    <!-- two flagship outcomes: active app users vs the rest (with-app in orange) -->
     <div class="mx-compare">
       <article class="mx-metric reveal">
         <div class="mx-metric-top">
@@ -1161,11 +580,10 @@
       </article>
     </div>
 
-    <!-- three engagement proof points — a quiet number strip, not cards -->
     <div class="mx-stats">
       <div class="mx-stat reveal">
         <span class="mx-stat-num"><span class="num">3:01</span></span>
-        <span class="mx-stat-lbl">שעות ״זמן חמש״ נוספות בממוצע ל‑<span class="num">100</span> המתאמנים המובילים</span>
+        <span class="mx-stat-lbl">שעות פעילות נוספות בממוצע ל־100 המתאמנים המובילים</span>
       </div>
       <div class="mx-stat reveal">
         <span class="mx-stat-num"><span class="num">1,741</span></span>
@@ -1173,14 +591,247 @@
       </div>
       <div class="mx-stat reveal">
         <span class="mx-stat-num"><span class="num">320</span></span>
-        <span class="mx-stat-lbl">אימונים שתועדו ידנית באפליקציה — מעבר לסטרבה</span>
+        <span class="mx-stat-lbl">אימונים שתועדו ידנית באפליקציה — מעבר לחיבור האוטומטי</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== 14 · CLOSE ===== -->
-<section id="s14" class="slide">
+
+<!-- ===== מה מייחד אותנו ===== -->
+<section id="s11">
+  <div class="wrap">
+    <div class="eyebrow reveal">מה מייחד אותנו</div>
+    <h2 class="reveal">שילוב של שלושה עולמות</h2>
+    <p class="lead reveal">כל מתחרה חזק בפרוסה אחת בלבד. אנחנו היחידים שיושבים ב<strong>מפגש של פיתוח אישי, ניהול קבוצה</strong> ו<strong>מתודולוגיה מוכחת בשטח</strong></p>
+
+    <div class="uniq-grid">
+      <div class="reveal">
+        <svg id="uniq-svg" viewBox="0 0 700 630" role="img" aria-label="5ED במפגש של פיתוח ואימון אישי, ניהול קבוצה ומתודולוגיית חמש אצבעות">
+          <g class="worlds">
+            <circle class="dom-circle" cx="350" cy="212" r="150"/>
+            <circle class="dom-circle" cx="450" cy="372" r="150"/>
+            <circle class="dom-circle" cx="250" cy="372" r="150"/>
+          </g>
+
+          <g class="dom-icon" transform="translate(335,95) scale(1.25)"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></g>
+          <text class="dom-lbl" x="350" y="145" text-anchor="middle">פיתוח ואימון אישי</text>
+          <text class="dom-sub" x="350" y="164" text-anchor="middle">אימון פיזי-מנטלי לכל מתאמן</text>
+
+          <g class="dom-icon" transform="translate(500,400) scale(1.25)"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></g>
+          <text class="dom-lbl" x="515" y="450" text-anchor="middle">ניהול קבוצה</text>
+          <text class="dom-sub" x="515" y="469" text-anchor="middle">המאמן רואה ומכוון</text>
+
+          <g class="dom-icon" transform="translate(235,400) scale(1.25)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></g>
+          <text class="dom-lbl" x="250" y="443" text-anchor="middle">
+            <tspan x="250" dy="0">מתודולוגיית</tspan>
+            <tspan x="250" dy="19">חמש אצבעות</tspan>
+          </text>
+          <text class="dom-sub" x="250" y="481" text-anchor="middle">החפיר הקנייני שלנו</text>
+
+          <circle class="core-pulse" cx="350" cy="319" r="52">
+            <animate attributeName="r" values="52;98" dur="2.6s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".85;0" dur="2.6s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="core-moat" cx="350" cy="319" r="74">
+            <animate attributeName="stroke-dashoffset" from="0" to="-60" dur="5s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="core-disc" cx="350" cy="319" r="50"/>
+          <text class="core-t" x="350" y="327" text-anchor="middle">5ED</text>
+        </svg>
+      </div>
+
+      <div>
+        <div class="claim-box reveal">
+          הפלטפורמה היחידה שמאחדת <em>פיתוח ואימון אישי</em>, <em>ניהול קבוצה</em> ו<em>מתודולוגיית חמש אצבעות</em> קניינית של כ־10 שנים — במקום אחד.
+        </div>
+
+        <div class="moat-note reveal">
+          <span class="mn-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <p><b>החפיר שלנו:</b> את הטכנולוגיה אפשר לשחזר. את עשור העבודה עם אלפי מתאמנים — לא. זה מה שמפריד אותנו.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== שוק ופוטנציאל ===== -->
+<section id="s8">
+  <div class="wrap">
+    <div class="eyebrow reveal">שוק ופוטנציאל</div>
+    <h2 class="reveal">ישראל — שוק הבית. <span class="hl">העולם בשלב מאוחר יותר</span></h2>
+    <p class="lead reveal">המספרים הם <strong>הערכות מבוססות מקורות</strong>.</p>
+
+    <div class="funnel">
+      <div class="f-row reveal">
+        <div class="f-lbl">TAM</div>
+        <div class="f-bar-track"><div class="f-bar" data-w="100"><span class="num">1.0–1.05M</span>&nbsp;בני נוער</div></div>
+        <div class="f-def">כל בני הנוער בישראל, גילי 12–17</div>
+      </div>
+      <div class="f-row reveal">
+        <div class="f-lbl">SAM</div>
+        <div class="f-bar-track"><div class="f-bar" data-w="38"><span class="num">200–400K</span></div></div>
+        <div class="f-def">נוער בספורט מאורגן</div>
+      </div>
+      <div class="f-row reveal">
+        <div class="f-lbl">SOM</div>
+        <div class="f-bar-track"><div class="f-bar" data-w="20"><span class="num">40–50K</span></div></div>
+        <div class="f-def">צמיחה ריאלית בתוך 3 שנים</div>
+      </div>
+    </div>
+
+    <div class="market-notes market-notes--single">
+      <div class="mnote mnote--feature reveal">
+        <div class="mnote-badge">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z" stroke="currentColor" stroke-width="1.6"/></svg>
+          <span>יעד עתידי · ארה״ב</span>
+        </div>
+        <div class="m-big num">25–26M</div>
+        <p>נוער 12–17 בארה״ב · SAM ‏~10–15M. מתרחבים כשארגון זר דופק בדלת</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== המודל העסקי ===== -->
+<section id="lp-model">
+  <div class="wrap">
+    <div class="eyebrow reveal">המודל העסקי</div>
+    <h2 class="reveal">הארגון קונה. <span class="hl">המתאמן משתמש.</span></h2>
+    <p class="lead reveal">מנוי חודשי לכל מתאמן פעיל — הארגון משלם רק על מי שבאמת משתמש, ומקבל את שתי הזרועות של המוצר יחד.</p>
+
+    <div class="bm-flow reveal">
+      <div class="bm-node">
+        <span class="bm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg></span>
+        <b>הארגון</b><small>מועדון · עמותה · נבחרת</small>
+      </div>
+      <div class="bm-link"><span>מנוי חודשי<br>למתאמן פעיל</span></div>
+      <div class="bm-node bm-node--core">
+        <span class="bm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2L12 3z"/></svg></span>
+        <b>5ED</b><small>מאמן AI + פלטפורמת ניהול</small>
+      </div>
+      <div class="bm-link"><span>ליווי אישי<br>לכל אחד</span></div>
+      <div class="bm-node">
+        <span class="bm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></svg></span>
+        <b>המתאמן</b><small>מתאמן, משתפר, נשאר</small>
+      </div>
+    </div>
+
+    <ul class="bm-incl reveal">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>מאמן AI אישי לכל מתאמן</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>פלטפורמת ניהול למאמנים ולמנהלים</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>הטמעת השיטה והערכים של הארגון לתוך המוצר</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ===== מפת דרכים ===== -->
+<section id="s12">
+  <div class="wrap">
+    <div class="eyebrow reveal">מפת דרכים</div>
+    <h2 class="reveal">מהקיץ עד נובמבר. <span class="hl">יעד: 1,000 משתמשים פעילים.</span></h2>
+    <p class="lead reveal">שלושה שלבים פשוטים — בונים, משיקים, וצומחים. היעד לסוף השנה הוא <strong>1,000 משתמשים שבועיים פעילים</strong>, שרובם מגיעים מהארגון שאיתו אנחנו כבר עובדים — ובמקביל, פיילוט ראשון עם ארגון חיצוני.</p>
+
+    <div class="road reveal">
+      <div class="road-col">
+        <div class="road-head">
+          <span class="road-badge">1</span>
+          <div class="road-head-txt">
+            <span class="road-phase">קיץ</span>
+            <span class="road-when">יולי – אוגוסט</span>
+          </div>
+        </div>
+        <ul class="road-list">
+          <li><span class="road-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>שיפור מאמן ה-AI</li>
+          <li><span class="road-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>יצירת תכנים יומיים אורגניים</li>
+          <li><span class="road-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>תשתית מולטי-טננט</li>
+          <li><span class="road-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>סגירת פיילוט ראשון</li>
+        </ul>
+      </div>
+
+      <div class="road-col">
+        <div class="road-head">
+          <span class="road-badge">2</span>
+          <div class="road-head-txt">
+            <span class="road-phase">השקה</span>
+            <span class="road-when">ספטמבר</span>
+          </div>
+        </div>
+        <ul class="road-list">
+          <li><span class="road-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>השקת האפליקציה החדשה לכלל המתאמנים</li>
+          <li><span class="road-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>תחילת פיילוט ראשון עם שותף לדרך</li>
+          <li><span class="road-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>ביסוס קהילת האפליקציה והעמקת החוויה החברתית</li>
+        </ul>
+      </div>
+
+      <div class="road-col road-col--goal">
+        <div class="road-head">
+          <span class="road-badge">3</span>
+          <div class="road-head-txt">
+            <span class="road-phase">צמיחה</span>
+            <span class="road-when">אוקטובר – נובמבר</span>
+          </div>
+        </div>
+        <ul class="road-list">
+          <li class="road-goal">
+            <span class="road-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <span class="road-goal-txt">
+              <b><span class="num count" data-to="1000">0</span> משתמשים שבועיים אקטיביים</b>
+              <small>צמיחה פנימית</small>
+            </span>
+          </li>
+          <li><span class="road-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>אופטימיזציה של הפיילוט החיצוני</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== הצוות ===== -->
+<section id="lp-team">
+  <div class="wrap">
+    <div class="eyebrow reveal">הצוות</div>
+    <h2 class="reveal">שני מייסדים. <span class="hl">מוצר אחד.</span></h2>
+
+    <div class="tm-grid">
+      <article class="tm-card reveal">
+        <img src="assets/team/elad.svg" alt="אלעד רז">
+        <div class="tm-txt">
+          <h3>אלעד רז</h3>
+          <div class="tm-role">מייסד שותף · [תפקיד — למילוי]</div>
+          <p>[תיאור קצר — למילוי: רקע, ניסיון, ומה הוא מביא ל־5ED. 2–3 שורות.]</p>
+        </div>
+      </article>
+
+      <article class="tm-card reveal">
+        <img src="assets/team/yuval.svg" alt="יובל">
+        <div class="tm-txt">
+          <h3>יובל</h3>
+          <div class="tm-role">מייסד שותף · [תפקיד — למילוי]</div>
+          <p>[תיאור קצר — למילוי: רקע, ניסיון, ומה הוא מביא ל־5ED. 2–3 שורות.]</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="tm-backers reveal">
+      <span class="tm-backers-lbl">ליווי ותמיכה</span>
+      <div class="tm-logos">
+        <!-- transparent variants: the .jpeg files carry a white plate that reads as a grey box on the dark bg -->
+        <img src="assets/microsoft_trans.png" alt="Microsoft for Startups" loading="lazy">
+        <img src="assets/google_trans.png" alt="Google for Startups" loading="lazy">
+        <img src="assets/uprise_trans.png" alt="UpRise" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== סיום ===== -->
+<section id="s14">
   <div class="wrap">
     <img src="assets/logo.png" alt="" class="reveal">
     <p class="close-q reveal">"האם המתאמן עשה היום<br>משהו קשה — <span>שלא היה עושה בלעדינו?"</span></p>
@@ -1192,5 +843,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script type="module" src="js/main.js"></script>
+<script>
+/* landing-only: mobile nav toggle (the deck has no nav menu) */
+(function(){
+  var t=document.getElementById('nav-toggle'), l=document.getElementById('nav-links');
+  if(!t||!l) return;
+  t.addEventListener('click',function(){
+    t.setAttribute('aria-expanded', String(l.classList.toggle('open')));
+  });
+  l.addEventListener('click',function(e){
+    if(e.target.tagName==='A'){ l.classList.remove('open'); t.setAttribute('aria-expanded','false'); }
+  });
+})();
+</script>
 </body>
 </html>
