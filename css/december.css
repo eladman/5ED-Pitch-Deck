@@ -1,0 +1,884 @@
+/* light.css is pulled in here rather than linked from the page, because Vite's
+   build reorders <link> tags and put light.css *after* this file — which let
+   light.css's generic `html.light` rules beat this deck's own overrides.
+   An @import keeps the two in one bundle in a guaranteed order. */
+@import url('./light.css');
+
+/* ============================================================
+   /december_goals — יעדים דצמבר 2026
+   Loaded after styles.css and light.css so this deck can override
+   both. Everything here is scoped to a #dN slide id or a dg- class,
+   so the other three pages are untouched.
+   ============================================================ */
+
+/* ---------- shared ---------- */
+.dg-svg{width:100%;height:auto;display:block}
+
+.dg-center{text-align:center;display:flex;flex-direction:column;align-items:center}
+.dg-center .eyebrow{align-self:center}
+
+.dg-statement{
+  font-size:clamp(1.7rem,4vw,3rem);line-height:1.24;letter-spacing:-.015em;
+  max-width:20em;margin-inline:auto;
+}
+.dg-caption{
+  margin-top:clamp(16px,2.4vh,28px);
+  font-size:clamp(.92rem,1.25vw,1.05rem);line-height:1.62;
+  color:var(--muted);max-width:46em;
+}
+.dg-center .dg-caption{margin-inline:auto}
+.dg-caption strong{color:var(--txt);font-weight:700}
+
+html.modal-open{overflow:hidden}
+
+/* slide backgrounds — alternate so consecutive slides read apart */
+#d4,#d11{background:var(--ink2)}
+#d11{background:radial-gradient(70% 40% at 50% -6%,rgba(239,125,0,.05),transparent 62%),var(--ink2)}
+
+/* ---------- 01 · hero (mirrors styles.css #s1) ---------- */
+#d1{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:110px 0 40px;overflow:hidden}
+
+
+/* ---------- 02 · השאלה · quadrant ---------- */
+.dg-quad{margin:clamp(22px,3.4vh,38px) auto 0;max-width:min(640px,84vw);width:100%}
+#d2 .q-cell{fill:rgba(246,242,234,.022);stroke:var(--line);stroke-width:1}
+#d2 .q-null{fill:transparent;stroke:transparent}
+#d2 .q-target{fill:rgba(239,125,0,.09);stroke:rgba(239,125,0,.45)}
+#d2 .q-axis{stroke:var(--line-strong);stroke-width:1.6;fill:none}
+#d2 .q-arrow{fill:var(--line-strong)}
+#d2 .q-pulse{fill:var(--orange)}
+#d2 .q-dot{fill:var(--orange-hot)}
+#d2 .q-lbl{fill:var(--muted);font-size:15px;font-weight:600;font-family:var(--body)}
+#d2 .q-lbl-target{fill:var(--orange-hot);font-size:16px;font-weight:700}
+#d2 .q-lbl-null{fill:var(--muted2);font-size:13px}
+#d2 .q-ax-lbl{fill:var(--muted2);font-size:13px;font-weight:700;letter-spacing:.08em;font-family:var(--body)}
+
+
+/* ---------- d3 · מה נמדוד · outcome map ---------- */
+.dg-outcomes{
+  display:flex;align-items:flex-start;justify-content:center;flex-wrap:wrap;
+  gap:clamp(10px,2.4vw,26px);margin-top:clamp(34px,5.5vh,58px);
+}
+.dgo-item{display:flex;flex-direction:column;align-items:center;text-align:center;width:min(230px,100%)}
+.dgo-ico{
+  display:grid;place-items:center;flex:none;width:64px;height:64px;margin-bottom:16px;
+  border-radius:50%;background:rgba(239,125,0,.07);border:1px solid rgba(239,125,0,.28);
+  color:var(--orange-hot);
+}
+.dgo-ico svg{width:28px;height:28px}
+.dgo-item h3{font-size:1.03rem;margin-bottom:8px;line-height:1.3}
+.dgo-item p{font-size:.85rem;color:var(--muted);line-height:1.58}
+.dgo-item--key .dgo-ico{background:rgba(239,125,0,.15);border-color:var(--orange);box-shadow:0 0 20px rgba(239,125,0,.28)}
+.dgo-item--key h3{color:var(--orange-hot)}
+.dgo-item--clickable{cursor:pointer;border-radius:16px;transition:transform .25s ease}
+.dgo-item--clickable:hover,.dgo-item--clickable:focus-visible{transform:translateY(-3px)}
+.dgo-item--clickable:focus-visible{outline:2px solid var(--orange-hot);outline-offset:6px}
+.dgo-key-hint{
+  margin-top:10px;font-size:.72rem;font-weight:700;letter-spacing:.03em;color:var(--orange-hot);
+  border:1px solid rgba(239,125,0,.35);background:rgba(239,125,0,.06);
+  border-radius:99px;padding:5px 14px;
+}
+.dgo-plus{align-self:center;flex:none;margin-top:22px;font-family:var(--disp);font-size:1.6rem;font-weight:300;color:var(--muted2)}
+
+.dgo-compare{
+  display:flex;align-items:center;gap:14px;
+  max-width:600px;margin:clamp(30px,4.6vh,48px) auto 0;
+}
+.dgo-compare-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--line-strong),transparent)}
+.dgo-compare-tag{
+  flex:none;font-size:.78rem;font-weight:700;letter-spacing:.05em;color:var(--orange-hot);
+  border:1px solid rgba(239,125,0,.4);background:rgba(239,125,0,.07);
+  border-radius:99px;padding:8px 20px;white-space:nowrap;
+}
+
+/* ---------- CYRM-R pulse modal ---------- */
+.dg-modal{
+  position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
+  padding:24px;
+}
+.dg-modal.is-open{display:flex}
+.dg-modal-backdrop{
+  position:absolute;inset:0;background:rgba(5,6,9,.72);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  opacity:0;transition:opacity .3s ease;
+}
+.dg-modal.is-open .dg-modal-backdrop{opacity:1}
+.dg-modal-panel{
+  position:relative;width:min(640px,100%);max-height:min(82vh,720px);overflow-y:auto;
+  background:var(--ink2);border:1px solid var(--line-strong);border-radius:var(--radius);
+  padding:clamp(26px,4vw,40px);box-shadow:0 30px 70px rgba(0,0,0,.5);
+  opacity:0;transform:translateY(14px) scale(.98);transition:opacity .3s ease,transform .3s ease;
+}
+.dg-modal.is-open .dg-modal-panel{opacity:1;transform:translateY(0) scale(1)}
+.dg-modal-close{
+  position:absolute;top:16px;left:16px;width:34px;height:34px;flex:none;
+  display:grid;place-items:center;border-radius:50%;border:1px solid var(--line-strong);
+  background:transparent;color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s;
+}
+.dg-modal-close:hover,.dg-modal-close:focus-visible{color:var(--orange-hot);border-color:var(--orange)}
+.dg-modal-close svg{width:16px;height:16px}
+.dg-modal-head{padding-inline-end:44px}
+.dg-modal-head h3{font-size:clamp(1.15rem,2vw,1.4rem);margin-bottom:8px}
+.dg-modal-head p{font-size:.85rem;color:var(--muted);line-height:1.6}
+.dg-modal-body{margin-top:clamp(20px,3vh,28px);display:flex;flex-direction:column;gap:20px;counter-reset:dgm-q}
+.dgm-group h4{
+  display:flex;align-items:baseline;gap:9px;font-size:.98rem;font-weight:700;
+  color:var(--orange-hot);border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:10px;
+}
+.dgm-group h4 em{
+  font-style:normal;font-size:.68rem;font-weight:600;letter-spacing:.06em;
+  color:var(--muted2);direction:ltr;
+}
+.dgm-group ol{list-style:none;display:flex;flex-direction:column;gap:9px}
+.dgm-group li{
+  counter-increment:dgm-q;display:flex;align-items:flex-start;gap:10px;
+  font-size:.88rem;line-height:1.55;color:var(--txt);
+}
+.dgm-group li::before{
+  content:counter(dgm-q);flex:none;width:22px;height:22px;margin-top:1px;
+  display:grid;place-items:center;border-radius:50%;background:var(--ink3);
+  border:1px solid var(--line-strong);color:var(--muted2);font-size:.72rem;font-weight:700;
+}
+
+html.light .dg-modal-backdrop{background:rgba(29,29,31,.4)}
+html.light .dg-modal-panel{background:#fff;border-color:rgba(29,29,31,.08);box-shadow:0 24px 60px rgba(0,0,0,.16)}
+html.light .dgm-group li::before{background:#EDEDF2;border-color:rgba(29,29,31,.08);color:#5C6B82}
+html.light .dgo-key-hint{border-color:rgba(232,117,0,.35);background:rgba(232,117,0,.07)}
+
+@media(max-height:790px){
+  .dg-modal-panel{max-height:88vh;padding:22px 24px}
+  .dg-modal-body{gap:14px;margin-top:16px}
+}
+@media(max-width:600px){
+  .dg-modal-panel{padding:22px 20px}
+  .dgm-group h4{flex-direction:column;align-items:flex-start;gap:2px}
+}
+
+
+/* ---------- 03 · המערך · dot field ---------- */
+.dg-cohort{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(28px,5vw,64px);align-items:center}
+.dg-stats{
+  margin-top:clamp(20px,3vh,32px);display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+}
+.dg-stat{background:var(--ink2);padding:15px 17px}
+.dg-stat b{display:block;font-family:var(--disp);font-size:clamp(1.3rem,2.4vw,1.85rem);color:var(--orange-hot);font-weight:700;line-height:1.1}
+/* direct child only — a descendant selector would also catch the .num span
+   inside <b> and shrink the big number back down to label size */
+.dg-stat > span{display:block;font-size:.78rem;color:var(--muted);margin-top:5px;line-height:1.45}
+
+.dg-field{
+  display:grid;grid-template-columns:repeat(10,1fr);
+  gap:clamp(9px,1.2vw,15px);
+  max-width:min(390px,100%);margin-inline:auto;
+}
+.dg-field .rf-dot{
+  aspect-ratio:1;border-radius:50%;
+  background:transparent;border:1.5px solid var(--line-strong);
+  transition:background .45s ease,border-color .45s ease,box-shadow .45s ease;
+}
+.dg-field .rf-dot.on{
+  background:var(--orange);border-color:var(--orange);opacity:.9;
+  box-shadow:0 0 7px rgba(239,125,0,.35);
+}
+.dg-field-cap{
+  margin-top:18px;text-align:center;font-size:.78rem;font-weight:700;
+  letter-spacing:.16em;color:var(--muted2);
+}
+
+
+/* ---------- 04 · נקודות המדידה · rail ---------- */
+.dg-rail{position:relative;margin-top:clamp(46px,7vh,74px);padding-top:42px}
+.dg-rail-track{position:absolute;top:49px;inset-inline:16.667%;height:2px;background:var(--line-strong)}
+.dg-rail-band{
+  position:absolute;top:2px;inset-inline-start:16.667%;width:66.667%;height:30px;
+  border:1px dashed rgba(239,125,0,.4);border-radius:8px;
+  display:grid;place-items:center;
+}
+.dg-rail-band > span{font-size:.72rem;font-weight:700;letter-spacing:.1em;color:var(--orange)}
+.dg-rail-nodes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr)}
+.dg-rail-node.is-first-launch{gap:2px}
+.dg-rail-node.is-first-launch b{font-size:clamp(.92rem,1.5vw,1.15rem)}
+.dg-rail-node{
+  position:relative;display:flex;flex-direction:column;align-items:center;
+  text-align:center;gap:5px;padding-inline:8px;
+}
+.dg-rail-dot{
+  width:15px;height:15px;border-radius:50%;margin-bottom:12px;
+  background:var(--ink);border:2px solid var(--line-strong);
+}
+.dg-rail-node b{font-family:var(--disp);font-size:clamp(1.05rem,1.9vw,1.4rem);color:var(--txt)}
+.dg-rail-when{font-size:.86rem;font-weight:700;color:var(--muted)}
+.dg-rail-node small{font-size:.76rem;color:var(--muted2);line-height:1.45;max-width:15em}
+.dg-rail-node.is-first .dg-rail-dot{background:var(--orange);border-color:var(--orange);box-shadow:0 0 16px rgba(239,125,0,.6)}
+.dg-rail-node.is-first b{color:var(--orange-hot)}
+.dg-rail-node.is-launch .dg-rail-dot{border-color:var(--orange);border-style:dashed}
+.dg-rail-node.is-last .dg-rail-dot{background:var(--orange-hot);border-color:var(--orange-hot);box-shadow:0 0 16px rgba(255,154,46,.55)}
+.dg-rail-node.is-last b{color:var(--orange-hot)}
+
+
+/* ---------- 05 · המכנה · fraction ---------- */
+.dg-frac{
+  margin:clamp(14px,2.4vh,28px) auto clamp(22px,3.4vh,36px);
+  display:flex;align-items:center;justify-content:center;gap:clamp(24px,5vw,64px);flex-wrap:wrap;
+}
+.dg-frac-rejected{display:flex;flex-direction:column;gap:10px}
+.dg-rej s{
+  display:inline-block;white-space:nowrap;
+  border:1px solid var(--line-strong);border-radius:99px;
+  padding:9px 22px;font-size:.95rem;font-weight:600;color:var(--muted2);
+  text-decoration-color:var(--orange);text-decoration-thickness:1.5px;
+}
+.dg-frac-core{display:flex;flex-direction:column;align-items:center;gap:6px}
+.dg-frac-top{font-size:clamp(1rem,1.8vw,1.3rem);color:var(--muted);font-weight:600}
+.dg-frac-rule{display:block;width:min(300px,64vw);height:2px;background:var(--orange);margin:4px 0}
+.dg-frac-bottom{font-family:var(--disp);font-size:clamp(3rem,8vw,5.4rem);line-height:1;color:var(--orange-hot);font-weight:700}
+.dg-frac-note{font-size:.82rem;font-weight:700;letter-spacing:.12em;color:var(--muted2);margin-top:2px}
+
+
+/* ---------- 06 · שלושה מדדים ---------- */
+.dg-metrics{margin-top:clamp(26px,4vh,44px)}
+.dg-metrics .card{padding:26px 24px}
+.dg-metrics .card h3{margin-bottom:10px}
+.dg-metrics .card p{font-size:.92rem}
+.dg-den{
+  display:block;margin-top:16px;padding-top:12px;border-top:1px solid var(--line);
+  font-size:.76rem;font-weight:700;letter-spacing:.08em;color:var(--muted2);
+}
+#d6 .dg-caption{margin-top:clamp(18px,2.8vh,30px)}
+
+
+/* ---------- 09 · מנה ותגובה · dose bars ---------- */
+.dg-dose{margin-top:clamp(28px,4.6vh,50px);display:flex;flex-direction:column;gap:16px}
+.dg-dose-row{display:grid;grid-template-columns:190px 1fr;gap:20px;align-items:center}
+.dg-dose-lbl{font-size:.8rem;color:var(--muted2);line-height:1.4}
+.dg-dose-lbl b{display:block;font-size:1.02rem;color:var(--txt);font-weight:700;margin-bottom:2px}
+.dg-dose-track{
+  display:block;height:clamp(36px,6vh,52px);border-radius:10px;
+  background:var(--ink3);border:1px solid var(--line);overflow:hidden;
+}
+.dg-dose-track > span{display:block;height:100%;width:0;border-radius:9px}
+.dg-dose .dose-boost{background:linear-gradient(90deg,var(--orange),var(--orange-hot));box-shadow:0 0 24px rgba(239,125,0,.3)}
+.dg-dose .dose-base{background:#39424F}
+.dg-dose-axis{
+  display:flex;justify-content:space-between;
+  margin-inline-start:210px;margin-top:2px;
+  font-size:.74rem;font-weight:700;letter-spacing:.06em;color:var(--muted2);
+}
+
+
+/* ---------- 10 · המגבלה · attribution ---------- */
+.dg-attrib{margin:clamp(24px,4vh,44px) auto 0;width:min(820px,100%)}
+.dg-attrib-top,.dg-attrib-bottom{display:block;font-size:.8rem;font-weight:700;letter-spacing:.1em;color:var(--muted2)}
+.dg-attrib-top{margin-bottom:12px}
+.dg-attrib-bottom{margin-top:14px;color:var(--muted)}
+.dg-attrib-bar{display:flex;border-radius:12px;overflow:hidden;border:1px solid var(--line-strong)}
+.dg-seg{
+  position:relative;
+  display:grid;place-items:center;min-height:clamp(66px,10vh,92px);
+  padding:10px 14px;background:var(--ink3);
+  border-inline-start:1px dashed var(--line-strong);
+}
+.dg-seg:first-child{border-inline-start:0}
+.dg-seg i{font-style:normal;font-size:clamp(.78rem,1.2vw,.95rem);font-weight:700;color:var(--muted);text-align:center;line-height:1.4}
+.dg-seg--product{background:linear-gradient(180deg,rgba(239,125,0,.18),rgba(239,125,0,.07))}
+.dg-seg--product i{color:var(--orange-hot)}
+/* a "?" sitting on each divider — we can't tell the three contributions apart */
+.dg-seg:not(:first-child)::after{
+  content:"?";position:absolute;inset-inline-start:0;top:50%;
+  transform:translate(50%,-50%);
+  width:24px;height:24px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--ink);border:1px solid rgba(239,125,0,.5);
+  color:var(--orange);font-family:var(--disp);font-weight:700;font-size:.88rem;
+}
+
+
+/* ---------- 11 · היעדים · the table ---------- */
+.dg-tbl-head{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;flex-wrap:wrap}
+.dg-chips{display:flex;gap:8px;flex-wrap:wrap}
+.dg-chip{
+  font:inherit;font-size:.79rem;font-weight:700;letter-spacing:.04em;cursor:pointer;
+  border:1px solid var(--line-strong);background:transparent;color:var(--muted);
+  border-radius:99px;padding:7px 17px;
+  transition:background .3s,border-color .3s,color .3s;
+}
+.dg-chip:hover{border-color:var(--orange);color:var(--orange-hot)}
+.dg-chip[aria-pressed="true"]{background:var(--orange-dim);border-color:var(--orange);color:var(--orange-hot)}
+.dg-chip:focus-visible{outline:2px solid var(--orange-hot);outline-offset:2px}
+
+.dg-tbl-wrap{margin-top:clamp(14px,2.2vh,22px)}
+#d11 .dg-caption{margin-top:14px;font-size:.88rem}
+.dg-table{
+  width:100%;border-collapse:collapse;
+  background:var(--ink2);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+}
+/* 12 rows have to clear a 900px viewport, so the base density is already tight */
+.dg-table th,.dg-table td{padding:8px 14px;border-bottom:1px solid var(--line)}
+.dg-table thead th{
+  font-size:.68rem;font-weight:700;letter-spacing:.16em;color:var(--muted2);
+  border-bottom:2px solid var(--line-strong);text-align:center;
+}
+.dg-table thead th:first-child{text-align:start}
+.dg-table .h-pes{color:#8792A5}
+.dg-table .h-sav{color:var(--orange-hot);background:rgba(239,125,0,.05)}
+.dg-table .h-opt{color:#4FD3A0}
+.dg-table tbody th{
+  text-align:start;font-weight:600;font-size:.9rem;color:var(--txt);line-height:1.3;
+}
+.dg-table tbody th small{display:block;font-size:.71rem;font-weight:400;color:var(--muted2);margin-top:1px}
+.dg-table td{text-align:center;font-weight:700;font-size:.9rem;line-height:1.3}
+.dg-table .c-pes{color:#8792A5}
+.dg-table .c-sav{color:var(--orange-hot);background:rgba(239,125,0,.05)}
+.dg-table .c-opt{color:#4FD3A0}
+.dg-table tbody:last-child tr:last-child th,
+.dg-table tbody:last-child tr:last-child td{border-bottom:0}
+.dg-grouphead td{
+  background:var(--ink3);color:var(--muted);
+  font-size:.64rem;font-weight:700;letter-spacing:.18em;
+  padding:5px 14px;text-align:start;transition:background .4s,color .4s;
+}
+
+/* group focus — applied by the deck script only, so no-JS shows the full table */
+.dg-table tbody tr{transition:opacity .45s ease,filter .45s ease}
+.dg-table.focus-use     tbody:not([data-g="use"])     tr,
+.dg-table.focus-impact  tbody:not([data-g="impact"])  tr,
+.dg-table.focus-sustain tbody:not([data-g="sustain"]) tr{opacity:.28;filter:saturate(.1)}
+.dg-table.focus-use     tbody[data-g="use"]     .dg-grouphead td,
+.dg-table.focus-impact  tbody[data-g="impact"]  .dg-grouphead td,
+.dg-table.focus-sustain tbody[data-g="sustain"] .dg-grouphead td{background:var(--orange);color:#0A0D13}
+
+
+/* ---------- 12 · כלל ההחלטה · fork ---------- */
+.dg-fork{position:relative;margin-top:clamp(24px,4vh,44px);display:flex;flex-direction:column;gap:12px}
+.dg-fork-spine{
+  position:absolute;inset-inline-start:59px;top:28px;bottom:28px;width:2px;
+  background:linear-gradient(180deg,#5C6B82,var(--orange) 45%,#35C08A 78%,var(--line-strong));
+}
+.dg-fork-row{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center}
+.dg-fork-pill{
+  position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;
+  width:100%;border-radius:99px;padding:8px 0;
+  font-size:.82rem;font-weight:700;letter-spacing:.06em;
+  background:var(--ink);border:1px solid var(--acc,var(--line-strong));color:var(--acc,var(--muted));
+}
+.dg-fork-card{
+  --acc:var(--muted2);
+  position:relative;background:var(--ink2);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px 22px;
+  border-inline-start:3px solid var(--acc);
+  transition:transform .35s,border-color .35s,box-shadow .35s;
+}
+.dg-fork-card::before{
+  content:"";position:absolute;inset-inline-end:100%;top:50%;
+  width:18px;height:2px;background:var(--line-strong);
+}
+.dg-fork-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.4)}
+.dg-fork-card b{display:block;font-family:var(--disp);font-size:clamp(1.1rem,2vw,1.45rem);color:var(--acc);margin-bottom:3px}
+.dg-fork-card p{margin:0;font-size:.9rem;color:var(--muted);line-height:1.55}
+.dg-fork--down  .dg-fork-pill,.dg-fork--down  .dg-fork-card{--acc:#7E8CA3}
+.dg-fork--go    .dg-fork-pill,.dg-fork--go    .dg-fork-card{--acc:var(--orange-hot)}
+.dg-fork--up    .dg-fork-pill,.dg-fork--up    .dg-fork-card{--acc:#4FD3A0}
+.dg-fork--mixed .dg-fork-pill,.dg-fork--mixed .dg-fork-card{--acc:var(--muted2)}
+.dg-fork--mixed .dg-fork-card{border-inline-start-style:dashed;background:rgba(246,242,234,.02)}
+.dg-fork--mixed .dg-fork-card::before{background:none;border-top:2px dashed var(--line-strong);height:0}
+
+
+/* ---------- 13 · על מה מהמרים · dial ---------- */
+/* padding-top reserves the room the absolutely-positioned anchors occupy
+   above the 2px track — without it they overlap the statement above */
+.dg-dial{width:min(880px,100%);margin:clamp(20px,3.4vh,40px) auto 0;padding-top:124px}
+.dg-dial-track{position:relative;direction:ltr;height:2px;background:var(--line-strong)}
+.dg-dial-span{position:absolute;left:25%;width:58.3%;top:-1px;height:4px;border-radius:2px;background:linear-gradient(90deg,#5C6B82,var(--orange-hot))}
+.dg-dial-anchor,.dg-dial-tick{position:absolute;left:var(--x);transform:translateX(-50%);display:flex;align-items:center;direction:rtl}
+.dg-dial-anchor{bottom:0;flex-direction:column-reverse;gap:8px;width:190px;text-align:center}
+.dg-dial-anchor i{display:block;width:2px;height:22px;background:var(--line-strong)}
+.dg-dial-anchor b{font-family:var(--disp);font-size:clamp(1.15rem,2.2vw,1.6rem);font-weight:700;color:var(--muted)}
+.dg-dial-anchor small{font-size:.76rem;color:var(--muted2);line-height:1.45}
+.dg-dial-anchor--high i{background:var(--orange)}
+.dg-dial-anchor--high b{color:var(--orange-hot)}
+.dg-dial-anchor--high small{color:var(--muted)}
+.dg-dial-tick{top:0;flex-direction:column;gap:7px}
+.dg-dial-tick i{display:block;width:11px;height:11px;border-radius:50%;background:var(--ink2);border:2px solid var(--muted2)}
+.dg-dial-tick em{font-style:normal;font-size:.78rem;font-weight:700;color:var(--muted2);white-space:nowrap}
+.dg-tick--sav i{border-color:var(--orange);background:var(--orange)}
+.dg-tick--sav em{color:var(--orange-hot)}
+.dg-tick--opt i{border-color:#35C08A}
+.dg-tick--opt em{color:#4FD3A0}
+.dg-dial-scale{
+  display:flex;justify-content:space-between;direction:ltr;
+  margin-top:62px;padding-top:10px;border-top:1px solid var(--line);
+  font-size:.74rem;font-weight:700;letter-spacing:.08em;color:var(--muted2);
+}
+.dg-dial-scale > span:nth-child(2){direction:rtl}
+
+
+/* ---------- 14 · סיכונים ---------- */
+.dg-risks{grid-template-columns:1fr 1fr;gap:12px;margin-top:clamp(24px,4vh,44px)}
+.dg-risks .risk{align-self:start}
+
+
+/* ---------- 15 · דחוף · dates ---------- */
+.dg-dates{list-style:none;margin:clamp(26px,4.4vh,48px) 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.dg-date{
+  display:grid;grid-template-columns:132px 1fr auto;gap:20px;align-items:center;
+  background:var(--ink2);border:1px solid var(--line);border-radius:14px;
+  padding:14px 22px;transition:border-color .35s,transform .35s;
+}
+.dg-date-when{display:flex;align-items:baseline;gap:8px}
+.dg-date-when b{font-family:var(--disp);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:700;color:var(--txt);line-height:1}
+.dg-date-when > span{font-size:.82rem;font-weight:700;color:var(--muted2)}
+.dg-date-what{font-size:.94rem;color:var(--muted);line-height:1.5}
+.dg-date-chip{
+  font-size:.72rem;font-weight:700;letter-spacing:.14em;
+  background:var(--orange);color:#0A0D13;border-radius:99px;padding:5px 14px;
+}
+.dg-date.is-now{
+  border-color:rgba(239,125,0,.55);
+  background:linear-gradient(90deg,rgba(239,125,0,.1),transparent 55%),var(--ink2);
+}
+.dg-date.is-now .dg-date-when b{color:var(--orange-hot)}
+.dg-date.is-now .dg-date-what{color:var(--txt)}
+.dg-date.is-goal{border-color:var(--line-strong)}
+.dg-date.is-goal .dg-date-when b{color:var(--orange-hot)}
+.dg-date.is-goal .dg-date-what{color:var(--txt);font-weight:600}
+
+
+/* ---------- 16 · מקפיאים ---------- */
+.dg-freeze{
+  margin:clamp(26px,4.4vh,46px) auto 0;width:min(560px,100%);
+  background:var(--ink2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(24px,3.4vh,36px) clamp(22px,4vw,40px);
+}
+.dg-freeze-ic{
+  display:grid;place-items:center;width:56px;height:56px;margin:0 auto 22px;
+  border-radius:50%;border:1px solid rgba(239,125,0,.45);background:rgba(239,125,0,.08);
+  color:var(--orange-hot);
+}
+.dg-freeze-ic svg{width:26px;height:26px}
+.dg-sign{display:flex;justify-content:center;gap:clamp(18px,4vw,44px)}
+.dg-sign-name{
+  flex:1;max-width:150px;padding-top:12px;border-top:1.5px solid var(--orange);
+  font-size:.95rem;font-weight:700;color:var(--txt);
+}
+
+
+/* ---------- 17 · roadmap ---------- */
+.dg-road{margin-top:clamp(26px,4vh,44px)}
+
+
+/* ---------- d12 · המצב הרצוי בדצמבר · four-source confluence ---------- */
+.dg-mix-stage{position:relative;max-width:940px;margin:clamp(20px,3.2vh,34px) auto 0}
+.dg-mix-stage::before{
+  content:"";position:absolute;left:1%;top:50%;width:34%;height:78%;
+  transform:translateY(-50%);z-index:-1;border-radius:50%;
+  background:radial-gradient(circle,rgba(239,125,0,.22),rgba(239,125,0,.04) 60%,transparent 74%);
+  filter:blur(6px);
+}
+#dgm-svg{width:100%;height:auto;display:block;direction:ltr}
+#dgm-svg .dgm-flow{stroke:url(#dgmGrad);stroke-width:2.5;opacity:.34;stroke-linecap:round}
+#dgm-svg .dgm-p{fill:var(--orange-hot)}
+#dgm-svg .dgm-node{fill:var(--ink2);stroke:var(--orange);stroke-width:2.5}
+#dgm-svg .dgm-ico{stroke:var(--orange-hot);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+#dgm-svg .dgm-lbl{font-family:'Heebo',sans-serif;font-size:18px;font-weight:800;fill:var(--txt)}
+#dgm-svg .dgm-cap{font-family:'Heebo',sans-serif;font-size:12.5px;font-weight:600;fill:var(--muted2)}
+#dgm-svg .dgm-plan{fill:url(#dgmPlanGrad);filter:drop-shadow(0 0 24px rgba(255,154,46,.55))}
+#dgm-svg .dgm-plan-glow{fill:rgba(239,125,0,.18)}
+#dgm-svg .dgm-plan-ico{fill:none;stroke:#0A0D13;stroke-width:3}
+#dgm-svg .dgm-plan-ico circle:last-child{fill:#0A0D13;stroke:none}
+#dgm-svg .dgm-plan-t{font-family:'Heebo',sans-serif;font-size:22px;font-weight:800;fill:var(--txt)}
+#dgm-svg .dgm-plan-s{font-family:'Heebo',sans-serif;font-size:13px;font-weight:600;fill:var(--orange-hot)}
+.dg-mix-caption{margin:clamp(16px,2.4vh,26px) auto 0;text-align:center;color:var(--muted);font-size:1.02rem;max-width:34em}
+.dg-mix-caption b{color:var(--txt);font-weight:700}
+#d12 .lead{margin-top:10px;color:var(--muted)}
+#d12 .lead b{color:var(--txt);font-weight:700}
+.dg-mix-mobile{display:none}
+
+
+/* ---------- d12b · מוכנות ל־Scale · dual-lane onboarding rail ---------- */
+.dg-scale{display:flex;flex-direction:column;gap:16px;margin-top:clamp(30px,4.6vh,50px)}
+.dg-lane{
+  display:flex;align-items:center;gap:clamp(20px,3.4vw,36px);flex-wrap:wrap;
+  background:var(--ink2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(18px,2.6vh,24px) clamp(20px,3vw,34px);
+}
+.dg-lane-head{flex:none;display:flex;align-items:center;gap:12px;width:168px}
+.dg-lane-ico{
+  display:grid;place-items:center;flex:none;width:46px;height:46px;border-radius:50%;
+  background:rgba(239,125,0,.09);border:1px solid rgba(239,125,0,.3);color:var(--orange-hot);
+}
+.dg-lane-ico svg{width:21px;height:21px}
+.dg-lane-head b{display:block;font-size:.96rem;color:var(--txt)}
+.dg-lane-head small{font-size:.75rem;color:var(--muted2)}
+
+/* mini rail: a line with 3 icon-nodes on it, echoing #d4's timeline language
+   at a smaller, per-lane scale so the two lanes read as parallel journeys */
+.dg-lane-track{position:relative;flex:1;min-width:280px;padding-top:6px}
+.dlt-line{
+  position:absolute;top:23px;inset-inline:15%;height:2px;
+  background:var(--line-strong);overflow:hidden;border-radius:2px;
+}
+.dlt-pulse{
+  position:absolute;top:50%;right:-8%;width:9px;height:9px;margin-top:-4.5px;
+  border-radius:50%;background:var(--orange-hot);box-shadow:0 0 8px rgba(239,125,0,.7);
+  animation:dlt-travel 3.2s ease-in-out infinite;
+}
+@keyframes dlt-travel{0%,100%{right:-8%;opacity:0}8%{opacity:1}50%{right:92%;opacity:1}92%{opacity:1}100%{right:100%;opacity:0}}
+@media(prefers-reduced-motion:reduce){.dlt-pulse{animation:none;opacity:0}}
+
+.dlt-nodes{list-style:none;margin:0;padding:0;position:relative;display:flex;justify-content:space-between}
+.dlt-nodes li{display:flex;flex-direction:column;align-items:center;gap:9px;width:30%;text-align:center}
+.dlt-dot{
+  display:grid;place-items:center;flex:none;width:30px;height:30px;border-radius:50%;
+  background:var(--ink3);border:1px solid var(--line-strong);color:var(--orange-hot);
+}
+.dlt-dot svg{width:14px;height:14px}
+.dlt-lbl{font-size:.78rem;color:var(--muted);line-height:1.4;max-width:9em}
+.dlt-nodes li.is-end .dlt-dot{background:rgba(239,125,0,.15);border-color:var(--orange);box-shadow:0 0 12px rgba(239,125,0,.3)}
+.dlt-nodes li.is-end .dlt-lbl{color:var(--txt);font-weight:600}
+
+/* bridge: both lanes' journeys funnel into the one outcome stat below */
+.dg-scale-bridge{
+  display:flex;align-items:center;gap:10px;justify-content:center;
+  max-width:200px;margin:clamp(14px,2.2vh,22px) auto 0;
+}
+.dg-scale-bridge-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--line-strong))}
+.dg-scale-bridge-line:last-child{background:linear-gradient(90deg,var(--line-strong),transparent)}
+.dg-scale-bridge-dot{flex:none;width:6px;height:6px;border-radius:50%;background:var(--orange)}
+
+.dg-scale-time{
+  margin:clamp(14px,2vh,20px) auto 0;max-width:620px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.dg-scale-time-n{font-family:var(--disp);font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;color:var(--orange-hot)}
+.dg-scale-time-l{font-size:.88rem;color:var(--muted);line-height:1.6}
+
+
+/* ---------- d13 · המודל העסקי · pricing formula + ARR scale ---------- */
+.dg-price{
+  display:flex;align-items:center;justify-content:center;
+  gap:clamp(14px,2.6vw,26px);margin-top:clamp(28px,4.4vh,46px);
+}
+.dg-price-card{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  min-width:150px;padding:20px 22px;text-align:center;
+  background:var(--ink2);border:1px solid var(--line);border-radius:var(--radius);
+}
+.dg-price-card--premium{border-color:rgba(239,125,0,.35);background:linear-gradient(180deg,rgba(239,125,0,.1),transparent 60%),var(--ink2)}
+.dg-price-n{font-family:var(--disp);font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:700;color:var(--txt)}
+.dg-price-n small{font-size:.55em;font-weight:600;color:var(--muted2);margin-inline-start:2px}
+.dg-price-card--premium .dg-price-n{color:var(--orange-hot)}
+.dg-price-l{font-size:.85rem;color:var(--txt);display:flex;flex-direction:column;gap:3px}
+.dg-price-l small{font-size:.76rem;color:var(--muted2);font-weight:400}
+.dg-price-op{flex:none;font-family:var(--disp);font-size:1.3rem;color:var(--muted2)}
+
+.dg-arr{
+  display:flex;align-items:flex-end;justify-content:center;
+  gap:clamp(28px,5vw,64px);margin-top:clamp(30px,4.6vh,52px);
+}
+.dg-arr-col{display:flex;flex-direction:column;align-items:center;gap:9px;width:130px}
+.dg-arr-sum{font-family:var(--disp);font-weight:700;font-size:clamp(1.05rem,1.7vw,1.35rem);color:var(--txt)}
+.dg-arr-track{height:160px;display:flex;align-items:flex-end}
+.dg-arr-bar{
+  width:56px;height:var(--h);border-radius:9px 9px 3px 3px;
+  background:linear-gradient(180deg,rgba(239,125,0,.4),rgba(239,125,0,.08));
+  border:1px solid var(--line-strong);border-bottom:0;
+}
+.dg-arr-users{font-size:.86rem;color:var(--txt);display:flex;flex-direction:column;align-items:center;gap:1px}
+.dg-arr-users b{font-family:var(--disp);font-size:1rem}
+.dg-arr-prem{font-size:.74rem;color:var(--muted2)}
+.dg-arr-col--key .dg-arr-bar{
+  background:linear-gradient(180deg,var(--orange-hot),var(--orange));
+  border-color:var(--orange);box-shadow:0 0 26px rgba(239,125,0,.35);
+}
+.dg-arr-col--key .dg-arr-sum{color:var(--orange-hot);font-size:clamp(1.3rem,2.1vw,1.7rem)}
+.dg-arr-tag{font-size:.66rem;letter-spacing:.09em;color:var(--orange-hot);font-weight:700}
+.dg-arr-cap{margin-inline:auto;text-align:center}
+
+
+/* ---------- close ---------- */
+#dClose.slide{text-align:center;position:relative;overflow:hidden}
+#dClose::before{content:"";position:absolute;inset:-30%;background:radial-gradient(circle at 50% 60%,rgba(239,125,0,.14),transparent 55%);pointer-events:none}
+#dClose img{height:78px;margin-bottom:26px;filter:drop-shadow(0 0 26px rgba(239,125,0,.5))}
+.dg-close-q{
+  font-family:var(--disp);font-size:clamp(1.6rem,4.4vw,3.2rem);font-weight:700;
+  line-height:1.32;max-width:18em;margin-inline:auto;letter-spacing:-.015em;
+}
+.dg-close-q span{color:var(--orange-hot)}
+#dClose .lead{margin:24px auto 0}
+
+
+/* ============================================================
+   LIGHT MODE — loaded after light.css, scoped to this deck
+   ============================================================ */
+html.light #d4,html.light #d11{background:#F5F5F7}
+html.light #d1,html.light #d2,html.light #d6{background:#FBFBFD}
+html.light #d11{background:radial-gradient(70% 40% at 50% -6%,rgba(239,125,0,.05),transparent 62%),#F5F5F7}
+html.light #dClose{background:#F5F5F7}
+html.light #dClose::before{background:radial-gradient(circle at 50% 60%,rgba(239,125,0,.10),transparent 55%)}
+html.light #dClose img{filter:none}
+html.light .dg-close-q span{
+  background:linear-gradient(92deg,#D96A00,#F08A1E);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+/* elevated white cards */
+html.light .dg-stat,
+html.light .dg-fork-card,
+html.light .dg-date,
+html.light .dg-freeze,
+html.light .dg-lane,
+html.light .dg-price-card,
+html.light .dg-table{
+  background:#fff;border-color:rgba(29,29,31,.05);
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 12px 32px rgba(0,0,0,.06);
+}
+html.light .dg-lane-ico{background:rgba(232,117,0,.08);border-color:rgba(232,117,0,.3)}
+html.light .dg-price-card--premium{
+  border-color:rgba(232,117,0,.35);
+  background:linear-gradient(180deg,rgba(232,117,0,.08),transparent 60%),#fff;
+}
+html.light .dg-arr-bar{
+  background:linear-gradient(180deg,rgba(232,117,0,.32),rgba(232,117,0,.06));
+  border-color:rgba(29,29,31,.12);
+}
+html.light .dg-arr-col--key .dg-arr-bar{box-shadow:none}
+html.light .dlt-dot{background:#EDEDF2;border-color:rgba(29,29,31,.08)}
+html.light .dlt-nodes li.is-end .dlt-dot{background:rgba(232,117,0,.14);box-shadow:none}
+html.light .dlt-pulse{box-shadow:none}
+html.light .dg-stats{background:rgba(29,29,31,.06);border-color:rgba(29,29,31,.06)}
+/* the white-card rule above resets all four borders — put the accent edge back */
+html.light .dg-fork-card{border-inline-start-color:var(--acc)}
+html.light .dg-fork--mixed .dg-fork-card{background:transparent;box-shadow:none}
+html.light .dg-rail-dot{background:#fff}
+html.light .dg-dial-tick i{background:#fff}
+html.light .dg-seg{background:#EDEDF2}
+html.light .dg-seg--product{background:linear-gradient(180deg,rgba(232,117,0,.2),rgba(232,117,0,.08))}
+html.light .dg-dose-track{background:#EDEDF2;border-color:rgba(29,29,31,.08)}
+html.light .dg-dose .dose-base{background:#B6BDC8}
+html.light .dg-grouphead td{background:#EDEDF2}
+html.light .dg-table .h-pes,html.light .dg-table .c-pes{color:#5C6B82}
+html.light .dg-table .h-opt,html.light .dg-table .c-opt{color:#0E7A57}
+html.light .dg-table .h-sav,html.light .dg-table .c-sav{color:#D96A00;background:rgba(232,117,0,.06)}
+html.light .dg-fork--down  .dg-fork-pill,html.light .dg-fork--down  .dg-fork-card{--acc:#5C6B82}
+html.light .dg-fork--up    .dg-fork-pill,html.light .dg-fork--up    .dg-fork-card{--acc:#0E7A57}
+html.light .dg-fork-pill{background:#fff}
+html.light .dg-tick--opt i{border-color:#0E7A57}
+html.light .dg-tick--opt em{color:#0E7A57}
+html.light .dg-date.is-now{background:linear-gradient(90deg,rgba(232,117,0,.1),transparent 55%),#fff}
+html.light .dg-date-chip{color:#fff}
+html.light .dg-freeze-ic{background:rgba(232,117,0,.09)}
+
+html.light .dgo-ico{background:rgba(232,117,0,.08);border-color:rgba(232,117,0,.3)}
+html.light .dgo-item--key .dgo-ico{background:rgba(232,117,0,.14);box-shadow:none}
+html.light .dgo-compare-tag{border-color:rgba(232,117,0,.35);background:rgba(232,117,0,.07)}
+
+html.light .dg-mix-stage::before{background:radial-gradient(circle,rgba(232,117,0,.14),rgba(232,117,0,.03) 60%,transparent 74%)}
+html.light #dgm-svg .dgm-node{fill:#fff}
+html.light #dgm-svg .dgm-plan{filter:drop-shadow(0 18px 32px rgba(232,117,0,.35))}
+html.light #dgm-svg .dgm-plan-ico{stroke:#fff}
+html.light #dgm-svg .dgm-plan-ico circle:last-child{fill:#fff}
+
+/* SVG strokes/fills that were tuned for the dark theme */
+html.light #d2 .q-cell{fill:rgba(29,29,31,.03)}
+html.light #d2 .q-target{fill:rgba(232,117,0,.09);stroke:rgba(232,117,0,.5)}
+html.light .dg-field .rf-dot.on{box-shadow:none}
+html.light .dg-rail-node.is-first .dg-rail-dot,
+html.light .dg-rail-node.is-last .dg-rail-dot{box-shadow:none}
+html.light .dg-dose .dose-boost{box-shadow:none}
+
+
+/* ============================================================
+   COMPACT MODE — projectors / short laptops
+   ============================================================ */
+@media(max-height:790px){
+  .dg-statement{font-size:clamp(1.45rem,3.1vw,2.25rem)}
+  .dg-caption{margin-top:14px;font-size:.88rem}
+
+  .dg-quad{max-width:min(430px,74vw);margin-top:14px}
+
+  .dg-outcomes{margin-top:20px;gap:14px}
+  .dgo-ico{width:52px;height:52px;margin-bottom:11px}
+  .dgo-ico svg{width:23px;height:23px}
+  .dgo-item h3{font-size:.95rem}
+  .dgo-item p{font-size:.79rem}
+  .dgo-plus{margin-top:15px;font-size:1.3rem}
+  .dgo-compare{margin-top:18px}
+  .dg-cohort{gap:clamp(20px,3.4vw,40px)}
+  .dg-stats{margin-top:16px}
+  .dg-stat{padding:11px 13px}
+  .dg-stat span{font-size:.72rem}
+  .dg-field{max-width:min(360px,100%);gap:8px}
+  .dg-field-cap{margin-top:12px}
+
+  .dg-rail{margin-top:32px;padding-top:38px}
+  .dg-rail-track{top:45px}
+  .dg-rail-node small{font-size:.72rem}
+
+  .dg-frac{margin-block:8px 16px;gap:clamp(18px,4vw,44px)}
+  .dg-frac-bottom{font-size:clamp(2.4rem,6vw,4rem)}
+  .dg-frac-rule{width:min(230px,60vw)}
+
+  .dg-metrics{margin-top:20px;gap:16px}
+  .dg-metrics .card{padding:18px 18px}
+  .dg-metrics .card p{font-size:.84rem}
+  .dg-den{margin-top:11px;padding-top:9px;font-size:.71rem}
+
+  .dg-curve{max-width:min(800px,100%);margin-top:10px}
+
+  .dg-split{gap:clamp(22px,4vw,48px)}
+  .dg-slope{max-width:min(360px,100%)}
+  .dg-dial{padding-top:104px}
+
+  .dg-dose{margin-top:22px;gap:12px}
+  .dg-dose-row{grid-template-columns:160px 1fr;gap:16px}
+  .dg-dose-lbl b{font-size:.92rem}
+  .dg-dose-axis{margin-inline-start:176px}
+
+  .dg-attrib{margin-top:18px}
+  .dg-seg{min-height:60px}
+  .dg-seg:not(:first-child)::after{width:20px;height:20px;font-size:.78rem}
+
+  .dg-tbl-wrap{margin-top:14px}
+  .dg-chip{padding:5px 13px;font-size:.74rem}
+  .dg-table th,.dg-table td{padding:6px 11px}
+  .dg-table tbody th{font-size:.83rem}
+  .dg-table tbody th small{font-size:.68rem}
+  .dg-table td{font-size:.85rem}
+  .dg-grouphead td{padding:5px 11px;font-size:.62rem}
+  #d11 .dg-caption{display:none}
+
+  .dg-fork{margin-top:16px;gap:8px}
+  .dg-fork-row{grid-template-columns:104px 1fr;gap:14px}
+  .dg-fork-spine{inset-inline-start:51px;top:22px;bottom:22px}
+  .dg-fork-card{padding:11px 16px}
+  .dg-fork-card b{font-size:clamp(1rem,1.7vw,1.2rem)}
+  .dg-fork-card p{font-size:.82rem}
+
+  .dg-dial{margin-top:26px}
+  .dg-dial-anchor{width:160px}
+  .dg-dial-anchor small{font-size:.7rem}
+  .dg-dial-scale{margin-top:52px}
+
+  .dg-risks{margin-top:20px}
+
+  .dg-dates{margin-top:20px;gap:8px}
+  .dg-date{padding:10px 18px;grid-template-columns:112px 1fr auto;gap:16px}
+  .dg-date-what{font-size:.85rem}
+
+  .dg-freeze{margin-top:20px;padding:20px 26px}
+  .dg-freeze-ic{width:46px;height:46px;margin-bottom:16px}
+  .dg-freeze-ic svg{width:22px;height:22px}
+
+  .dg-road{margin-top:18px}
+
+  .dg-mix-stage{margin-top:16px;max-width:660px}
+  #d12 .lead{margin-top:6px;font-size:.9rem}
+  .dg-mix-caption{margin-top:12px;font-size:.9rem}
+
+  .dg-scale{gap:10px;margin-top:20px}
+  .dg-lane{padding:12px 18px;gap:18px}
+  .dg-lane-head{width:140px;gap:9px}
+  .dg-lane-ico{width:38px;height:38px}
+  .dg-lane-ico svg{width:17px;height:17px}
+  .dg-lane-track{min-width:220px}
+  .dlt-line{top:19px}
+  .dlt-dot{width:26px;height:26px}
+  .dlt-dot svg{width:12px;height:12px}
+  .dlt-nodes li{gap:6px}
+  .dlt-lbl{font-size:.72rem}
+  .dg-scale-bridge{margin-top:12px}
+  .dg-scale-time{margin-top:12px}
+  .dg-scale-time-n{font-size:clamp(1.4rem,3.2vw,1.9rem)}
+  .dg-scale-time-l{font-size:.8rem}
+
+  .dg-price{margin-top:18px;gap:14px}
+  .dg-price-card{min-width:130px;padding:14px 16px;gap:6px}
+  .dg-price-n{font-size:clamp(1.25rem,2.4vw,1.7rem)}
+  .dg-price-l{font-size:.78rem}
+  .dg-arr{margin-top:22px;gap:clamp(18px,3.6vw,40px)}
+  .dg-arr-col{width:110px;gap:6px}
+  .dg-arr-track{height:120px}
+  .dg-arr-bar{width:46px}
+  .dg-arr-sum{font-size:1rem}
+  .dg-arr-col--key .dg-arr-sum{font-size:1.2rem}
+  .dg-arr-users,.dg-arr-users b{font-size:.8rem}
+  .dg-arr-prem{font-size:.68rem}
+
+  #dClose img{height:62px;margin-bottom:18px}
+  .dg-close-q{font-size:clamp(1.35rem,3.4vw,2.4rem)}
+}
+
+
+/* ============================================================
+   NARROW SCREENS
+   ============================================================ */
+@media(max-width:900px){
+  .dg-cohort,.dg-split{grid-template-columns:1fr;gap:26px}
+  .dg-split-txt{text-align:start}
+  .dg-risks{grid-template-columns:1fr}
+  .dg-rail-nodes{grid-template-columns:1fr 1fr 1fr;gap:26px 0}
+  .dg-rail-track,.dg-rail-band{display:none}
+  .dg-rail{padding-top:0;margin-top:30px}
+  .dg-outcomes{flex-direction:column;align-items:center}
+  .dgo-item{width:min(360px,100%)}
+  .dgo-plus{margin-top:4px;margin-bottom:4px}
+
+  .dg-lane{flex-direction:column;align-items:stretch;gap:14px}
+  .dg-lane-head{width:auto}
+  .dg-lane-track{min-width:0}
+  .dlt-line{display:none}
+  .dlt-nodes{gap:14px 0}
+  .dlt-nodes li{width:auto}
+
+  .dg-price{flex-wrap:wrap;row-gap:14px}
+  .dg-arr{flex-wrap:wrap;row-gap:24px}
+}
+
+@media(max-width:760px){
+  .dg-statement{font-size:clamp(1.35rem,6vw,1.9rem)}
+  .dg-mix-stage{display:none}
+  .dg-mix-mobile{display:flex;flex-direction:column;align-items:center;gap:22px;margin-top:22px}
+  .dg-mix-mobile .dgo-item{width:min(360px,100%)}
+  .dg-mix-mobile .dgo-compare{margin-top:6px}
+  .dg-frac{flex-direction:column-reverse;gap:22px}
+  .dg-frac-rejected{flex-direction:row}
+  .dg-dose-row{grid-template-columns:1fr;gap:8px}
+  .dg-dose-axis{margin-inline-start:0}
+  .dg-attrib-bar{flex-direction:column}
+  .dg-seg{border-inline-start:0;border-top:1px dashed var(--line-strong);min-height:54px}
+  .dg-seg:first-child{border-top:0}
+  .dg-attrib-marks{display:none}
+  .dg-fork-row{grid-template-columns:88px 1fr;gap:12px}
+  .dg-fork-spine{inset-inline-start:43px}
+  .dg-date{grid-template-columns:1fr;gap:8px;padding:14px 18px}
+  .dg-dial-anchor{width:130px}
+  .dg-dial-anchor small{font-size:.66rem}
+  .dg-dial-tick em{font-size:.7rem}
+  .dg-sign{flex-direction:column;gap:16px}
+  .dg-sign-name{max-width:none}
+
+  /* table → one card per metric */
+  .dg-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .dg-table,.dg-table tbody,.dg-table tr,.dg-table th,.dg-table td{display:block}
+  .dg-table thead{display:none}
+  .dg-table{border:0;background:transparent;box-shadow:none}
+  .dg-table tbody tr:not(.dg-grouphead){
+    background:var(--ink2);border:1px solid var(--line);border-radius:14px;
+    padding:14px 16px;margin-bottom:10px;
+  }
+  .dg-table tbody th{border:0;padding:0 0 10px;font-size:1rem}
+  .dg-table tbody td{
+    border:0;padding:6px 0;text-align:start;
+    display:flex;align-items:baseline;justify-content:space-between;gap:14px;
+    border-top:1px solid var(--line);
+  }
+  .dg-table tbody td::before{
+    content:attr(data-l);
+    font-size:.72rem;font-weight:700;letter-spacing:.12em;color:var(--muted2);
+  }
+  .dg-table .c-sav,.dg-table .h-sav{background:transparent}
+  .dg-grouphead td{border-radius:8px;margin-bottom:8px}
+  .dg-grouphead td::before{content:none}
+  html.light .dg-table tbody tr:not(.dg-grouphead){background:#fff;border-color:rgba(29,29,31,.05)}
+}

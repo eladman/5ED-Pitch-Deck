@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>5ED — יעדים דצמבר 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<!-- december.css @imports light.css, so it must not be linked separately here -->
+<link rel="stylesheet" href="../css/december.css?v=10">
+<script>try{if(localStorage.getItem('deck-theme')==='light')document.documentElement.classList.add('light')}catch(e){}</script>
+</head>
+<body class="dg">
+<div id="progress"></div>
+
+<nav id="nav">
+  <a class="nav-brand" href="#d1">
+    <img src="../assets/logo.png" alt="5ED">
+    <span class="nb-txt">5ED<small>AI COACH</small></span>
+  </a>
+  <div class="nav-links">
+    <a href="#d2">השאלה</a>
+    <a href="#d6">המדידה</a>
+    <a href="#d11">היעדים</a>
+    <a href="#d12">המצב הרצוי</a>
+    <a href="#d12b">מוכנות ל־Scale</a>
+    <a href="#d13">המודל העסקי</a>
+  </div>
+  <div class="nav-tools">
+    <button id="theme-toggle" type="button" aria-label="החלפת מצב תצוגה בהיר/כהה" aria-pressed="false">
+      <svg class="tt-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <svg class="tt-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div id="rail" aria-label="ניווט שקפים"></div>
+<div id="slide-count"><b>01</b> / 10</div>
+<div id="kbd-hint">← חיצים · רווח ←</div>
+
+
+<!-- ===== 01 · TITLE ===== -->
+<section id="d1" class="slide">
+  <div id="hero-canvas"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-kicker reveal">5ED · יעדי דצמבר 2026 · מסמך לדיון</div>
+    <h1 class="hero-title">
+      <span class="fade-line">ספטמבר עד דצמבר.</span>
+      <span class="fade-line">רבעון אחד</span>
+      <span class="fade-line hl">להוכיח שזה עובד.</span>
+    </h1>
+    <p class="hero-sub reveal">מה אנחנו מתחייבים להוכיח, איך נדע שהוכחנו, ומה יגרום לנו לעצור.</p>
+    <div class="hero-stats reveal">
+      <div class="hstat"><div class="hnum"><span class="num">2,300</span></div><div class="hlbl">מתאמנים בפיילוט</div></div>
+      <div class="hstat"><div class="hnum"><span class="num">60</span></div><div class="hlbl">קבוצות</div></div>
+      <div class="hstat"><div class="hnum">GO / NO-GO</div><div class="hlbl">ההחלטה, בדצמבר</div></div>
+    </div>
+  </div>
+  <div class="scroll-cue">מתחילים</div>
+</section>
+
+
+<!-- ===== 02 · השאלה · quadrant ===== -->
+<section id="d2" class="slide">
+  <div class="wrap dg-center">
+    <div class="eyebrow reveal"><span class="s-num">01</span>השאלה</div>
+    <h2 class="dg-statement reveal">האם יש לנו מוצר <span class="hl">שמייצר השפעה?</span></h2>
+
+    <figure class="dg-quad reveal">
+      <svg viewBox="0 0 560 440" class="dg-svg" role="img" aria-label="ארבעה רביעים: שימוש מול שינוי. היעד הוא שימוש קבוע וגם שינוי.">
+        <!-- cells -->
+        <rect class="q-cell q-target" x="90"  y="46"  width="215" height="159" rx="10"/>
+        <rect class="q-cell"          x="305" y="46"  width="215" height="159" rx="10"/>
+        <rect class="q-cell"          x="90"  y="205" width="215" height="159" rx="10"/>
+        <rect class="q-cell q-null"   x="305" y="205" width="215" height="159" rx="10"/>
+
+        <!-- axes: usage grows to the LEFT (RTL), change grows UP -->
+        <path class="q-axis" d="M520 364 H 78"/>
+        <path class="q-axis" d="M520 364 V 34"/>
+        <path class="q-arrow" d="M86 358 L 74 364 L 86 370 Z"/>
+        <path class="q-arrow" d="M514 42 L 520 30 L 526 42 Z"/>
+
+        <text class="q-ax-lbl" x="96"  y="392" text-anchor="start">שימוש ←</text>
+        <text class="q-ax-lbl q-ax-v" x="0" y="0" transform="translate(544,178) rotate(-90)" text-anchor="middle">שינוי ←</text>
+
+        <!-- target -->
+        <circle class="q-pulse" cx="197" cy="126" r="16"><animate attributeName="r" values="16;40" dur="2.8s" repeatCount="indefinite"/><animate attributeName="opacity" values=".55;0" dur="2.8s" repeatCount="indefinite"/></circle>
+        <circle class="q-dot" cx="197" cy="126" r="7"/>
+        <text class="q-lbl q-lbl-target" x="197" y="164" text-anchor="middle">שימוש קבוע · וגם שינוי</text>
+
+        <text class="q-lbl" x="412" y="119" text-anchor="middle">משנה מאוד —</text>
+        <text class="q-lbl" x="412" y="143" text-anchor="middle">אצל מעטים</text>
+
+        <text class="q-lbl" x="197" y="278" text-anchor="middle">אהוב —</text>
+        <text class="q-lbl" x="197" y="302" text-anchor="middle">ולא משנה דבר</text>
+
+        <text class="q-lbl q-lbl-null" x="412" y="292" text-anchor="middle">לא נוגע</text>
+      </svg>
+    </figure>
+
+    <p class="dg-caption reveal">כל המתאמנים מקבלים את המוצר מתחילת שנה</p>
+  </div>
+</section>
+
+
+<!-- ===== 02 · מה נמדוד · outcome map ===== -->
+<section id="d3" class="slide">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="s-num">02</span>מה נמדוד</div>
+    <h2 class="reveal">השפעה היא לא מספר אחד. <span class="hl">היא שלושה.</span></h2>
+
+    <div class="dg-outcomes reveal">
+      <div class="dgo-item">
+        <span class="dgo-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5-7 4 14 2.5-7H21"/></svg>
+        </span>
+        <h3>שיפור פיזי</h3>
+        <p>תוצאות, שיאים והתמודדות עם אימונים קשים</p>
+      </div>
+
+      <span class="dgo-plus" aria-hidden="true">+</span>
+
+      <div class="dgo-item dgo-item--key dgo-item--clickable" data-modal-target="cyrm-modal" role="button" tabindex="0" aria-haspopup="dialog" aria-expanded="false">
+        <span class="dgo-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6.2v5.3c0 4.8 3 8.6 7 9.5 4-.9 7-4.7 7-9.5V6.2L12 3z"/><path d="M9.4 12.3l1.8 1.8 3.3-3.7"/></svg>
+        </span>
+        <h3>שיפור מסוגלות · CYRM-R</h3>
+        <p>שאלון פסיכומטרי מתוקף (Child &amp; Youth Resilience Measure) — מודד <strong>חוסן</strong>: היכולת להתמודד, להתאושש ולהתפתח מול קושי. לא ביצוע ספורטיבי.</p>
+        <span class="dgo-key-hint">12 הפריטים · לצפייה</span>
+      </div>
+
+      <span class="dgo-plus" aria-hidden="true">+</span>
+
+      <div class="dgo-item">
+        <span class="dgo-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M8.3 14c1 1.3 2.2 2 3.7 2s2.7-.7 3.7-2"/><circle cx="9" cy="10" r=".9" fill="currentColor" stroke="none"/><circle cx="15" cy="10" r=".9" fill="currentColor" stroke="none"/></svg>
+        </span>
+        <h3>שביעות רצון</h3>
+        <p>תחושה אישית של המתאמן כלפי האימון והתהליך</p>
+      </div>
+    </div>
+
+    <div class="dgo-compare reveal">
+      <span class="dgo-compare-line" aria-hidden="true"></span>
+      <span class="dgo-compare-tag">נבחן מול שימוש בפועל</span>
+      <span class="dgo-compare-line" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== CYRM-R pulse modal (opened from #d3's key item) ===== -->
+<div id="cyrm-modal" class="dg-modal" aria-hidden="true">
+  <div class="dg-modal-backdrop" data-modal-close></div>
+  <div class="dg-modal-panel" role="dialog" aria-modal="true" aria-labelledby="cyrm-modal-title">
+    <button class="dg-modal-close" type="button" data-modal-close aria-label="סגירה">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="dg-modal-head">
+      <h3 id="cyrm-modal-title">שאלוני הפולס — 12 הפריטים</h3>
+      <p>סולם תשובה: 1 (לא מתאר אותי בכלל) עד 5 (מתאר אותי מאוד), בהלימה לסולם ה-CYRM.</p>
+    </div>
+    <div class="dg-modal-body">
+      <div class="dgm-group">
+        <h4><span>מסוגלות</span><em>Capability</em></h4>
+        <ol>
+          <li>אני מרגיש/ה שאני משתפר/ת דרך האימונים שלי</li>
+          <li>גם כשמשהו קשה לי בהתחלה, אני מאמין/ה שאני יכול/ה להצליח בו</li>
+          <li>אני יודע/ת מהם החוזקות שלי כספורטאי/ת</li>
+          <li>אני ממשיך/ה להתאמן גם כשאני לא רואה תוצאות מיידיות</li>
+        </ol>
+      </div>
+      <div class="dgm-group">
+        <h4><span>שייכות</span><em>Belonging</em></h4>
+        <ol start="5">
+          <li>אני מרגיש/ה שאני חלק אמיתי מהקבוצה שלי</li>
+          <li>חברי הקבוצה עומדים לצידי כשקשה לי</li>
+          <li>אני יכול/ה להיות עצמי/ת מול הקבוצה שלי בלי חשש</li>
+          <li>המאמן/ת שלי מכיר/ה אותי כאדם, לא רק כספורטאי/ת</li>
+        </ol>
+      </div>
+      <div class="dgm-group">
+        <h4><span>השפעה</span><em>Impact</em></h4>
+        <ol start="9">
+          <li>מה שאני עושה בקבוצה משנה משהו, לא רק בשבילי</li>
+          <li>אני מרגיש/ה שיש לי תפקיד שחשוב לקבוצה</li>
+          <li>הדברים שאני לומד/ת באימונים עוזרים לי גם מחוץ למגרש</li>
+          <li>אני ממשיך/ה לתרום לקבוצה גם ברגעים שבהם קשה לי אישית</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== 03 · נקודות המדידה · timeline rail ===== -->
+<section id="d4" class="slide">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="s-num">03</span>נקודות המדידה</div>
+    <h2 class="reveal">מדידת הבסיס נאספת <span class="hl">ברגע</span> שהאפליקציה נפתחת לראשונה.</h2>
+
+    <div class="dg-rail reveal">
+      <div class="dg-rail-track" aria-hidden="true"></div>
+      <div class="dg-rail-band" aria-hidden="true"><span><span class="num">12</span> שבועות מדידה רציפה</span></div>
+      <ol class="dg-rail-nodes">
+        <li class="dg-rail-node is-first is-launch is-first-launch">
+          <span class="dg-rail-dot"></span>
+          <b>T0 · השקה</b>
+          <span class="dg-rail-when"><span class="num">1</span> בספטמבר</span>
+          <small>בסיס מכל <span class="num">המתאמנים</span>, בפתיחה הראשונה של האפליקציה — כל <span class="num"></span> הקבוצות</small>
+        </li>
+        <li class="dg-rail-node">
+          <span class="dg-rail-dot"></span>
+          <b>T1</b>
+          <span class="dg-rail-when">תחילת נובמבר</span>
+          <small>ללא שאלון <span class="num"></span></small>
+        </li>
+        <li class="dg-rail-node is-last">
+          <span class="dg-rail-dot"></span>
+          <b>T2</b>
+          <span class="dg-rail-when">סוף דצמבר</span>
+          <small>מדידה מקיפה כולל שאלון <span class="num"></span></small>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 04 · שלושה מדדים · cards ===== -->
+<section id="d6" class="slide">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="s-num">04</span>מדידה · שימוש</div>
+    <h2 class="reveal">שלושה מדדים. <span class="hl">לא יותר.</span></h2>
+
+    <div class="cards3 dg-metrics">
+      <article class="card reveal">
+        <span class="c-ico">מדד 1</span>
+        <h3>Activation</h3>
+        <p>אחוז המתאמנים שהשלימו יצירת תוכנית עם מאמן ה־AI <span class="num"></span></p>
+        <span class="dg-den">נמדד פעם אחת למשתמש <span class="num"></span></span>
+      </article>
+      <article class="card reveal">
+        <span class="c-ico">מדד 2</span>
+        <h3>WAU</h3>
+        <p>אחוז המתאמנים שביצעו פעולה משמעותית בשבוע האחרון. פתיחת אפליקציה לבדה אינה נספרת.</p>
+        <span class="dg-den">שבועי · דיווח חודשי <span class="num"></span><span class="num"></span></span>
+      </article>
+      <article class="card reveal">
+        <span class="c-ico">מדד 3</span>
+        <h3>קבוצות פעילות</h3>
+        <p>אחוז הקבוצות שבהן מעל <span class="num">30%</span> מהמתאמנים פעילים שבועית. מדד בריאות ברמת ארגון.</p>
+        <span class="dg-den">חודשי <span class="num"></span></span>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ===== 05 · היעדים · the table ===== -->
+<section id="d11" class="slide">
+  <div class="wrap">
+    <div class="dg-tbl-head">
+      <div>
+        <div class="eyebrow reveal"><span class="s-num">05</span>היעדים</div>
+        <h2 class="reveal">שלושה תרחישים, <span class="hl">נקבעים מראש.</span></h2>
+      </div>
+      <div class="dg-chips reveal" role="group" aria-label="הדגשת קבוצת מדדים">
+        <button type="button" class="dg-chip" data-g="use" aria-pressed="false">שימוש</button>
+        <button type="button" class="dg-chip" data-g="impact" aria-pressed="false">השפעה</button>
+        <button type="button" class="dg-chip is-all" data-g="all" aria-pressed="true">הכול</button>
+      </div>
+    </div>
+
+    <div class="dg-tbl-wrap reveal">
+      <table class="dg-table">
+        <thead>
+          <tr>
+            <th scope="col">מדד</th>
+            <th scope="col" class="h-pes">פסימי</th>
+            <th scope="col" class="h-sav">סביר</th>
+            <th scope="col" class="h-opt">אופטימי</th>
+          </tr>
+        </thead>
+        <tbody data-g="use">
+          <tr class="dg-grouphead"><td colspan="4">שימוש</td></tr>
+          <tr><th scope="row">Activation<small>יום <span class="num">14</span></small></th>
+              <td class="c-pes" data-l="פסימי"><span class="num">35%</span></td><td class="c-sav" data-l="סביר"><span class="num">55%</span></td><td class="c-opt" data-l="אופטימי"><span class="num">70%</span></td></tr>
+          <tr><th scope="row">WAU<small>שבוע <span class="num">4</span></small></th>
+              <td class="c-pes" data-l="פסימי"><span class="num">25%</span></td><td class="c-sav" data-l="סביר"><span class="num">40%</span></td><td class="c-opt" data-l="אופטימי"><span class="num">60%</span></td></tr>
+          <tr><th scope="row">קבוצות מעל <span class="num">30%</span> פעילים<small>שבוע <span class="num">12</span></small></th>
+              <td class="c-pes" data-l="פסימי"><span class="num">20%</span></td><td class="c-sav" data-l="סביר"><span class="num">45%</span></td><td class="c-opt" data-l="אופטימי"><span class="num">70%</span></td></tr>
+        </tbody>
+        <tbody data-g="impact">
+          <tr class="dg-grouphead"><td colspan="4">השפעה</td></tr>
+          <tr><th scope="row">CYRM-R<small>שינוי T0 ← T2</small></th>
+              <td class="c-pes" data-l="פסימי">ללא שינוי</td><td class="c-sav" data-l="סביר"><span class="num">d = 0.25</span></td><td class="c-opt" data-l="אופטימי"><span class="num">d ≥ 0.40</span></td></tr>
+          <tr><th scope="row">שביעות רצון<small>ציון גבוה</small></th>
+              <td class="c-pes" data-l="פסימי"><span class="num">50%</span></td><td class="c-sav" data-l="סביר"><span class="num">65%</span></td><td class="c-opt" data-l="אופטימי"><span class="num">80%</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="dg-caption reveal">מה שמכריע הוא באיזו עמודה ננחת בדצמבר.</p>
+  </div>
+</section>
+
+
+<!-- ===== 06 · המצב הרצוי בדצמבר · four-source confluence ===== -->
+<section id="d12" class="slide">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="s-num">06</span>המצב הרצוי בדצמבר</div>
+    <h2 class="reveal">מוכנות לצמיחה. <span class="hl">יותר מרק מוצר.</span></h2>
+    <p class="lead reveal">חמישה תנאים, לא חמש אופציות. <b>כולם ביחד — או שאין החלטה.</b></p>
+
+    <div class="dg-mix-stage reveal">
+      <svg id="dgm-svg" viewBox="0 0 940 480" role="img" aria-label="חמישה תנאים — מוצר אהוב, הוכחה בשטח, לקוח מעוניין, מוכנות להפצה ומודל עסקי — מתכנסים למטרה אחת: מוצר בדצמבר">
+        <defs>
+          <linearGradient id="dgmGrad" x1="1" y1="0" x2="0" y2="0">
+            <stop offset="0" stop-color="#EF7D00"/><stop offset="1" stop-color="#FF9A2E"/>
+          </linearGradient>
+          <radialGradient id="dgmPlanGrad" cx="0.42" cy="0.4" r="0.62">
+            <stop offset="0" stop-color="#FF9A2E"/><stop offset="1" stop-color="#EF7D00"/>
+          </radialGradient>
+        </defs>
+
+        <path id="dgmP1" class="dgm-flow" d="M 700,53 C 500,84 420,185 252,208" fill="none"/>
+        <path id="dgmP2" class="dgm-flow" d="M 700,147 C 500,162 420,212 252,224" fill="none"/>
+        <path id="dgmP3" class="dgm-flow" d="M 700,241 C 500,241 420,240 252,240" fill="none"/>
+        <path id="dgmP4" class="dgm-flow" d="M 700,335 C 500,319 420,268 252,256" fill="none"/>
+        <path id="dgmP5" class="dgm-flow" d="M 700,429 C 500,398 420,296 252,272" fill="none"/>
+
+        <circle class="dgm-p" r="4.5"><animateMotion dur="4.6s" repeatCount="indefinite"><mpath href="#dgmP1"/></animateMotion></circle>
+        <circle class="dgm-p" r="3.5" opacity=".6"><animateMotion dur="4.6s" begin="2.3s" repeatCount="indefinite"><mpath href="#dgmP1"/></animateMotion></circle>
+        <circle class="dgm-p" r="4.5"><animateMotion dur="4s" repeatCount="indefinite"><mpath href="#dgmP2"/></animateMotion></circle>
+        <circle class="dgm-p" r="3.5" opacity=".6"><animateMotion dur="4s" begin="2s" repeatCount="indefinite"><mpath href="#dgmP2"/></animateMotion></circle>
+        <circle class="dgm-p" r="4.5"><animateMotion dur="4.4s" repeatCount="indefinite"><mpath href="#dgmP3"/></animateMotion></circle>
+        <circle class="dgm-p" r="3.5" opacity=".6"><animateMotion dur="4.4s" begin="2.2s" repeatCount="indefinite"><mpath href="#dgmP3"/></animateMotion></circle>
+        <circle class="dgm-p" r="4.5"><animateMotion dur="4.9s" repeatCount="indefinite"><mpath href="#dgmP4"/></animateMotion></circle>
+        <circle class="dgm-p" r="3.5" opacity=".6"><animateMotion dur="4.9s" begin="2.45s" repeatCount="indefinite"><mpath href="#dgmP4"/></animateMotion></circle>
+        <circle class="dgm-p" r="4.5"><animateMotion dur="4.3s" repeatCount="indefinite"><mpath href="#dgmP5"/></animateMotion></circle>
+        <circle class="dgm-p" r="3.5" opacity=".6"><animateMotion dur="4.3s" begin="2.15s" repeatCount="indefinite"><mpath href="#dgmP5"/></animateMotion></circle>
+
+        <circle class="dgm-plan-glow" cx="190" cy="241" r="62">
+          <animate attributeName="r" values="62;88;62" dur="3.6s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values=".5;0;.5" dur="3.6s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="dgm-plan" cx="190" cy="241" r="62"/>
+        <g class="dgm-plan-ico">
+          <circle cx="190" cy="241" r="20" fill="none"/>
+          <circle cx="190" cy="241" r="11" fill="none"/>
+          <circle cx="190" cy="241" r="3.4"/>
+        </g>
+        <text class="dgm-plan-t" x="190" y="340" text-anchor="middle">חברת בת</text>
+        <text class="dgm-plan-s" x="190" y="364" text-anchor="middle">לא רק עוד מוצר</text>
+
+        <g class="dgm-src">
+          <circle class="dgm-node" cx="700" cy="53" r="30"/>
+          <g class="dgm-ico" transform="translate(685.6,38.6) scale(1.2)">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>
+          </g>
+          <text class="dgm-lbl" x="742" y="47" text-anchor="start">מוצר אהוב</text>
+          <text class="dgm-cap" x="742" y="67" text-anchor="start">מתאמנים חוזרים מרצון</text>
+        </g>
+
+        <g class="dgm-src">
+          <circle class="dgm-node" cx="700" cy="147" r="30"/>
+          <g class="dgm-ico" transform="translate(685.6,132.6) scale(1.2)">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </g>
+          <text class="dgm-lbl" x="742" y="141" text-anchor="start">הוכחה בשטח</text>
+          <text class="dgm-cap" x="742" y="161" text-anchor="start">נתונים אמיתיים, לא הדמיה</text>
+        </g>
+
+        <g class="dgm-src">
+          <circle class="dgm-node" cx="700" cy="241" r="30"/>
+          <g class="dgm-ico" transform="translate(685.6,226.6) scale(1.2)">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </g>
+          <text class="dgm-lbl" x="742" y="235" text-anchor="start">לקוח מעוניין</text>
+          <text class="dgm-cap" x="742" y="255" text-anchor="start">כוונת רכישה, לא רק עניין</text>
+        </g>
+
+        <g class="dgm-src">
+          <circle class="dgm-node" cx="700" cy="335" r="30"/>
+          <g class="dgm-ico" transform="translate(685.6,320.6) scale(1.2)">
+            <path d="M23 6l-9.5 9.5-5-5L1 18"/>
+            <path d="M17 6h6v6"/>
+          </g>
+          <text class="dgm-lbl" x="742" y="329" text-anchor="start">מוכנות להפצה</text>
+          <text class="dgm-cap" x="742" y="349" text-anchor="start">תשתית שסופגת גידול</text>
+        </g>
+
+        <g class="dgm-src">
+          <circle class="dgm-node" cx="700" cy="429" r="30"/>
+          <g class="dgm-ico" transform="translate(685.6,414.6) scale(1.2)">
+            <rect x="2" y="6" width="20" height="12" rx="2"/>
+            <circle cx="12" cy="12" r="2"/>
+            <path d="M6 12h.01M18 12h.01"/>
+          </g>
+          <text class="dgm-lbl" x="742" y="423" text-anchor="start">מודל עסקי</text>
+          <text class="dgm-cap" x="742" y="443" text-anchor="start">תמחור שמצדיק הרחבה</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- mobile-only: the 940-wide confluence above is unreadable on a phone,
+         so below 760px it's hidden and this vertical stack says the same thing -->
+    <div class="dg-mix-mobile reveal" aria-hidden="true">
+      <div class="dgo-item">
+        <span class="dgo-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg></span>
+        <h3>מוצר אהוב</h3>
+        <p>מתאמנים חוזרים מרצון</p>
+      </div>
+      <div class="dgo-item">
+        <span class="dgo-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <h3>הוכחה בשטח</h3>
+        <p>נתונים אמיתיים, לא הדמיה</p>
+      </div>
+      <div class="dgo-item">
+        <span class="dgo-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+        <h3>לקוח מעוניין</h3>
+        <p>כוונת רכישה, לא רק עניין</p>
+      </div>
+      <div class="dgo-item">
+        <span class="dgo-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg></span>
+        <h3>מוכנות להפצה</h3>
+        <p>תשתית שסופגת גידול</p>
+      </div>
+      <div class="dgo-item">
+        <span class="dgo-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></span>
+        <h3>מודל עסקי</h3>
+        <p>תמחור שמצדיק הרחבה</p>
+      </div>
+      <div class="dgo-compare">
+        <span class="dgo-compare-line" aria-hidden="true"></span>
+        <span class="dgo-compare-tag">מוצר, לא פיילוט</span>
+        <span class="dgo-compare-line" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <p class="dg-mix-caption reveal">כל חמשת התנאים ביחד — לא כל אחד בפני עצמו — הם <b>מה שהופך פיילוט למוצר</b></p>
+  </div>
+</section>
+
+
+<!-- ===== 07 · מוכנות ל־Scale · dual-lane onboarding ===== -->
+<section id="d12b" class="slide">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="s-num">07</span>מוכנות ל־Scale</div>
+    <h2 class="reveal">כל אחד יכול <span class="hl">להצטרף לבד</h2>
+    <p class="lead reveal">מבנה אפליקציה שכל ארגון, מאמן או מתאמן יכול להצטרף לבד לאפליקציה</p>
+
+    <div class="dg-scale reveal">
+      <div class="dg-lane">
+        <div class="dg-lane-head">
+          <span class="dg-lane-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+          <div><b>מאמן / מנהל</b><small>מכל ארגון</small></div>
+        </div>
+        <div class="dg-lane-track">
+          <span class="dlt-line" aria-hidden="true"><span class="dlt-pulse"></span></span>
+          <ol class="dlt-nodes">
+            <li><span class="dlt-dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/></svg></span><span class="dlt-lbl">AI מתאים את המוצר לארגון</span></li>
+            <li><span class="dlt-dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M19 8v6M16 11h6"/></svg></span><span class="dlt-lbl">שולח קישור לספורטאים</span></li>
+            <li class="is-end"><span class="dlt-dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="dlt-lbl">עובד בשטח</span></li>
+          </ol>
+        </div>
+      </div>
+      <div class="dg-lane">
+        <div class="dg-lane-head">
+          <span class="dg-lane-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
+          </span>
+          <div><b>מתאמן</b><small>כל ספורטאי</small></div>
+        </div>
+        <div class="dg-lane-track">
+          <span class="dlt-line" aria-hidden="true"><span class="dlt-pulse"></span></span>
+          <ol class="dlt-nodes">
+            <li><span class="dlt-dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17H7A5 5 0 0 1 7 7h2M15 7h2a5 5 0 1 1 0 10h-2M8 12h8"/></svg></span><span class="dlt-lbl">מקבל קישור מהמאמן</span></li>
+            <li><span class="dlt-dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></span><span class="dlt-lbl">מוריד את האפליקציה</span></li>
+            <li class="is-end"><span class="dlt-dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v16l12-8L6 4Z"/></svg></span><span class="dlt-lbl">מתחיל להתאמן</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="dg-scale-bridge reveal" aria-hidden="true">
+      <span class="dg-scale-bridge-line"></span>
+      <span class="dg-scale-bridge-dot"></span>
+      <span class="dg-scale-bridge-line"></span>
+    </div>
+
+    <div class="dg-scale-time reveal">
+      <span class="dg-scale-time-n"><span class="num">10</span> דקות</span>
+      <span class="dg-scale-time-l">מהצטרפות ועד עבודה בשטח — בלי הטמעה, בלי צוות הצלחה, בלי לחכות לנו.</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 08 · המודל העסקי · pricing + ARR scale ===== -->
+<section id="d13" class="slide">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="s-num">08</span>המודל העסקי</div>
+    <h2 class="reveal">תשלום על כל מתאמן. <span class="hl">פרימיום מוסיף עוד.</span></h2>
+    <p class="lead reveal">הארגון משלם לפי מספר המתאמנים הפעילים — ומי שרוצה יותר, משדרג לפרימיום.</p>
+
+    <div class="dg-price reveal">
+      <div class="dg-price-card">
+        <span class="dg-price-n"><span class="num">6</span>–<span class="num">10</span><small>₪</small></span>
+        <span class="dg-price-l">לכל מתאמן<small>בחיוב מהארגון</small></span>
+      </div>
+      <span class="dg-price-op" aria-hidden="true">+</span>
+      <div class="dg-price-card dg-price-card--premium">
+        <span class="dg-price-n"><span class="num">34</span><small>₪</small></span>
+        <span class="dg-price-l">שדרוג פרימיום<small>הארגון או ההורה/מתאמן</small></span>
+      </div>
+    </div>
+
+    <div class="dg-arr reveal" role="img" aria-label="הכנסה שנתית חוזרת משוערת: 5,000 מתאמנים ו-18% פרימיום — כ-800 אלף שקל. 10,000 מתאמנים ו-12% פרימיום — כ-1.4 מיליון שקל. 25,000 מתאמנים ו-18% פרימיום, יעד ישראל — כ-4 מיליון שקל">
+      <div class="dg-arr-col">
+        <span class="dg-arr-sum">₪<span class="num">800K</span></span>
+        <span class="dg-arr-track"><span class="dg-arr-bar" style="--h:20%"></span></span>
+        <span class="dg-arr-users"><b class="num">5,000</b>מתאמנים</span>
+        <span class="dg-arr-prem"><span class="num">18%</span> פרימיום</span>
+      </div>
+      <div class="dg-arr-col">
+        <span class="dg-arr-sum">₪<span class="num">1.4M</span></span>
+        <span class="dg-arr-track"><span class="dg-arr-bar" style="--h:35%"></span></span>
+        <span class="dg-arr-users"><b class="num">10,000</b>מתאמנים</span>
+        <span class="dg-arr-prem"><span class="num">12%</span> פרימיום</span>
+      </div>
+      <div class="dg-arr-col dg-arr-col--key">
+        <span class="dg-arr-tag">יעד ישראל</span>
+        <span class="dg-arr-sum">₪<span class="num">4M</span></span>
+        <span class="dg-arr-track"><span class="dg-arr-bar" style="--h:100%"></span></span>
+        <span class="dg-arr-users"><b class="num">25,000</b>מתאמנים</span>
+        <span class="dg-arr-prem"><span class="num">18%</span> פרימיום</span>
+      </div>
+    </div>
+
+    <p class="dg-caption dg-arr-cap reveal">ARR משוער — הכנסה שנתית חוזרת, לפי מספר המתאמנים הפעילים בארגונים ושיעור השדרוג לפרימיום.</p>
+  </div>
+</section>
+
+
+<!-- ===== CLOSE ===== -->
+<section id="dClose" class="slide">
+  <div class="wrap">
+    <img src="../assets/logo.png" alt="" class="reveal">
+    <p class="dg-close-q reveal">בדצמבר תהיה לנו תשובה.<br><span>לכל כיוון שתהיה — נוכל לסמוך עליה.</span></p>
+    <p class="lead reveal" style="margin-inline:auto;text-align:center">אלעד · עמיר · דמיאן<br><strong>נועלים את התוכנית לפני <span class="num">14</span> בספטמבר</strong></p>
+  </div>
+</section>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script type="module" src="../js/main.js"></script>
+
+<script>
+/* ===== deck-local behaviour · december goals ===== */
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- reveal safety net ---
+     main.js reveals each .reveal element at its own `top 86%`. This deck packs
+     slides denser than /inhouse, so trailing captions can sit past that line and
+     never fire while the slide is snapped. Reveal per-slide instead, matching
+     main.js's own easing/duration so double-firing is a no-op. */
+  if(window.gsap && window.ScrollTrigger){
+    document.querySelectorAll('section.slide').forEach(function(s){
+      var els = s.querySelectorAll('.reveal');
+      if(!els.length) return;
+      ScrollTrigger.create({trigger:s, start:'top 55%', once:true, onEnter:function(){
+        gsap.to(els,{opacity:1,y:0,duration:reduce?0.01:0.9,ease:'power3.out',stagger:reduce?0:0.05});
+      }});
+    });
+  }
+
+  /* --- scenario table: focus one row-group at a time --- */
+  var table = document.querySelector('.dg-table');
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.dg-chip'));
+  if(table && chips.length){
+    var GROUPS = ['use','impact','sustain'];
+    function focus(g){
+      table.className = 'dg-table' + (g === 'all' ? '' : ' focus-' + g);
+      chips.forEach(function(c){ c.setAttribute('aria-pressed', String(c.dataset.g === g)); });
+    }
+    chips.forEach(function(c){ c.addEventListener('click', function(){ focus(c.dataset.g); }); });
+
+    // one guided pass through the groups the first time the slide is reached
+    if(!reduce && window.gsap && window.ScrollTrigger){
+      ScrollTrigger.create({trigger:'#d11', start:'top 60%', once:true, onEnter:function(){
+        GROUPS.forEach(function(g,i){ setTimeout(function(){ focus(g); }, 400 + i*1600); });
+        setTimeout(function(){ focus('all'); }, 400 + GROUPS.length*1600);
+      }});
+    }
+  }
+
+  /* --- CYRM-R pulse modal (opened from #d3's key outcome item) --- */
+  var modal = document.getElementById('cyrm-modal');
+  var trigger = document.querySelector('[data-modal-target="cyrm-modal"]');
+  if(modal && trigger){
+    var closers = modal.querySelectorAll('[data-modal-close]');
+    function openModal(){
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden','false');
+      document.documentElement.classList.add('modal-open');
+      trigger.setAttribute('aria-expanded','true');
+      modal.querySelector('.dg-modal-close').focus();
+    }
+    function closeModal(){
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden','true');
+      document.documentElement.classList.remove('modal-open');
+      trigger.setAttribute('aria-expanded','false');
+      trigger.focus();
+    }
+    trigger.addEventListener('click', openModal);
+    trigger.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openModal(); }
+    });
+    closers.forEach(function(el){ el.addEventListener('click', closeModal); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+  }
+})();
+</script>
+</body>
+</html>

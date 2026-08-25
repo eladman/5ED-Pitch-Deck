@@ -7,6 +7,7 @@ Three static pages (Hebrew, RTL) built with Vite:
 | `/` | `index.html` | **Public landing page** — for outside mentors and stakeholders. No pricing, no named prospects, no internal structure. |
 | `/inhouse` | `inhouse/index.html` | The **internal** investor/partner deck. `noindex` — unlisted, not linked from anywhere. |
 | `/amir` | `amir/index.html` | The short Amir deck. `noindex`. |
+| `/december_goals` | `december_goals/index.html` | **Internal** goals deck — the Sept–Dec 2026 pilot targets and the December GO/NO-GO. `noindex`. |
 
 Both decks are scroll/keyboard-navigable. Anything added to `/inhouse` is private by
 default — before putting something on `/` ask whether an outside mentor should see it.

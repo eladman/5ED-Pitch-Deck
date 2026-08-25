@@ -6,6 +6,7 @@ import { resolve } from 'path'
 //   /         → the public landing page (mentors, stakeholders)
 //   /inhouse  → the internal investor/partner deck
 //   /amir     → the short Amir deck
+//   /december_goals → the Sept–Dec 2026 pilot goals deck (internal)
 export default defineConfig({
   build: {
     // Inline logos/photos (≤40KB) as base64 data URIs instead of emitting them
@@ -20,6 +21,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         inhouse: resolve(__dirname, 'inhouse/index.html'),
         amir: resolve(__dirname, 'amir/index.html'),
+        december_goals: resolve(__dirname, 'december_goals/index.html'),
       },
     },
   },
