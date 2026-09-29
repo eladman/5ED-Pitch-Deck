@@ -2,6 +2,9 @@
 "use strict";
 var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var LOGO_SRC = document.querySelector('.nav-brand img').src;
+// every deck is Hebrew/RTL except /US (English, dir="ltr") — mirror the few
+// direction-dependent behaviours (hero logo side, arrow keys) off this flag
+var LTR = document.documentElement.dir === 'ltr';
 
 /* ================= HERO: particle logo (three.js) ================= */
 // three.js only logs (doesn't throw) when it can't get a WebGL context, so
@@ -21,7 +24,7 @@ function initHero(){
   if(!window.THREE || !webglAvailable()){
     var im = document.createElement('img');
     im.src = LOGO_SRC; im.alt = '';
-    im.style.cssText = 'position:absolute;left:8%;top:50%;transform:translateY(-50%);height:min(60vh,480px);opacity:.16;filter:drop-shadow(0 0 40px rgba(239,125,0,.6))';
+    im.style.cssText = 'position:absolute;'+(LTR?'right':'left')+':8%;top:50%;transform:translateY(-50%);height:min(60vh,480px);opacity:.16;filter:drop-shadow(0 0 40px rgba(239,125,0,.6))';
     container.appendChild(im);
     return;
   }
@@ -57,9 +60,9 @@ function initHero(){
     }
     var count = targets.length;
     var scale = (isMobile ? 2.0 : 3.1);
-    // position logo: desktop -> left side of screen (RTL layout: text on right), mobile -> faint centered behind
+    // position logo: desktop -> the side opposite the text (left in RTL, right in LTR), mobile -> faint centered behind
     var worldW = 2*Math.tan(camera.fov*Math.PI/360)*camera.position.z*camera.aspect;
-    var offsetX = isMobile ? 0 : -worldW*0.26;
+    var offsetX = isMobile ? 0 : (LTR ? 1 : -1)*worldW*0.26;
     var offsetY = isMobile ? 30 : 0;
 
     var positions = new Float32Array(count*3);
@@ -176,7 +179,7 @@ function initHero(){
     // scroll parallax fade of hero canvas
     if(window.gsap && window.ScrollTrigger){
       gsap.to(container, {opacity:.12, y:120, ease:'none',
-        scrollTrigger:{trigger:'#s1', start:'top top', end:'bottom top', scrub:true}});
+        scrollTrigger:{trigger:container.closest('section'), start:'top top', end:'bottom top', scrub:true}});
     }
   };
 }
@@ -334,7 +337,7 @@ var current = 0;
 if(slides.length && rail && countEl){
 slides.forEach(function(s,i){
   var b=document.createElement('button');
-  b.setAttribute('aria-label','שקף '+(i+1));
+  b.setAttribute('aria-label',(LTR?'Slide ':'שקף ')+(i+1));
   b.addEventListener('click',function(){go(i)});
   rail.appendChild(b);
 });
@@ -358,8 +361,10 @@ slides.forEach(function(s){io.observe(s)});
 document.addEventListener('keydown',function(e){
   if(e.target && e.target.matches && e.target.matches('input,textarea')) return;
   var k=e.key;
-  if(k==='ArrowLeft'||k==='ArrowDown'||k===' '||k==='PageDown'){ e.preventDefault(); go(current+1); }
-  else if(k==='ArrowRight'||k==='ArrowUp'||k==='PageUp'){ e.preventDefault(); go(current-1); }
+  // reading direction decides which horizontal arrow means "next"
+  var fwd = LTR ? 'ArrowRight' : 'ArrowLeft', back = LTR ? 'ArrowLeft' : 'ArrowRight';
+  if(k===fwd||k==='ArrowDown'||k===' '||k==='PageDown'){ e.preventDefault(); go(current+1); }
+  else if(k===back||k==='ArrowUp'||k==='PageUp'){ e.preventDefault(); go(current-1); }
   else if(k==='Home'){ e.preventDefault(); go(0); }
   else if(k==='End'){ e.preventDefault(); go(slides.length-1); }
 });

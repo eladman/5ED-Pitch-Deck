@@ -1,6 +1,6 @@
 # 5ED — Site & Pitch Decks
 
-Five static pages (Hebrew, RTL) built with Vite:
+Six static pages built with Vite — five in Hebrew (RTL), `/US` in English (LTR):
 
 | URL | File | Audience |
 |-----|------|----------|
@@ -9,6 +9,7 @@ Five static pages (Hebrew, RTL) built with Vite:
 | `/outhouse` | `outhouse/index.html` | Board/investor stakeholder deck — cloned from `/inhouse`, edited independently. `noindex`. |
 | `/amir` | `amir/index.html` | The short Amir deck. `noindex`. |
 | `/december_goals` | `december_goals/index.html` | **Internal** goals deck — the Sept–Dec 2026 pilot targets and the December GO/NO-GO. `noindex`. |
+| `/US` | `US/index.html` | **English (LTR)** deck for meetings with US clubs and youth organizations. Styles in `css/us.css`. `noindex`. |
 
 Both decks are scroll/keyboard-navigable. Anything added to `/inhouse` is private by
 default — before putting something on `/` ask whether an outside mentor should see it.

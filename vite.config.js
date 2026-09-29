@@ -8,6 +8,7 @@ import { resolve } from 'path'
 //   /outhouse → the board/investor stakeholder deck (clone of /inhouse, edited separately)
 //   /amir     → the short Amir deck
 //   /december_goals → the Sept–Dec 2026 pilot goals deck (internal)
+//   /US       → the English (LTR) deck for US club & youth-org stakeholders
 export default defineConfig({
   build: {
     // Inline logos/photos (≤40KB) as base64 data URIs instead of emitting them
@@ -24,6 +25,7 @@ export default defineConfig({
         outhouse: resolve(__dirname, 'outhouse/index.html'),
         amir: resolve(__dirname, 'amir/index.html'),
         december_goals: resolve(__dirname, 'december_goals/index.html'),
+        US: resolve(__dirname, 'US/index.html'),
       },
     },
   },
