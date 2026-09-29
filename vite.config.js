@@ -5,6 +5,7 @@ import { resolve } from 'path'
 // /inhouse and /amir 404 on Vercel. Each entry below becomes its own page in dist/.
 //   /         → the public landing page (mentors, stakeholders)
 //   /inhouse  → the internal investor/partner deck
+//   /outhouse → the board/investor stakeholder deck (clone of /inhouse, edited separately)
 //   /amir     → the short Amir deck
 //   /december_goals → the Sept–Dec 2026 pilot goals deck (internal)
 export default defineConfig({
@@ -20,6 +21,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         inhouse: resolve(__dirname, 'inhouse/index.html'),
+        outhouse: resolve(__dirname, 'outhouse/index.html'),
         amir: resolve(__dirname, 'amir/index.html'),
         december_goals: resolve(__dirname, 'december_goals/index.html'),
       },

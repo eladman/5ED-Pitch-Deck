@@ -1,0 +1,49 @@
+/* ============================================================
+   /outhouse — board/investor deck. Overrides & additions specific
+   to this page live here, never in the shared styles.css/amir-import.css,
+   so /inhouse (which this page was cloned from) stays untouched.
+
+   Starts with @import light.css instead of a separate <link> in
+   index.html: Vite's build reorders <link> tags, which can put a
+   later-linked light.css ahead of this file's own html.light rules
+   and let generic light.css selectors win. One bundled @import
+   chain guarantees this file's overrides always come last.
+   ============================================================ */
+@import url('./light.css');
+
+/* ---------- 02 · המגמה העולמית — WEF Future of Jobs Report 2025 ---------- */
+#s2t.s-wef{
+  background:
+    radial-gradient(58% 40% at 50% -4%, rgba(255,154,46,.10), transparent 62%),
+    var(--ink);
+  overflow:hidden;
+}
+/* dense sourced infographic needs the vertical room a normal 3-line
+   au-statement would eat into — keep the headline to one short line */
+.s-wef .au-wrap{gap:clamp(16px,2.4vh,28px)}
+.s-wef .au-statement{font-size:clamp(1.4rem,2.6vw,2.1rem);line-height:1.2}
+
+.wef-figure{
+  margin:0;position:relative;border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--line);
+  background:#04070f;
+  box-shadow:0 30px 70px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.03);
+}
+.wef-figure img{
+  display:block;width:100%;height:auto;
+  max-height:min(58vh,560px);object-fit:contain;object-position:center;
+}
+
+@media(max-height:790px){
+  .s-wef .au-statement{font-size:clamp(1.2rem,2.2vw,1.7rem)}
+  .wef-figure img{max-height:min(48vh,420px)}
+}
+
+html.light #s2t.s-wef{
+  background:radial-gradient(58% 40% at 50% -4%,rgba(239,125,0,.06),transparent 62%),#F5F5F7;
+}
+html.light .wef-figure{
+  border-color:rgba(29,29,31,.08);
+  box-shadow:0 22px 46px rgba(20,20,24,.12);
+  background:#04070f;
+}

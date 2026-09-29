@@ -1,11 +1,12 @@
 # 5ED — Site & Pitch Decks
 
-Three static pages (Hebrew, RTL) built with Vite:
+Five static pages (Hebrew, RTL) built with Vite:
 
 | URL | File | Audience |
 |-----|------|----------|
 | `/` | `index.html` | **Public landing page** — for outside mentors and stakeholders. No pricing, no named prospects, no internal structure. |
 | `/inhouse` | `inhouse/index.html` | The **internal** investor/partner deck. `noindex` — unlisted, not linked from anywhere. |
+| `/outhouse` | `outhouse/index.html` | Board/investor stakeholder deck — cloned from `/inhouse`, edited independently. `noindex`. |
 | `/amir` | `amir/index.html` | The short Amir deck. `noindex`. |
 | `/december_goals` | `december_goals/index.html` | **Internal** goals deck — the Sept–Dec 2026 pilot targets and the December GO/NO-GO. `noindex`. |
 
